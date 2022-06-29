@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="138" height="138" viewBox="0 0 138 138">
+  <defs>
+    <filter id="Ellipse_44" x="0" y="0" width="138" height="138" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_626" data-name="Group 626" transform="translate(-315 -1437)">
+    <g transform="matrix(1, 0, 0, 1, 315, 1437)" filter="url(#Ellipse_44)">
+      <circle id="Ellipse_44-2" data-name="Ellipse 44" cx="60" cy="60" r="60" transform="translate(9 6)" fill="#febe15"/>
+    </g>
+    <g id="Group_72" data-name="Group 72" transform="translate(264 806)">
+      <g id="Group_69" data-name="Group 69" transform="translate(103.618 687.835)">
+        <line id="Line_26" data-name="Line 26" x2="31.079" transform="translate(0 19.167)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
+        <line id="Line_27" data-name="Line 27" x2="31.079" transform="translate(0 9.583)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
+        <line id="Line_28" data-name="Line 28" x2="31.079" transform="translate(0)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
+      </g>
+      <rect id="Rectangle_15" data-name="Rectangle 15" width="45.354" height="40.836" transform="translate(97 677)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

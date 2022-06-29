@@ -1,0 +1,80 @@
+import React from "react";
+
+import { Chip } from "@component/Chip";
+
+import { useAppContext } from "@context/app/AppContext";
+
+import useWindowSize from "../../hooks/useWindowSize";
+import Icon from "../icon/Icon";
+import NavLink from "../nav-link/NavLink";
+import StyledMobileNavigationBar from "./MobileNavigationBar.style";
+
+const MobileNavigationBar: React.FC = () => {
+  const [width] = useWindowSize();
+  const { state } = useAppContext();
+  const { cartList } = state.cart;
+
+  return (
+    width <= 2000 && (
+      <StyledMobileNavigationBar>
+        {list.map((item) => (
+          <NavLink className="link" href={item.href} key={item.title}>
+            <Icon className="icon" variant="small">
+              {item.icon}
+            </Icon>
+            {item.title}
+
+            {item.title === "Cart" && !!cartList.length && (
+              <Chip
+                bg="primary.main"
+                position="absolute"
+                color="primary.text"
+                fontWeight="600"
+                px="0.25rem"
+                top="4px"
+                left="calc(50% + 8px)"
+              >
+                {cartList.length}
+              </Chip>
+            )}
+          </NavLink>
+        ))}
+      </StyledMobileNavigationBar>
+    )
+  );
+};
+
+const list = [
+  {
+    title: "Home",
+    icon: "home",
+    href: "/",
+  },
+  {
+    title: "Jornais",
+    icon: "newspaper",
+    href: "/jornais",
+  },
+  {
+    title: "Revistas",
+    icon: "magazine",
+    href: "/revistas",
+  },
+  {
+    title: "Mais lidos",
+    icon: "newspaper-more-read",
+    href: "/jornais/mais-lidos",
+  },
+  {
+    title: "Mais lidas",
+    icon: "magazine-more-read",
+    href: "/revistas/mais-lidos",
+  },
+  {
+    title: "Conta",
+    icon: "user-2",
+    href: "/account/profile",
+  },
+];
+
+export default MobileNavigationBar;
