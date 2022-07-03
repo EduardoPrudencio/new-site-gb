@@ -101,9 +101,9 @@ const linkList = [
         count: 0,
       },
       {
-        href: "/account/voucher",
-        title: "Vouchers",
-        iconName: "heart",
+        href: "/account/newuser",
+        title: "Cadastrar Aluno",
+        iconName: "add-user",
         count: 0,
       },
       {

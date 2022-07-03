@@ -1,6 +1,4 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import Link from "next/link";
-
 import React, { useCallback, useContext, useState } from "react";
 
 import { theme } from "@utils/theme";
@@ -11,10 +9,9 @@ import { AuthCotext } from "@context/AuthContext";
 
 import Button from "../buttons/Button";
 import IconButton from "../buttons/IconButton";
-import FlexBox from "../FlexBox";
 import Icon from "../icon/Icon";
 import TextField from "../text-field/TextField";
-import { H3, H5, H6, SemiSpan } from "../Typography";
+import { H3, H5 } from "../Typography";
 import { StyledSessionCard } from "./SessionStyle";
 
 const initialValues = {
@@ -23,9 +20,7 @@ const initialValues = {
 };
 
 const formSchema = yup.object().shape({
-  login: yup
-    .string()
-    .required("O campo login é obrigatório"),
+  login: yup.string().required("O campo login é obrigatório"),
   password: yup.string().required("O campo senha é obrigatório"),
 });
 
@@ -124,7 +119,7 @@ const Signin = function BuildSignIn() {
         <Button
           mb="1.65rem"
           variant="contained"
-          bg={theme.colors.primary[500]}
+          bg={theme.colors.primary.main}
           color="primary"
           type="submit"
           fullwidth

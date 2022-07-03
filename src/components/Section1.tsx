@@ -1,3 +1,4 @@
+import React from "react";
 import Box from "@component/Box";
 import Carousel from "@component/carousel/Carousel";
 import Container from "@component/Container";
@@ -28,5 +29,4 @@ const Section1: React.FC = () => {
     </>
   );
 };
-
 export default Section1;

@@ -53,7 +53,7 @@ const bodyColor = {
 
 const primaryColor = {
   light: "#FFE1E6",
-  main: "#D82803", //"#E94560"
+  main: "#D82803",  
   dark: "#4F4CB6",
   text: "#ffffff",
   100: "#FFECAD",

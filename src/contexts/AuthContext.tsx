@@ -24,24 +24,22 @@ export function AuthProvider({ children }) {
   const hasCookies =
     checkCookies(authCookieKeys.refresh) && checkCookies(authCookieKeys.token);
 
-  // type UserData = {
-  //   token: { token: string; refreshToken: string };
-  // };
+  type UserData = {
+     token: string; refreshToken: string ;
+  };
 
-  const fillUserData = useCallback(({ token}) => {
-    // saveSession({
-    //   token: token.token,
-    //   refreshToken: token.refreshToken,
-    // });
+  const fillUserData = useCallback((token, refreshToken) => {
 
-    // setUser({
-    //   id: custumer.id,
-    //   name: custumer.nickname,
-    //   email: custumer.email,
-    //   premium: custumer.permissions.subscription.premium,
-    //   showNewspaper: custumer.permissions.newspaper.show,
-    //   showMagazine: custumer.permissions.magazine.show,
-    // });
+    saveSession({
+      token: token,
+      refreshToken: refreshToken,
+    });
+
+    setUser({
+      id: "98765  ",
+      name: "Admin",
+      email: "teste@email.com"
+    });
   }, []);
 
   const signIn = useCallback(
@@ -52,8 +50,8 @@ export function AuthProvider({ children }) {
           login: credentials.login,
           password: credentials.password,
         });
-
-        fillUserData(session);
+        
+        fillUserData(session.access_token, session.refresh_token);
         const { goTo } = Router.query;
         if (goTo) {
           Router.push(goTo as string);

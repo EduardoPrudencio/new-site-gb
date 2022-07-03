@@ -4,9 +4,6 @@ type User = {
   id: string;
   name: string;
   email: string;
-  premium: boolean;
-  showNewspaper: boolean;
-  showMagazine: boolean;
 };
 
 export async function me(): Promise<User> {
@@ -18,8 +15,5 @@ export async function me(): Promise<User> {
     id: user.id,
     name: user.nickname,
     email: user.email,
-    premium: user.permissions.subscription.premium,
-    showNewspaper: user.permissions.newspaper.show,
-    showMagazine: user.permissions.magazine.show,
   };
 }

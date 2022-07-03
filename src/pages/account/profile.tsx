@@ -165,7 +165,7 @@ function Profile() {
               mb="1.65rem"
               variant="contained"
               color="primary"
-              backgroundColor={theme.colors.primary[500]}
+              backgroundColor={theme.colors.primary.main}
               type="submit"
             >
               Salvar Alterações

@@ -148,7 +148,7 @@ const customerCareLinks = [
 ];
 
 const iconList = [
-  { iconName: "facebook", url: "https://www.facebook.com/bebancaoficial" },
+  { iconName: "facebook", url: "https://pt-br.facebook.com/GB72campos/" },
   { iconName: "instagram", url: "https://www.instagram.com/graciebarracampos/?hl=en" },
 ];
 

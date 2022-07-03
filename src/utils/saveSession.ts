@@ -7,8 +7,6 @@ import { authCookieKeys } from "./constants";
 export function saveSession({
   token,
   refreshToken,
-  newspaperPermission,
-  magazinePermission,
 }) {
   const ttl = 60 * 60 * 24 * 30; // 1 month
 
@@ -17,14 +15,6 @@ export function saveSession({
   });
 
   setCookies(authCookieKeys.refresh, refreshToken, {
-    maxAge: ttl, // 1 month
-  });
-
-  setCookies("newspaperPermission", newspaperPermission, {
-    maxAge: ttl, // 1 month
-  });
-
-  setCookies("magazinePermission", magazinePermission, {
     maxAge: ttl, // 1 month
   });
 

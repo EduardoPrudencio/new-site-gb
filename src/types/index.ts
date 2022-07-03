@@ -14,9 +14,6 @@ export type User = {
   id: string;
   name: string;
   email: string;
-  premium: boolean;
-  showNewspaper: boolean;
-  showMagazine: boolean;
 };
 
 export type AuthContextType = {
