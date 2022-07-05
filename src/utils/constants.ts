@@ -14,6 +14,6 @@ export const layoutConstant = {
 };
 
 export const authCookieKeys = {
-  token: 'bebanca.site.token',
-  refresh: 'bebanca.site.refreshToken'
+  token: 'graciebarra.site.token',
+  refresh: 'graciebarra.site.refreshToken'
 }
