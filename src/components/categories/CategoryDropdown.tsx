@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import Navigations from "@data/navigations";
 
@@ -6,6 +6,9 @@ import CategoryMenuItem from "./category-menu-item/CategoryMenuItem";
 import { StyledCategoryDropdown } from "./CategoryDropdownStyle";
 import MegaMenu1 from "./mega-menu/MegaMenu1";
 import MegaMenu2 from "./mega-menu/MegaMenu2";
+import Button from "@component/buttons/Button";
+import { AuthCotext } from "@context/AuthContext";
+import { useRouter } from "next/router";
 
 export interface CategoryDropdownProps {
   open: boolean;
@@ -20,6 +23,9 @@ const CategoryDropdown: React.FC<CategoryDropdownProps> = ({
     MegaMenu1,
     MegaMenu2,
   };
+
+  const { isAuthenticated, logOut } = useContext(AuthCotext);
+  const router = useRouter();
 
   return (
     <StyledCategoryDropdown open={open} position={position}>
@@ -38,6 +44,15 @@ const CategoryDropdown: React.FC<CategoryDropdownProps> = ({
           </CategoryMenuItem>
         );
       })}
+
+      {isAuthenticated &&
+        <Button
+          onClick={() => {
+            logOut();
+            router.reload();
+          }} >Sair
+        </Button>
+      }
     </StyledCategoryDropdown>
   );
 };
