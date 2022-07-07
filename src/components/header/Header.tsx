@@ -60,7 +60,7 @@ const Header: React.FC<HeaderProps> = ({ className, navListOpen }) => {
         </FlexBox>
 
         <FlexBox justifyContent="center" flex="1 1 0">
-          <Link href="/">
+          <Link href="/campos-dos-goytacazes">
             <a>
               <Image src="/assets/images/gb-logo.svg" alt="logo" height="100px" />
             </a>

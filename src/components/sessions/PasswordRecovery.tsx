@@ -28,7 +28,7 @@ function PasswordRecovery() {
       pauseOnHover: true,
       draggable: true,
     });
-    router.push("/");
+    router.push("/campos-dos-goytacazes");
   };
 
   const initialValues = {

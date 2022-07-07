@@ -40,7 +40,7 @@ function PasswordEdit({ token }: { token: string }) {
       });
       if (response === 200) {
         toast.success("Sua senha foi alterada com sucesso");
-        router.push("/");
+        router.push("/campos-dos-goytacazes");
       }
     } catch (error) {
       toast.error("Houve um erro. Tente novamente");

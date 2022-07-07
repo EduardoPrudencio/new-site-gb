@@ -63,7 +63,8 @@ export function AuthProvider({ children }) {
           Router.push(goTo as string);
         } else {
           const gym = getCookie(authCookieKeys.gymName);
-          Router.push(`/${gym}`);
+          ///console.log("!!!!!!!!!!!!!!!!!! gym ",gym);
+          Router.push(`/campos-dos-goytacazes`);
         }
       } catch {
         error = true;

@@ -49,7 +49,7 @@ const Signup: React.FC<ISignupProps> = ({ hasVoucher = false, voucher }) => {
     const response = await SignUpCall(values);
 
     if (response === 200 || response === 201) { 
-      Router.push("/");
+      Router.push("/campos-dos-goytacazes");
     }
       else{
       setShowErrorMessage(true);
