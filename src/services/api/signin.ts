@@ -1,12 +1,16 @@
 import api from "@services/api/client";
 
 export const SigninCall = async (values) => {
-  const response = await api.post("/session", {
-    login: values.login,
-    password: values.password,
-  });
-  
-  return response;
+  try {
+    const response = await api.post("/session", {
+      login: values.login,
+      password: values.password,
+    });
+    
+    return response;  
+  } catch (error) {
+    // console.log("########### error ############ ",error );
+  }
 };
 
 export const refreshSession = async (refreshToken) => {

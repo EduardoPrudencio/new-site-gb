@@ -15,5 +15,6 @@ export const layoutConstant = {
 
 export const authCookieKeys = {
   token: 'graciebarra.site.token',
-  refresh: 'graciebarra.site.refreshToken'
+  refresh: 'graciebarra.site.refreshToken',
+  gymName: 'graciebarra.site.gymName'
 }

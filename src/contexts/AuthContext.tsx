@@ -10,7 +10,7 @@ import {
 
 import { authCookieKeys } from "@utils/constants";
 import { saveSession } from "@utils/saveSession";
-import { removeCookies, checkCookies } from "cookies-next";
+import { removeCookies, checkCookies, getCookie } from "cookies-next";
 import { AuthContextType, SignInData, User } from "types";
 
 import { SigninCall } from "@services/api/signin";
@@ -28,7 +28,7 @@ export function AuthProvider({ children }) {
      token: string; refreshToken: string ;
   };
 
-  const fillUserData = useCallback((token, refreshToken) => {
+  const fillUserData = useCallback((token, refreshToken, client) => {
 
     saveSession({
       token: token,
@@ -36,14 +36,20 @@ export function AuthProvider({ children }) {
     });
 
     setUser({
-      id: "98765  ",
-      name: "Admin",
-      email: "teste@email.com"
+      id: client.id,
+      name: client.name,
+      email: client.email,
+      lastName: client.lastName,
+      userRoles: client.userRoles,
+      birthDate: client.birthDate,
+      image: client.image,
+      phoneNumber: client.phoneNumber,
+      active: client.active
     });
   }, []);
 
   const signIn = useCallback(
-    async (credentials: SignInData) => {
+    async (credentials: SignInData) => { 
       let error = false;
       try {
         const { data: session } = await SigninCall({
@@ -51,12 +57,13 @@ export function AuthProvider({ children }) {
           password: credentials.password,
         });
         
-        fillUserData(session.access_token, session.refresh_token);
+        fillUserData(session.access_token, session.refresh_token, session.client);
         const { goTo } = Router.query;
         if (goTo) {
           Router.push(goTo as string);
         } else {
-          Router.push("/");
+          const gym = getCookie(authCookieKeys.gymName);
+          Router.push(`/${gym}`);
         }
       } catch {
         error = true;

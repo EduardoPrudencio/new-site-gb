@@ -4,17 +4,24 @@ import { H5 } from "@component/Typography";
 import Section1 from "@component/Section1";
 import Box from "@component/Box";
 import { useRouter } from "next/router";
+import { setCookies } from "cookies-next";
 
 function IndexPage() {
   const { query } = useRouter();
   const { slug } = query;
 
   const gyns = {
-    campos_dos_goytacazes: {
+    "campos-dos-goytacazes": {
       name: "Campos dos Goytacazes",
       gymId: "",
     },
   };
+
+  if(typeof gyns[`${slug}`] !== "undefined") {
+    setCookies(`${slug}`, "gym.name", {
+      maxAge: 60 * 60 * 24 * 30, // 1 month
+    });
+  }
 
   return (
     <main>

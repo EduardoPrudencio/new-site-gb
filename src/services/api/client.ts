@@ -6,9 +6,6 @@ const token = getCookie(authCookieKeys.token);
 
 const api = axios.create({
   baseURL: "https://inovaideia.net.br/api",
-  headers: {
-    "x-frontend-type": "browser",
-  },
 });
 
 function addAuthToken(config: AxiosRequestConfig) {

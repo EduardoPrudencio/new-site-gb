@@ -1,10 +1,5 @@
+import { User } from "types";
 import api from "../client";
-
-type User = {
-  id: string;
-  name: string;
-  email: string;
-};
 
 export async function me(): Promise<User> {
   const {
@@ -15,5 +10,11 @@ export async function me(): Promise<User> {
     id: user.id,
     name: user.nickname,
     email: user.email,
+    lastName: user.lastName,
+    userRoles: user.user,
+    birthDate: user.birthDate,
+    image: user.image,
+    phoneNumber: user.phoneNumber,
+    active: user.active
   };
 }

@@ -13,7 +13,13 @@ export type Payment = {
 export type User = {
   id: string;
   name: string;
+  lastName: string;
   email: string;
+  userRoles: string;
+  birthDate: string;
+  image: string;
+  phoneNumber: string;
+  active: boolean;
 };
 
 export type AuthContextType = {
