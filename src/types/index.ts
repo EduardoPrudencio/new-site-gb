@@ -1,18 +1,7 @@
-export type Voucher = {
-  code: string;
-  activated_at: string;
-  expiration_days: number;
-};
-
-export type Payment = {
-  id: number;
-  amount: string;
-  payment_date: string;
-};
-
 export type User = {
   id: string;
   name: string;
+  userName: string;
   lastName: string;
   email: string;
   userRoles: string;
@@ -25,7 +14,7 @@ export type User = {
 export type AuthContextType = {
   isAuthenticated: boolean;
   user: User;
-  signIn: ({ email, password }) => Promise<boolean>;
+  signIn: ({ login, password }) => Promise<boolean>;
   logOut: () => void;
 };
 

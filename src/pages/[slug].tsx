@@ -12,7 +12,7 @@ function IndexPage() {
   const { slug } = query;
 
   if(typeof gyns[`${slug}`] !== "undefined") {
-    setCookies(`${slug}`, "gym.name", {
+    setCookies("gym.name", `${slug}`, {
       maxAge: 60 * 60 * 24 * 30, // 1 month
     });
   }

@@ -37,6 +37,7 @@ export function AuthProvider({ children }) {
 
     setUser({
       id: client.id,
+      userName: client.userName,
       name: client.name,
       email: client.email,
       lastName: client.lastName,
@@ -62,8 +63,7 @@ export function AuthProvider({ children }) {
         if (goTo) {
           Router.push(goTo as string);
         } else {
-          const gym = getCookie(authCookieKeys.gymName);
-          ///console.log("!!!!!!!!!!!!!!!!!! gym ",gym);
+          // const gym = getCookie(authCookieKeys.gymName);
           Router.push(`/campos-dos-goytacazes`);
         }
       } catch {
@@ -77,6 +77,7 @@ export function AuthProvider({ children }) {
   function logOut() {
     removeCookies(authCookieKeys.refresh);
     removeCookies(authCookieKeys.token);
+    removeCookies(authCookieKeys.gymName);
   }
 
   useEffect(() => {
