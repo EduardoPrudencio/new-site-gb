@@ -32,17 +32,23 @@ const Header: React.FC<HeaderProps> = ({ className, navListOpen }) => {
         alignItems="center"
         justifyContent="space-between"
         height="100%"
-        maxWidth="1200px"
+        maxWidth="1220px"
       >
-        <FlexBox className="logo" alignItems="center" mr="1rem">
-          <Categories open={navListOpen}>
+
+          <Link href="/campos-dos-goytacazes">
+            <a>
+              <Image src="/assets/images/gb-logo.svg" alt="logo" height="100px" />
+            </a>
+          </Link>
+          
+        
+          {isAuthenticated ? (
+            <Categories open={navListOpen}>
             <Button
               width="278px"
               height="40px"
-              bg="body.default"
               variant="text"
             >
-              <Icon>categories</Icon>
               <Typography
                 fontWeight="600"
                 textAlign="left"
@@ -50,40 +56,21 @@ const Header: React.FC<HeaderProps> = ({ className, navListOpen }) => {
                 ml="10px"
                 color="text.muted"
               >
-                Menu
+                {`${user.name} ${user.lastName}`}
               </Typography>
               <Icon className="dropdown-icon" variant="small">
                 chevron-right
               </Icon>
             </Button>
           </Categories>
-        </FlexBox>
 
-        <FlexBox justifyContent="center" flex="1 1 0">
-          <Link href="/campos-dos-goytacazes">
-            <a>
-              <Image src="/assets/images/gb-logo.svg" alt="logo" height="100px" />
-            </a>
-          </Link>
-        </FlexBox>
-
-        <FlexBox className="header-right" alignItems="center">
-          {isAuthenticated ? (
-            <Link href="/account/profile">
-              <a>
-                <Avatar size="48" name={user && user.name} color="#ccc" />
-              </a>
-            </Link>
           ) : (
             <Link href="/signin">
               <a>
-                <IconButton ml="1rem" bg="gray.200" p="8px">
-                  <Icon size="28px">user</Icon>
-                </IconButton>
+                Login
               </a>
             </Link>
           )}
-        </FlexBox>
       </Container>
     </StyledHeader>
   );
