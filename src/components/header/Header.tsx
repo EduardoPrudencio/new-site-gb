@@ -32,15 +32,13 @@ const Header: React.FC<HeaderProps> = ({ className, navListOpen }) => {
         alignItems="center"
         justifyContent="space-between"
         height="100%"
-        maxWidth="1220px"
+        maxWidth="1222px"
       >
-
           <Link href="/campos-dos-goytacazes">
             <a>
               <Image src="/assets/images/gb-logo.svg" alt="logo" height="100px" />
             </a>
           </Link>
-          
         
           {isAuthenticated ? (
             <Categories open={navListOpen}>

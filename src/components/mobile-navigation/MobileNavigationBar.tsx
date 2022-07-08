@@ -51,26 +51,6 @@ const list = [
     href: "/",
   },
   {
-    title: "Jornais",
-    icon: "newspaper",
-    href: "/jornais",
-  },
-  {
-    title: "Revistas",
-    icon: "magazine",
-    href: "/revistas",
-  },
-  {
-    title: "Mais lidos",
-    icon: "newspaper-more-read",
-    href: "/jornais/mais-lidos",
-  },
-  {
-    title: "Mais lidas",
-    icon: "magazine-more-read",
-    href: "/revistas/mais-lidos",
-  },
-  {
     title: "Conta",
     icon: "user-2",
     href: "/account/profile",

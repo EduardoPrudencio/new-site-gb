@@ -137,7 +137,6 @@ const Navbar: React.FC = () => {
         display="flex"
         justifyContent="flex-start"
         alignItems="center"
-        marginTop="10px"
         width="1200px"
         height="100%"
       >
