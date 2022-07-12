@@ -31,7 +31,7 @@ const Error404 = function Error() {
         >
           Voltar
         </Button>
-        <Link href="/">
+        <Link href="/campos-dos-goytacazes">
           <Button variant="contained" color="primary" m="0.5rem">
             Ir para a Home
           </Button>

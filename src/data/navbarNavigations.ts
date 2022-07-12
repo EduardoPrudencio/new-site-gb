@@ -5,6 +5,10 @@ const NavbarNavigations = () => {
       title: "Home",
       url: "/",
     },
+    {
+      title: "Horários",
+      url: "/horarios",
+    },
   ];
 
   return navbar

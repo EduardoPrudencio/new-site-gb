@@ -51,6 +51,11 @@ const list = [
     href: "/",
   },
   {
+    title: "Horários",
+    icon: "schedule",
+    href: "/horarios",
+  },
+  {
     title: "Conta",
     icon: "user-2",
     href: "/account/profile",
