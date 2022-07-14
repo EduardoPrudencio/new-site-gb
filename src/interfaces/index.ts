@@ -3,7 +3,8 @@ export type colorOptions =
   | "secondary"
   | "warn"
   | "error"
-  | "inherit";
+  | "inherit"
+  | "#868b8f";
 
 export type deviceOptions = "xs" | "sm" | "md" | "lg";
 

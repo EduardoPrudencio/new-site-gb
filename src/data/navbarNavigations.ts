@@ -7,7 +7,11 @@ const NavbarNavigations = () => {
     },
     {
       title: "Horários",
-      url: "/horarios",
+      url: "/campos-dos-goytacazes/horarios",
+    },
+    {
+      title: "Perfil",
+      url: "/campos-dos-goytacazes/perfil",
     },
   ];
 

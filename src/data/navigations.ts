@@ -13,7 +13,7 @@ const Navigations = () => {
     {
       icon: "",
       title: "Horrios",
-      href: "/´horarios",
+      href: "/campos-dos-goytacazes/horarios",
       menuComponent: "MegaMenu1",
     },
   ];
