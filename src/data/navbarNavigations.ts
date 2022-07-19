@@ -1,17 +1,15 @@
-const NavbarNavigations = () => {
+import { getCookie } from "cookies-next";
 
+const NavbarNavigations = () => {
+  const gym = getCookie("gym.name");
   const navbar = [
     {
       title: "Home",
-      url: "/",
+      url: typeof gym !== "undefined" ? `\\${gym}` : "\\",
     },
     {
       title: "Horários",
       url: "/campos-dos-goytacazes/horarios",
-    },
-    {
-      title: "Perfil",
-      url: "/campos-dos-goytacazes/perfil",
     },
   ];
 

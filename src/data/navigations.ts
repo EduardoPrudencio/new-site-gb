@@ -1,5 +1,8 @@
 import { AuthCotext } from "@context/AuthContext";
+import { getCookie } from "cookies-next";
 import { useContext } from "react";
+
+const gym = getCookie("gym.name");
 
 const Navigations = () => {
   
@@ -7,13 +10,13 @@ const Navigations = () => {
     {
       icon: "",
       title: "Home",
-      href: "/",
+      href: typeof gym !== "undefined" ? `\\${gym}` : "\\",
       menuComponent: "MegaMenu1",
     },
     {
       icon: "",
-      title: "Horrios",
-      href: "/campos-dos-goytacazes/horarios",
+      title: "Perfil",
+      href: "/account/perfil",
       menuComponent: "MegaMenu1",
     },
   ];

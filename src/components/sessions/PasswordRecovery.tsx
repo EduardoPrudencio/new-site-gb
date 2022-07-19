@@ -9,6 +9,7 @@ import * as yup from "yup";
 
 import { startPasswordRecovery } from "@services/api/users/password";
 
+import { getCookie } from "cookies-next";
 import Button from "../buttons/Button";
 import FlexBox from "../FlexBox";
 import TextField from "../text-field/TextField";
@@ -28,7 +29,8 @@ function PasswordRecovery() {
       pauseOnHover: true,
       draggable: true,
     });
-    router.push("/campos-dos-goytacazes");
+    const gymSlug = getCookie("gym.name");
+    router.push(`/${gymSlug}`);
   };
 
   const initialValues = {

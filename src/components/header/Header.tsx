@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Avatar from "react-user-avatar";
 
 import Button from "@component/buttons/Button";
@@ -11,7 +11,6 @@ import { AuthCotext } from "@context/AuthContext";
 
 import Categories from "../categories/Categories";
 import Container from "../Container";
-import FlexBox from "../FlexBox";
 import Icon from "../icon/Icon";
 import Typography from "../Typography";
 import StyledHeader from "./HeaderStyle";
@@ -23,7 +22,7 @@ type HeaderProps = {
 };
 
 const Header: React.FC<HeaderProps> = ({ className, navListOpen }) => {
-  const { user, isAuthenticated } = useContext(AuthCotext);
+const { user, isAuthenticated } = useContext(AuthCotext);
 
   return (
     <StyledHeader className={className}>
@@ -34,11 +33,13 @@ const Header: React.FC<HeaderProps> = ({ className, navListOpen }) => {
         height="100%"
         maxWidth="1222px"
       >
-          <Link href="/campos-dos-goytacazes">
+          {/* <Link href="">
             <a>
               <Image src="/assets/images/gb-logo.svg" alt="logo" height="100px" />
             </a>
-          </Link>
+          </Link> */}
+
+          <Image src="/assets/images/gb-logo.svg" alt="logo" height="100px" />
         
           {isAuthenticated ? (
             <Categories open={navListOpen}>

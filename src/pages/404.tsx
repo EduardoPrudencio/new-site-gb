@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Button from "@component/buttons/Button";
 import FlexBox from "@component/FlexBox";
 import { H1, H3 } from "@component/Typography";
+import { getCookie } from "cookies-next";
 
 const Error404 = function Error() {
   const router = useRouter();
@@ -11,6 +12,8 @@ const Error404 = function Error() {
   const handleGoBack = async () => {
     router.back();
   };
+
+  const gym = getCookie("gym.name");
 
   return (
     <FlexBox
@@ -31,7 +34,7 @@ const Error404 = function Error() {
         >
           Voltar
         </Button>
-        <Link href="/campos-dos-goytacazes">
+        <Link href={typeof gym !== "undefined" ? `\\${gym}` : "\\"}>
           <Button variant="contained" color="primary" m="0.5rem">
             Ir para a Home
           </Button>

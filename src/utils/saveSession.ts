@@ -4,18 +4,24 @@ import api from "@services/api/client";
 
 import { authCookieKeys } from "./constants";
 
+const oneMonth = 60 * 60 * 24 * 30;
+const ondeDay = 60 * 60 * 24;
+const oneHour = 60 * 60;
+const oneMinute = 60;
+
+
 export function saveSession({
   token,
   refreshToken,
 }) {
-  const ttl = 60 * 60 * 24 * 30; // 1 month
+  const ttl = 5 * oneMinute;
 
   setCookies(authCookieKeys.token, token, {
-    maxAge: ttl, // 1 month
+    maxAge: ttl,
   });
 
   setCookies(authCookieKeys.refresh, refreshToken, {
-    maxAge: ttl, // 1 month
+    maxAge: ttl,
   });
 
   api.defaults.headers.common.Authorization = `Bearer ${token}`;

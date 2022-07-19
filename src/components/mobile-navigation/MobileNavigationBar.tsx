@@ -8,6 +8,7 @@ import useWindowSize from "../../hooks/useWindowSize";
 import Icon from "../icon/Icon";
 import NavLink from "../nav-link/NavLink";
 import StyledMobileNavigationBar from "./MobileNavigationBar.style";
+import { getCookie } from "cookies-next";
 
 const MobileNavigationBar: React.FC = () => {
   const [width] = useWindowSize();
@@ -44,11 +45,12 @@ const MobileNavigationBar: React.FC = () => {
   );
 };
 
+const gym = getCookie("gym.name");
 const list = [
   {
     title: "Home",
     icon: "home",
-    href: "/",
+    href: typeof gym !== "undefined" ? `\${gym.name}` : "\\",
   },
   {
     title: "Horários",

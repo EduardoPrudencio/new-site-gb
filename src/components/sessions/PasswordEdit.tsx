@@ -9,6 +9,7 @@ import * as yup from "yup";
 
 import { changePassword } from "@services/api/users/password";
 
+import { getCookie } from "cookies-next";
 import Button from "../buttons/Button";
 import IconButton from "../buttons/IconButton";
 import Icon from "../icon/Icon";
@@ -40,7 +41,8 @@ function PasswordEdit({ token }: { token: string }) {
       });
       if (response === 200) {
         toast.success("Sua senha foi alterada com sucesso");
-        router.push("/campos-dos-goytacazes");
+        const gymSlug = getCookie("gym.name");
+        router.push(`/${gymSlug}`);
       }
     } catch (error) {
       toast.error("Houve um erro. Tente novamente");

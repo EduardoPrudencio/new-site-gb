@@ -1,39 +1,44 @@
-import Box from "./Box"
+import React from "react";
+import Box from "./Box";
 
 type PageSessionProps = {
-    backgroundColor?: string;
-    height: string;
-}
+  backgroundColor?: string;
+  height: string;
+};
 
-export const PageSession: React.FC<PageSessionProps> = ({children, height, backgroundColor = "#FFFF"}) => {
-    return (
+export const PageSession: React.FC<PageSessionProps> = ({
+  children,
+  height,
+  backgroundColor = "#FFFF",
+}) => {
+  return (
     <Box
+      display="flex"
+      bg={backgroundColor}
+      height={height}
+      mt="-60px"
+      flexDirection="row"
+      alignItems="center"
+      justifyContent="center"
+      width="100%"
+      paddingBottom="2rem"
+    >
+      <Box
         display="flex"
-        bg={backgroundColor}
-        height={height}
-        mt="-60px"
         flexDirection="row"
         alignItems="center"
-        justifyContent="center"
-        width="100%"
-        paddingBottom="2rem"
+        justifyContent="space-arround"
+        width="1050px"
       >
         <Box
           display="flex"
-          flexDirection="row"
+          flexDirection="column"
           alignItems="center"
-          justifyContent="space-arround"
-          width="1050px"
+          justifyContent="center"
         >
-          <Box
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-          >
-           {children}
-          </Box>
+          {children}
         </Box>
       </Box>
-    )
-}
+    </Box>
+  );
+};

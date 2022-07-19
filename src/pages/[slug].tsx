@@ -2,16 +2,17 @@ import AppLayout from "@component/layout/AppLayout";
 import { H5 } from "@component/Typography";
 
 import Section1 from "@component/Section1";
-  import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { setCookies } from "cookies-next";
-import { gyns } from "@services/Gym";
+import { gyns } from "@services/GymManager";
 import { PageSession } from "@component/PageSession";
 
 function IndexPage() {
   const { query } = useRouter();
   const { slug } = query;
+  const gym = gyns.find((g) => g.slug === slug);
 
-  if(typeof gyns[`${slug}`] !== "undefined") {
+  if (typeof gym !== "undefined") {
     setCookies("gym.name", `${slug}`, {
       maxAge: 60 * 60 * 24 * 30, // 1 month
     });
@@ -19,14 +20,13 @@ function IndexPage() {
 
   return (
     <main>
-      {typeof gyns[`${slug}`] !== "undefined" ? (
-        <Section1 title={gyns[`${slug}`].name} />
+      {typeof gym !== "undefined" ? (
+        <Section1 title={gym.name} />
       ) : (
         <Section1 />
       )}
 
-      <PageSession height="500px" backgroundColor="#0F3380"/>
-     
+      <PageSession height="500px" backgroundColor="#0F3380" />
       <PageSession height="500px">
         <H5 fontSize="22px">Como chegar</H5>
         <iframe
@@ -35,9 +35,8 @@ function IndexPage() {
           width="500"
           height="350"
           loading="lazy"
-      />
-     </PageSession>
-    
+        />
+      </PageSession>
     </main>
   );
 }
