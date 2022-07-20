@@ -6,6 +6,29 @@ import { useRouter } from "next/router";
 import { setCookies } from "cookies-next";
 import { gyns } from "@services/GymManager";
 import { PageSession } from "@component/PageSession";
+import Box from "@component/Box";
+import styled from "styled-components";
+
+const BoxBenificios = styled.div`
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 30px;
+`;
+
+const BenificiosTitulo = styled.label`
+  color: #c6c0c0;
+  font-weight: bold;
+  font-size: 21px;
+`;
+
+const BenificiosItem = styled.li`
+  color: #c6c0c0;
+  font-size: 15px;
+`;
 
 function IndexPage() {
   const { query } = useRouter();
@@ -26,14 +49,45 @@ function IndexPage() {
         <Section1 />
       )}
 
-      <PageSession height="500px" backgroundColor="#0F3380" />
+      <PageSession height="500px" backgroundColor="#0F3380">
+        <Box
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="space-around"
+          width="1200px"
+          height="400px"
+          borderRadius="16px"
+        >
+          <img
+            src="/assets/images/carlos-gracie.png"
+            alt="apple-watch-1"
+            width="400"
+          />
+          <Box height="300px" width="1px" backgroundColor="#ffffff" />
+          <BoxBenificios>
+            <BenificiosTitulo>Alguns benefícios do Jiu-Jitsu</BenificiosTitulo>
+            <ul>
+              <BenificiosItem>Combate a ansiedade e o estresse</BenificiosItem>
+              <BenificiosItem>Disciplina</BenificiosItem>
+              <BenificiosItem>Defesa pessoal</BenificiosItem>
+              <BenificiosItem>Define o corpo</BenificiosItem>
+              <BenificiosItem>Contribui com a saúde do coração</BenificiosItem>
+              <BenificiosItem>Melhora o condicionamento físico</BenificiosItem>
+              <BenificiosItem>
+                Socializa e traz qualidade à alimentação
+              </BenificiosItem>
+            </ul>
+          </BoxBenificios>
+        </Box>
+      </PageSession>
       <PageSession height="500px">
         <H5 fontSize="22px">Como chegar</H5>
         <iframe
           title="Endereço da academia"
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4219.53868200185!2d-41.32479536376152!3d-21.7691521184006!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfb1f51e72dc0c5db!2sGracie%20Barra%20Campos%20dos%20Goytacazes!5e0!3m2!1sen!2sbr!4v1654004093875!5m2!1sen!2sbr"
-          width="500"
-          height="350"
+          width="350"
+          height="300"
           loading="lazy"
         />
       </PageSession>

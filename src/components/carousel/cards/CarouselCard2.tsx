@@ -12,9 +12,12 @@ const CarouselCard1: React.FC = () => {
         </H4>
       </div>
       <div className="image-holder">
-        <img src="/assets/images/gb-vencedor.png" alt="aluno com kimono da gb de costas" height="450" />
+        <img
+          src="/assets/images/gb-vencedor.png"
+          alt="aluno com kimono da gb de costas"
+          height="450"
+        />
       </div>
-      
     </StyledCarouselCard1>
   );
 };

@@ -1,4 +1,4 @@
-import Typography, { H4 } from "@component/Typography";
+import { H4 } from "@component/Typography";
 import React from "react";
 import { StyledCarouselCard1 } from "./StyledCarouselCard1";
 
