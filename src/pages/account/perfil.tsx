@@ -22,11 +22,17 @@ const ContentTop = styled.div`
   border-bottom: solid 1px #cecece;
 `;
 
-const NameAndCity = styled.div`
+const Line = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
+  margin-top: 25px;
+`;
+
+const IconBox = styled.div`
+  margin-right: 10px;
 `;
 
 const Name = styled.div`
@@ -35,49 +41,6 @@ const Name = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-right: 30px;
-`;
-
-const City = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 205px;
-`;
-
-const KeyValue = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 20px;
-  min-width: 150px;
-`;
-
-const Graduacao = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 20px;
-  min-width: 230px;
-`;
-
-const DoubleColumn = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  min-width: 420px;
-`;
-
-const RedesSociais = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: start;
-  justify-content: start;
-  margin-top: 20px;
-  width: 100%;
 `;
 
 const ContentBottom = styled.div`
@@ -111,6 +74,7 @@ const Label = styled.label`
 const SmallLabel = styled.label`
   font-size: 14px;
   color: #cecece;
+  margin-right: 10px;
 `;
 
 function Perfil() {
@@ -157,65 +121,38 @@ function Perfil() {
             height="600px"
           >
             <ContentTop>
-              <NameAndCity>
+              <Line>
                 <Name>
                   <Label>{`${user?.name} ${user?.lastName}`}</Label>
                 </Name>
-                <City>
+                <IconBox>
                   <Icon size="17px" color="#868b8f">
                     gps
                   </Icon>
-                  <SmallLabel>Campos dos Goytacazes - RJ</SmallLabel>
-                </City>
-              </NameAndCity>
-              <DoubleColumn>
-                <KeyValue>
+                </IconBox>
+                <SmallLabel>Campos dos Goytacazes - RJ</SmallLabel>
+              </Line>
+              <Line>
+                <IconBox>
                   <Icon size="17px" color="#868b8f">
                     birthday
                   </Icon>
-                  <SmallLabel>
-                    {moment(user?.birthDate).format("LL")}
-                  </SmallLabel>
-                </KeyValue>
-                <Graduacao>
-                  <SmallLabel>Graduação:</SmallLabel>
-                  <Image
-                    src="/assets/images/faixas/preta/preta_ponta_tres.png"
-                    height="20px"
-                  />
-                </Graduacao>
-              </DoubleColumn>
-              <KeyValue>
-                <Icon size="17px" color="#868b8f">
-                  email
-                </Icon>
+                </IconBox>
+                <SmallLabel>{moment(user?.birthDate).format("LL")}</SmallLabel>
+                <SmallLabel>Graduação:</SmallLabel>
+                <Image
+                  src="/assets/images/faixas/preta/preta_ponta_tres.png"
+                  height="20px"
+                />
+              </Line>
+              <Line>
+                <IconBox>
+                  <Icon size="17px" color="#868b8f">
+                    email
+                  </Icon>
+                </IconBox>
                 <SmallLabel>{user?.email}</SmallLabel>
-              </KeyValue>
-              <RedesSociais>
-                <Box
-                  display="flex"
-                  flexDirection="row"
-                  alignItems="center"
-                  justifyContent="space-between"
-                  width="100px"
-                >
-                  <a href="#" target="_blank" rel="noreferrer" key="facebook">
-                    <Icon size="25px" defaultcolor="auto">
-                      facebook-2
-                    </Icon>
-                  </a>
-                  <a href="#" target="_blank" rel="noreferrer" key="facebook">
-                    <Icon size="25px" defaultcolor="auto">
-                      instagram-2
-                    </Icon>
-                  </a>
-                  <a href="#" target="_blank" rel="noreferrer" key="facebook">
-                    <Icon size="25px" defaultcolor="auto">
-                      twitter-2
-                    </Icon>
-                  </a>
-                </Box>
-              </RedesSociais>
+              </Line>
             </ContentTop>
             <ContentBottom />
           </Box>
