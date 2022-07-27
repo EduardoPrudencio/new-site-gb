@@ -46,7 +46,7 @@ const MegaMenu1: React.FC<MegaMenuProps> = ({
 }) => {
   return categories ? (
     <StyledMegaMenu1 className="mega-menu">
-      <Card ml="1rem" minWidth={minWidth} boxShadow="regular">
+      <Card ml="1rem" minWidth={minWidth} boxShadow="regular" width={600}>
         <FlexBox px="1.25rem" py="0.875rem">
           <Box flex="1 1 0">
             <Grid container spacing={4}>

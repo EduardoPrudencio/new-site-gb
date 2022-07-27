@@ -7,12 +7,12 @@ import Navbar from "@component/navbar/Navbar";
 import { StyledSessionCard } from "@component/sessions/SessionStyle";
 import TextField from "@component/text-field/TextField";
 import styled from "styled-components";
-import { onlyAuth } from "@utils/onlyAuth";
 import { useFormik } from "formik";
 import { GetServerSideProps } from "next";
 import * as yup from "yup";
 import Button from "@component/buttons/Button";
 import { theme } from "@utils/theme";
+import { onlyAdmin } from "@utils/onlyAdmin";
 
 const FormContent = styled.div`
   display: flex;
@@ -106,7 +106,7 @@ function AddUser() {
           bg="#FFFFFF"
           width="1200px;"
         >
-          <StyledSessionCard mx="auto" my="2rem" boxShadow="large" width="100%">
+          <StyledSessionCard mx="auto" my="2rem" boxShadow="large" width={800}>
             <form className="content" onSubmit={handleSubmit}>
               <Label>Dados pessoais</Label>
               <FormContent>
@@ -317,11 +317,14 @@ function AddUser() {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = onlyAuth(async () => {
-  return {
-    props: {},
-  };
-});
+export const getServerSideProps: GetServerSideProps = onlyAdmin(
+  true,
+  async () => {
+    return {
+      props: {},
+    };
+  }
+);
 
 AddUser.layout = AppLayout;
 

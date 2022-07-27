@@ -18,10 +18,13 @@ export async function me(): Promise<User> {
     name: client.name,
     email: client.email,
     lastName: client.lastName,
-    userRoles: client.user,
+    userRoles: client.userRoles,
     birthDate: client.birthDate,
     image: client.image,
     phoneNumber: client.phoneNumber,
-    active: client.active
+    active: client.active,
+    //isAdministrator: client.userRoles.contains("administrator")
+    isAdministrator: true
   };
 }
+

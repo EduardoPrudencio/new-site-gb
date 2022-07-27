@@ -47,6 +47,7 @@ const CommonCard: React.FC<ICommonCardProps> = ({
   return (
     <Card
       p="1rem"
+      width={600}
       minWidth={160}
       minHeight={260}
       maxWidth={width < 570 ? 160 : 300}

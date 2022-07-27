@@ -9,6 +9,7 @@ export type User = {
   image: string;
   phoneNumber: string;
   active: boolean;
+  isAdministrator: boolean;
 };
 
 export type AuthContextType = {

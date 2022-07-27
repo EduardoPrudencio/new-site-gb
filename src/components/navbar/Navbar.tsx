@@ -71,6 +71,7 @@ const Navbar: React.FC = () => {
               )}
               <Box className="root-child">
                 <Card
+                  width={600}
                   mt="1.25rem"
                   py="0.5rem"
                   boxShadow="large"
@@ -121,7 +122,7 @@ const Navbar: React.FC = () => {
                 </Icon>
               </MenuItem>
               <Box className="child" pl="0.5rem">
-                <Card py="0.5rem" boxShadow="large" minWidth="230px">
+                <Card py="0.5rem" boxShadow="large" minWidth="230px" width={600}>
                   {renderNestedNav(nav.child)}
                 </Card>
               </Box>

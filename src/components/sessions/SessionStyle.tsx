@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Card from "../Card";
 
 export const StyledSessionCard = styled(Card)`
-  width: 800px;
   overflow: hidden;
   .content {
     padding: 3rem 3.75rem 0px;

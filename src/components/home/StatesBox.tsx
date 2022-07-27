@@ -47,6 +47,7 @@ const StatesBox: React.FC<ISectionProps> = ({ states }) => {
               <Link href="/">
                 <a>
                   <Card
+                    width={600}
                     display="flex"
                     alignItems="center"
                     p="0.75rem"

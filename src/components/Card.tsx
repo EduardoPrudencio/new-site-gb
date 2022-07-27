@@ -18,6 +18,7 @@ export interface CardProps {
   elevation?: number;
   boxShadow?: shadowOptions;
   hoverEffect?: boolean;
+  width: number;
 }
 
 const Card = styled(Box)<
@@ -30,6 +31,9 @@ const Card = styled(Box)<
   :hover {
     box-shadow: ${(props) => props.hoverEffect && getTheme("shadows.large")};
   }
+
+  width:  ${(props) => props.width};
+
 
   ${border}
   ${color}

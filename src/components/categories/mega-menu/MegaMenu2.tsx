@@ -18,7 +18,7 @@ export interface MegaMenu2Props {
 const MegaMenu2: React.FC<MegaMenu2Props> = ({ data }) => {
   return (
     <StyledMegaMenu1 className="mega-menu">
-      <Card ml="1rem" py="0.5rem" boxShadow="regular">
+      <Card ml="1rem" py="0.5rem" boxShadow="regular" width={600}>
         {data?.map((item) => (
           <CategoryMenuItem
             title={item.title}
