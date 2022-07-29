@@ -38,8 +38,9 @@ const BoxPageSection = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  margin-top: -27px;
   width: 1200px;
-  height: 440px;
+  height:390px;
 `;
 
 function IndexPage() {
@@ -77,9 +78,7 @@ function IndexPage() {
               <BenificiosItem>Define o corpo</BenificiosItem>
               <BenificiosItem>Contribui com a saúde do coração</BenificiosItem>
               <BenificiosItem>Melhora o condicionamento físico</BenificiosItem>
-              <BenificiosItem>
-                Contribui para a socialização
-              </BenificiosItem>
+              <BenificiosItem>Contribui para a socialização</BenificiosItem>
             </ul>
           </BoxBenificios>
         </BoxPageSection>
