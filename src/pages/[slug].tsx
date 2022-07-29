@@ -39,7 +39,7 @@ const BoxPageSection = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   width: 1200px;
-  height: 500px;
+  height: 440px;
 `;
 
 function IndexPage() {
@@ -61,8 +61,8 @@ function IndexPage() {
         <Section1 />
       )}
 
-      <PageSession height="500px" backgroundColor="#0F3380">
-      <BoxPageSection>
+      <PageSession height="450px" backgroundColor="#0F3380">
+        <BoxPageSection>
           <img
             src="/assets/images/carlos-gracie.png"
             alt="apple-watch-1"
@@ -78,7 +78,7 @@ function IndexPage() {
               <BenificiosItem>Contribui com a saúde do coração</BenificiosItem>
               <BenificiosItem>Melhora o condicionamento físico</BenificiosItem>
               <BenificiosItem>
-                Socializa e traz qualidade à alimentação
+                Contribui para a socialização
               </BenificiosItem>
             </ul>
           </BoxBenificios>

@@ -6,9 +6,9 @@ const CarouselCard1: React.FC = () => {
   return (
     <StyledCarouselCard1>
       <div>
-        <h5 className="title">Vencendo além do tatame</h5>
+        <h5 className="title">Conquiste vitórias além do tatame</h5>
         <H4 color="secondary.main" mb="1.35rem">
-          Nossos ensinamentos vão além do tatame, se aplicam na vida.
+          Nossos ensinamentos não são limitados ao tatame, se aplicam na vida.
         </H4>
       </div>
       <div className="image-holder">

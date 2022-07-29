@@ -25,6 +25,7 @@ const Section1: React.FC<SectionProps> = ({ title }) => {
             showDots
             showArrow={false}
             spacing="0px"
+            interval={3000}
           >
             <CardTitle title={title} />
             <CarouselCard1 />
