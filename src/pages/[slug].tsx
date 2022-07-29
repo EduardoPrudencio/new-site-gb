@@ -6,11 +6,10 @@ import { useRouter } from "next/router";
 import { setCookies } from "cookies-next";
 import { gyns } from "@services/GymManager";
 import { PageSession } from "@component/PageSession";
-import Box from "@component/Box";
 import styled from "styled-components";
 
 const BoxBenificios = styled.div`
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -28,6 +27,19 @@ const BenificiosTitulo = styled.label`
 const BenificiosItem = styled.li`
   color: #c6c0c0;
   font-size: 15px;
+`;
+
+const BoxPageSection = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-image: url(assets/images/logo-bg-pb.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 1200px;
+  height: 500px;
 `;
 
 function IndexPage() {
@@ -50,21 +62,12 @@ function IndexPage() {
       )}
 
       <PageSession height="500px" backgroundColor="#0F3380">
-        <Box
-          display="flex"
-          flexDirection="row"
-          alignItems="center"
-          justifyContent="space-around"
-          width="1200px"
-          height="400px"
-          borderRadius="16px"
-        >
+      <BoxPageSection>
           <img
             src="/assets/images/carlos-gracie.png"
             alt="apple-watch-1"
-            width="400"
+            width="350"
           />
-          <Box height="300px" width="1px" backgroundColor="#ffffff" />
           <BoxBenificios>
             <BenificiosTitulo>Alguns benefícios do Jiu-Jitsu</BenificiosTitulo>
             <ul>
@@ -79,7 +82,7 @@ function IndexPage() {
               </BenificiosItem>
             </ul>
           </BoxBenificios>
-        </Box>
+        </BoxPageSection>
       </PageSession>
       <PageSession height="500px">
         <H5 fontSize="22px">Como chegar</H5>
