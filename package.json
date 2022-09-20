@@ -2,10 +2,10 @@
   "name": "bonik",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next",
+    "dev": "HTTPS=false next",
     "build": "next build",
     "build-static-page": "next build && next export",
-    "start": "next start -p $PORT",
+    "start": "HTTPS=false next start -p $PORT",
     "type-check": "tsc",
     "heroku-postbuild": "npm run build",
     "cypress": "cypress run",

@@ -1,3 +1,5 @@
+import { Address } from "cluster";
+
 export type User = {
   id: string;
   name: string;
@@ -11,6 +13,28 @@ export type User = {
   active: boolean;
   isAdministrator: boolean;
 };
+
+export type Address = {
+  endereco: string,
+  numero: string,  
+  complemento: string,
+  cidade: string,
+  bairro: string, 
+  uf: string,    
+  cep: string 
+}
+
+export type Student = {
+  name: string,
+  lastName: string,
+  userName: string,
+  phoneNumber: string,
+  birthDate: string,
+  email: string,
+  password: string,
+  address: Address;
+  
+}
 
 export type AuthContextType = {
   isAuthenticated: boolean;
