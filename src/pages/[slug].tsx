@@ -39,7 +39,7 @@ const BoxPageSection = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   margin-top: -27px;
-  width: 1200px;
+  width: 1150px;
   height:390px;
 `;
 

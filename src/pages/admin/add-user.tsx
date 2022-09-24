@@ -52,21 +52,47 @@ const Label = styled.label`
 
 const initialValues = {
   name: "",
+  lastname: "",
+  username: "",
   email: "",
   password: "",
-  voucher: "",
-  receiveAboutProductsAndServices: false,
-  agreementTerms: false,
+  fonenumber: "",
+  birthdate: "",
+
+  cep: "",
+  address: "",
+  complemento: "",
+  bairro: "",
+  number: "",
+  cidade: "",
+  uf: "",
+
+
+  //receiveAboutProductsAndServices: false,
+  //agreementTerms: false,
 };
 
 const formSchema = yup.object().shape({
-  name: yup.string().required("nome é obrigatório"),
-  email: yup.string().email("email inválido").required("é obrigatório"),
-  password: yup.string().required("é obrigatório"),
-  agreementTerms: yup
-    .boolean()
-    .required()
-    .oneOf([true], "você deve concordar com os termos e condições."),
+  name: yup.string().required("O campo nome é obrigatório"),
+  lastname: yup.string().required("O campo sobrenome é obrigatório"),
+  username: yup.string().required("O campo username é obrigatório"),
+  email: yup.string().email("email inválido").required("o campo email é obrigatório"),
+  password: yup.string().required("O campo password é obrigatório"),
+  fonenumber: yup.string().required("O campo phone number é obrigatório"),
+  birthdate: yup.string().required("O campo birthdate é obrigatório"),
+
+  cep: yup.string().required("Um cep deve ser informado"),
+  address: yup.string().required("Um endereço deve ser informado"),
+  complemento: yup.string().required("Um complemento deve ser informado"),
+  bairro: yup.string().required("Um bairro deve ser informado"),
+  number: yup.string().required("Um número deve ser informado"),
+  cidade: yup.string().required("Uma cidade deve ser informado"),
+  uf: yup.string().required("O campo uf é obrigatório"),
+
+  // agreementTerms: yup
+  //   .boolean()
+  //   .required()
+  //   .oneOf([true], "você deve concordar com os termos e condições."),
 });
 
 function AddUser() {
@@ -77,6 +103,8 @@ function AddUser() {
   };
 
   const handleFormSubmit = async (values) => {
+    console.log("********** ",values)
+    alert(values.name);
     setTemp(values);
   };
 
@@ -96,14 +124,12 @@ function AddUser() {
         flexDirection="row"
         alignItems="center"
         justifyContent="center"
-        marginTop="20px"
       >
         <Box
           display="flex"
           flexDirection="row"
           alignItems="center"
           justifyContent="space-between"
-          bg="#FFFFFF"
           width="1200px;"
         >
           <StyledSessionCard mx="auto" my="2rem" boxShadow="large" width={800}>
@@ -173,8 +199,8 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.name || ""}
-                    errorText={touched.name && errors.name}
+                    value={values.lastname   || ""}
+                    errorText={touched.lastname && errors.lastname}
                   />
                   <TextField
                     mb="0.5rem"
@@ -184,8 +210,8 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.name || ""}
-                    errorText={touched.name && errors.name}
+                    value={values.username || ""}
+                    errorText={touched.username && errors.username}
                   />
                   <TextField
                     mb="0.5rem"
@@ -196,8 +222,8 @@ function AddUser() {
                     type="number"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.name || ""}
-                    errorText={touched.name && errors.name}
+                    value={values.fonenumber || ""}
+                    errorText={touched.fonenumber && errors.fonenumber}
                   />
                   <TextField
                     mb="0.5rem"
@@ -208,8 +234,8 @@ function AddUser() {
                     type="date"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.name || ""}
-                    errorText={touched.name && errors.name}
+                    value={values.birthdate || ""}
+                    errorText={touched.birthdate && errors.birthdate}
                   />
                 </ColumnContentRight>
               </FormContent>
@@ -225,8 +251,8 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.name || ""}
-                    errorText={touched.name && errors.name}
+                    value={values.cep || ""}
+                    errorText={touched.cep && errors.cep}
                   />
                   <TextField
                     mb="0.5rem"
@@ -236,19 +262,19 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.name || ""}
-                    errorText={touched.name && errors.name}
+                    value={values.address || ""}
+                    errorText={touched.address && errors.address}
                   />
                   <TextField
                     mb="0.5rem"
-                    name="comlemento"
+                    name="complemento"
                     label="Complemento"
                     placeholder="apto. 999"
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.name || ""}
-                    errorText={touched.name && errors.name}
+                    value={values.complemento || ""}
+                    errorText={touched.complemento && errors.complemento}
                   />
                   <TextField
                     mb="0.5rem"
@@ -258,8 +284,8 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.name || ""}
-                    errorText={touched.name && errors.name}
+                    value={values.bairro || ""}
+                    errorText={touched.bairro && errors.bairro}
                   />
                 </ColumnContentLefth>
                 <ColumnContentRight>
@@ -271,8 +297,8 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.name || ""}
-                    errorText={touched.name && errors.name}
+                    value={values.number || ""}
+                    errorText={touched.number && errors.number}
                   />
                   <TextField
                     mb="0.5rem"
@@ -282,8 +308,8 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.name || ""}
-                    errorText={touched.name && errors.name}
+                    value={values.cidade || ""}
+                    errorText={touched.cidade && errors.cidade}
                   />
                   <TextField
                     mb="0.5rem"
@@ -293,8 +319,8 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.name || ""}
-                    errorText={touched.name && errors.name}
+                    value={values.uf || ""}
+                    errorText={touched.uf && errors.uf}
                   />
                 </ColumnContentRight>
               </FormContent>
