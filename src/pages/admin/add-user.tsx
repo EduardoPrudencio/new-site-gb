@@ -67,10 +67,6 @@ const initialValues = {
   number: "",
   cidade: "",
   uf: "",
-
-
-  //receiveAboutProductsAndServices: false,
-  //agreementTerms: false,
 };
 
 const formSchema = yup.object().shape({
@@ -104,9 +100,13 @@ function AddUser() {
   };
 
   const handleFormSubmit = async (values) => {
-    // console.log("********** ",values)
-    // alert("Será?");
     const response = await Add(values);
+
+    if(response.status === 201) {
+       //Exibir mensagem de sucesso
+       //Limpar formulário
+    }
+
     setTemp(values);
   };
 
@@ -119,7 +119,6 @@ function AddUser() {
 
   return (
     <>
-      {temp && <Label>Teste</Label>}
       <Navbar />
       <Box
         display="flex"
