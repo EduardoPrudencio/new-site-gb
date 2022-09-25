@@ -13,6 +13,7 @@ import * as yup from "yup";
 import Button from "@component/buttons/Button";
 import { theme } from "@utils/theme";
 import { onlyAdmin } from "@utils/onlyAdmin";
+import { Add } from "services/api/student"
 
 const FormContent = styled.div`
   display: flex;
@@ -103,8 +104,9 @@ function AddUser() {
   };
 
   const handleFormSubmit = async (values) => {
-    console.log("********** ",values)
-    alert(values.name);
+    // console.log("********** ",values)
+    // alert("Será?");
+    const response = await Add(values);
     setTemp(values);
   };
 
