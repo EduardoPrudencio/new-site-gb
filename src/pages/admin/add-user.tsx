@@ -14,6 +14,22 @@ import Button from "@component/buttons/Button";
 import { theme } from "@utils/theme";
 import { onlyAdmin } from "@utils/onlyAdmin";
 import { Add } from "services/api/student"
+import Spinner from "@component/Spinner";
+import Alert from "../../components/alert"
+
+import Modal from "react-modal"; 
+
+const modalStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    borderRadius: "8px",
+    marginRight: "-50px",
+    transform: "translate(-50%, -50%)",
+  },
+}
 
 const FormContent = styled.div`
   display: flex;
@@ -94,20 +110,24 @@ const formSchema = yup.object().shape({
 
 function AddUser() {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
-  const [temp, setTemp] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  // const [temp, setTemp] = useState(null);
   const togglePasswordVisibility = () => {
     setPasswordVisibility((visible) => !visible);
   };
 
   const handleFormSubmit = async (values) => {
+    setLoading(true);
     const response = await Add(values);
+    setLoading(false);
 
     if(response.status === 201) {
        //Exibir mensagem de sucesso
        //Limpar formulário
     }
 
-    setTemp(values);
+    // setTemp(values);
   };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -120,6 +140,14 @@ function AddUser() {
   return (
     <>
       <Navbar />
+      <Modal
+        isOpen={showModal}
+        style={modalStyles}
+      >
+        {/* <Spinner color="#FF0000"/> */}
+
+        <Alert  Exec={setShowModal} ValueToExec={false} Message="Aluno cadastrado com sucesso!"/>
+      </Modal>
       <Box
         display="flex"
         flexDirection="row"
@@ -327,6 +355,7 @@ function AddUser() {
               </FormContent>
               <Button
                 mb="1.25rem"
+                mt="50px"
                 variant="contained"
                 color="primary"
                 data-cy="cadastrar"
@@ -334,7 +363,7 @@ function AddUser() {
                 type="submit"
                 fullwidth
               >
-                Criar Conta
+                {!loading ? "Criar Conta" : <Spinner />}
               </Button>
             </form>
           </StyledSessionCard>
