@@ -37,7 +37,30 @@ export const Add = async (values) => {
     );
     return response;  
   } catch (error) {
-    console.log("########### error ############ ",error );
+    // console.log("########### error ############ ",error );
+    return error.response
+  }
+};
+
+export const GetAll = async () => {
+  const gym = gyns.find(x => x.isDefault);
+
+  try {
+    const url = `/Gym/${gym.id}/Activity/${gym.activityId}/users`
+    const token = getCookie(authCookieKeys.token);
+
+    const response = await api.get(url,{
+      headers: {
+        Authorization: `Bearer ${token}`
+     },
+   })
+
+   // console.log("$$$$$$$$$$$$$$ ", response.data);
+   return response;
+ 
+    
+  } catch (error) {
+    // console.log("########### error ############ ",error );
     return error.response
   }
 };

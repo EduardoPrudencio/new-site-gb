@@ -26,9 +26,16 @@ const Navigations = () => {
       href: "/admin/add-user",
       menuComponent: "MegaMenu1",
     },
+    ,
+    {
+      icon: "",
+      title: "Alunos",
+      href: "/admin/users",
+      menuComponent: "MegaMenu1",
+    },
   ];
   
-  if(!isAuthenticated || !user.isAdministrator) { delete nav[2]; return nav}
+  if(!isAuthenticated || !user.isAdministrator) { delete nav[2]; delete nav[3]; return nav}
 
   return nav
 }
