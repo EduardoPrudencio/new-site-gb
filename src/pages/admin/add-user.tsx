@@ -16,7 +16,6 @@ import { onlyAdmin } from "@utils/onlyAdmin";
 import { Add } from "services/api/student"
 import Spinner from "@component/Spinner";
 import Alert from "../../components/alert"
-
 import Modal from "react-modal"; 
 
 const modalStyles = {
@@ -102,19 +101,35 @@ const formSchema = yup.object().shape({
   cidade: yup.string().required("Uma cidade deve ser informado"),
   uf: yup.string().required("O campo uf é obrigatório"),
 
-  // agreementTerms: yup
-  //   .boolean()
-  //   .required()
-  //   .oneOf([true], "você deve concordar com os termos e condições."),
 });
 
 function AddUser() {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  // const [temp, setTemp] = useState(null);
+  const [hasError, setHasError] = useState(false);
+  const [message, setMessage] = useState("");
+
   const togglePasswordVisibility = () => {
     setPasswordVisibility((visible) => !visible);
+  };
+
+  const ResetForm = () => {
+    values.name = "";
+    values.email = "";
+    values.password = "";
+    values.lastname = "";
+    values.username = "";
+    values.birthdate = "";
+    values.fonenumber = "";
+
+    values.address = "";
+    values.bairro = "";
+    values.complemento = "";
+    values.number = "";
+    values.cep = "";
+    values.cidade = "";
+    values.uf = "";
   };
 
   const handleFormSubmit = async (values) => {
@@ -123,11 +138,13 @@ function AddUser() {
     setLoading(false);
 
     if(response.status === 201) {
-       //Exibir mensagem de sucesso
-       //Limpar formulário
+      setMessage("Dados salvos com sucesso!");
+      ResetForm();
+    } else if(response.status === 400 || response.status === 404 ) {
+      setHasError(true);
+      setMessage(response.data.data[0]);  
     }
-
-    // setTemp(values);
+    setShowModal(true);
   };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -146,7 +163,7 @@ function AddUser() {
       >
         {/* <Spinner color="#FF0000"/> */}
 
-        <Alert  Exec={setShowModal} ValueToExec={false} Message="Aluno cadastrado com sucesso!"/>
+        <Alert Exec={setShowModal} ValueToExec={false} Error={hasError} Message={message}/>
       </Modal>
       <Box
         display="flex"
@@ -171,7 +188,7 @@ function AddUser() {
                     name="name"
                     label="Nome"
                     data-cy="nickname"
-                    placeholder="Seu nome"
+                    placeholder="Nome"
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
@@ -224,7 +241,7 @@ function AddUser() {
                     mb="0.5rem"
                     name="lastname"
                     label="Sobrenome"
-                    placeholder="Seu sobrenome"
+                    placeholder="Sobrenome"
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
@@ -258,7 +275,7 @@ function AddUser() {
                     mb="0.5rem"
                     name="birthdate"
                     label="Data de nascimento"
-                    placeholder="xx/xx/xxxx"
+                    placeholder="99/99/9999"
                     fullwidth
                     type="date"
                     onBlur={handleBlur}
@@ -287,7 +304,7 @@ function AddUser() {
                     mb="0.5rem"
                     name="address"
                     label="Endereço"
-                    placeholder="rua, av., vale"
+                    placeholder="rua, av."
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
@@ -309,7 +326,7 @@ function AddUser() {
                     mb="0.5rem"
                     name="bairro"
                     label="Bairro"
-                    placeholder="Madureira"
+                    placeholder="Bairro"
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
@@ -333,7 +350,7 @@ function AddUser() {
                     mb="0.5rem"
                     name="cidade"
                     label="Cidade"
-                    placeholder="Rio de Janeiro"
+                    placeholder="Cidade"
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
@@ -344,7 +361,7 @@ function AddUser() {
                     mb="0.5rem"
                     name="uf"
                     label="Uf"
-                    placeholder="Rio de Janeiro"
+                    placeholder="Uf"
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
