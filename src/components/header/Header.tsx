@@ -1,10 +1,7 @@
 import Link from "next/link";
 
 import React, { useContext, useEffect, useState } from "react";
-import Avatar from "react-user-avatar";
-
 import Button from "@component/buttons/Button";
-import IconButton from "@component/buttons/IconButton";
 import Image from "@component/Image";
 
 import { AuthCotext } from "@context/AuthContext";
@@ -14,6 +11,8 @@ import Container from "../Container";
 import Icon from "../icon/Icon";
 import Typography from "../Typography";
 import StyledHeader from "./HeaderStyle";
+import Navbar from "@component/navbar/Navbar";
+import Box from "@component/Box";
 
 type HeaderProps = {
   isFixed?: boolean;
@@ -33,14 +32,18 @@ const { user, isAuthenticated } = useContext(AuthCotext);
         height="100%"
         maxWidth="1222px"
       >
-          {/* <Link href="">
-            <a>
-              <Image src="/assets/images/gb-logo.svg" alt="logo" height="100px" />
-            </a>
-          </Link> */}
-
-          <Image src="/assets/images/gb-logo.svg" alt="logo" height="100px" />
-        
+          
+          <Box
+            display="flex"
+            flexDirection="row"
+            alignItems="center"
+            justifyContent="space-between"
+            mt="20px"
+            width="230px"
+          >
+            <Image src="/assets/images/gb-logo.svg" alt="logo" height="100px" />
+            <Navbar />      
+          </Box>
           {isAuthenticated ? (
             <Categories open={navListOpen}>
             <Button

@@ -2,7 +2,6 @@ import React from "react";
 import Box from "@component/Box";
 import Carousel from "@component/carousel/Carousel";
 import Container from "@component/Container";
-import Navbar from "@component/navbar/Navbar";
 import CarouselCard1 from "./carousel/cards/CarouselCard1";
 import CarouselCard2 from "./carousel/cards/CarouselCard2";
 import CardTitle from "./carousel/cards/CardTitle";
@@ -14,7 +13,6 @@ type SectionProps = {
 const Section1: React.FC<SectionProps> = ({ title }) => {
   return (
     <>
-      <Navbar />
       <Box bg="gray.white" mb="3.75rem">
         <Container pb="2rem">
           <Carousel

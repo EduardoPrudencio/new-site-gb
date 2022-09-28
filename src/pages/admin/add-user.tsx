@@ -155,7 +155,6 @@ function AddUser() {
 
   return (
     <>
-      <Navbar />
       <Modal
         isOpen={showModal}
         style={modalStyles}

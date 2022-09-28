@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import Badge from "@component/badge/Badge";
 import Box from "@component/Box";
@@ -6,12 +6,11 @@ import Card from "@component/Card";
 import MenuItem from "@component/MenuItem";
 import NavbarNavigations from "@data/navbarNavigations";
 
-import Container from "../Container";
 import FlexBox from "../FlexBox";
 import Icon from "../icon/Icon";
 import NavLink from "../nav-link/NavLink";
 import { Span } from "../Typography";
-import StyledNavbar from "./NavbarStyle";
+import { AuthCotext } from "@context/AuthContext";
 
 interface INav {
   title: string;
@@ -22,6 +21,7 @@ interface INav {
 }
 
 const Navbar: React.FC = () => {
+  const {isAuhenticated } = useContext(AuthCotext);
   const renderNestedNav = (list: any[], isRoot = false) => {
     return list?.map((nav: INav) => {
       if (isRoot) {
@@ -133,17 +133,9 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <StyledNavbar>
-      <Container
-        display="flex"
-        justifyContent="flex-start"
-        alignItems="center"
-        width="1200px"
-        height="100%"
-      >
-        <FlexBox>{renderNestedNav(NavbarNavigations(), true)}</FlexBox>
-      </Container>
-    </StyledNavbar>
+    <FlexBox width="130px" justifyContent="space-between" >
+      {renderNestedNav(NavbarNavigations(), true)}
+    </FlexBox>
   );
 };
 

@@ -21,7 +21,6 @@ function Users(){
 
     return ( 
       <>
-        <Navbar />
         <div>
           {
             students?.map((student) => {

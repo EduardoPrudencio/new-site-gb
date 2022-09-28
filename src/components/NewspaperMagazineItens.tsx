@@ -25,7 +25,6 @@ const NewspaperMagazineItens: React.FC<INewspaperMagazineItensProps> = ({
 
   return (
     <main>
-      <Navbar />
       <Container pl="auto" mb={5}>
         <Typography as="h2">{title}</Typography>
         {width < 570 ? (

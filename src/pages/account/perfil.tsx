@@ -1,7 +1,6 @@
 import Box from "@component/Box";
 import Icon from "@component/icon/Icon";
 import AppLayout from "@component/layout/AppLayout";
-import Navbar from "@component/navbar/Navbar";
 import styled from "styled-components";
 import Image from "@component/Image";
 import { onlyAuth } from "@utils/onlyAuth";
@@ -81,7 +80,6 @@ function Perfil() {
   const { user } = useContext(AuthCotext);
   return (
     <>
-      <Navbar />
       <Box
         display="flex"
         flexDirection="row"

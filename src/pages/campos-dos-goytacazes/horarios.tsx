@@ -58,7 +58,6 @@ const LabelMini = styled.label`
 function Horarios() {
   return (
     <>
-      <Navbar />
       <Box
         display="flex"
         flexDirection="row"
