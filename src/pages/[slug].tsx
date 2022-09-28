@@ -8,7 +8,7 @@ import { gyns } from "@services/GymManager";
 import { PageSession } from "@component/PageSession";
 import styled from "styled-components";
 
-const BoxBenificios = styled.div`
+const BoxTransparent = styled.div`
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(6px);
@@ -18,18 +18,19 @@ const BoxBenificios = styled.div`
   padding: 30px;
 `;
 
-const BenificiosTitulo = styled.label`
+const Titulo = styled.label`
   color: #c6c0c0;
   font-weight: bold;
   font-size: 21px;
 `;
 
-const BenificiosItem = styled.li`
-  color: #c6c0c0;
-  font-size: 15px;
+
+const TextContetn = styled.p`
+  color: #cecece;
+  font-size: 19px;
 `;
 
-const BoxPageSection = styled.div`
+const BoxPageSectionWithBackgroundImage = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -42,6 +43,17 @@ const BoxPageSection = styled.div`
   width: 1150px;
   height:390px;
 `;
+
+const BoxPageSection = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 100px;
+  width: 1150px;
+  height:390px;
+`;
+
 
 function IndexPage() {
   const { query } = useRouter();
@@ -63,26 +75,74 @@ function IndexPage() {
       )}
 
       <PageSession height="450px" backgroundColor="#0F3380">
-        <BoxPageSection>
+        <BoxPageSectionWithBackgroundImage>
           <img
             src="/assets/images/carlos-gracie.png"
             alt="apple-watch-1"
             width="350"
           />
-          <BoxBenificios>
-            <BenificiosTitulo>Alguns benefícios do Jiu-Jitsu</BenificiosTitulo>
-            <ul>
-              <BenificiosItem>Combate a ansiedade e o estresse</BenificiosItem>
-              <BenificiosItem>Disciplina</BenificiosItem>
-              <BenificiosItem>Defesa pessoal</BenificiosItem>
-              <BenificiosItem>Define o corpo</BenificiosItem>
-              <BenificiosItem>Contribui com a saúde do coração</BenificiosItem>
-              <BenificiosItem>Melhora o condicionamento físico</BenificiosItem>
-              <BenificiosItem>Contribui para a socialização</BenificiosItem>
-            </ul>
-          </BoxBenificios>
+          <BoxTransparent>
+            <Titulo>Carlos Gracie Jr.</Titulo>
+            <TextContetn>
+              “Minha vida é dedicada ao Jiu-Jitsu. 
+              <br />Meu objetivo sempre foi construir uma irmandade para 
+              <br />liderar a expansão do Jiu-Jitsu, respeitando sempre 
+              <br />a essência da nossa arte. 
+              Meus alunos são uma extensão da 
+              <br />minha família.”
+            </TextContetn>
+          </BoxTransparent> 
+        </BoxPageSectionWithBackgroundImage>
+      </PageSession>
+
+      <PageSession height="600px">
+        <BoxPageSection>
+          <BoxTransparent>
+            <Titulo>Escola Gracie Barra</Titulo>
+            <TextContetn>
+            Gracie Barra é uma comunidade mundial de instrutores,
+            <br />estudantes e atletas do Jiu-Jitsu. Nossa organização 
+            <br />é constituída por mais de 700 escolas em 
+            <br />seis continentes.
+            </TextContetn>
+          </BoxTransparent>
+
+          <img
+            src="https://i.pinimg.com/564x/53/00/97/53009755adb5a5849bf5e763f6d69f88.jpg"
+            alt="apple-watch-1"
+            width="680"
+          /> 
         </BoxPageSection>
       </PageSession>
+
+
+      <PageSession height="600px" >
+        <BoxPageSection>
+        <img
+            src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e4423861-afaf-44cc-82f2-928db4511726/d6gkvqk-11254c7b-3a27-4ed4-8efe-46c42250fe77.jpg/v1/fill/w_1024,h_975,q_75,strp/judo003_by_amartires_d6gkvqk-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTc1IiwicGF0aCI6IlwvZlwvZTQ0MjM4NjEtYWZhZi00NGNjLTgyZjItOTI4ZGI0NTExNzI2XC9kNmdrdnFrLTExMjU0YzdiLTNhMjctNGVkNC04ZWZlLTQ2YzQyMjUwZmU3Ny5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.dMHnUm_mmsezCmYw-0IVGLGhln3Aku7dRjwkjp-y8ys"
+            alt="apple-watch-1"
+            width="580"
+          /> 
+          <BoxTransparent>
+            <Titulo>Nosso Programa</Titulo>
+            <TextContetn>
+              A estrutura das aulas é a marca registrada 
+              <br />de todas as escolas Gracie Barra.<br /> 
+              As aulas começam na hora marcada e seguem uma
+              <br />estrutura curricular padronizada. Como aluno,
+              <br />você terá uma clara concepção do que é 
+              <br />esperado para você, e saberá o que esperar
+              <br />dos professores e parceiros de treino.
+              <br />A consistência dessa estrutura combinada 
+              <br />com a criatividade e inovação de nossos 
+              <br />dedicados professores misturam-se perfeitamente
+              <br />para facilitar o seu progresso.
+            </TextContetn>
+          </BoxTransparent>
+        </BoxPageSection>
+      </PageSession>
+
+      
       <PageSession height="500px">
         <H5 fontSize="22px">Como chegar</H5>
         <iframe
