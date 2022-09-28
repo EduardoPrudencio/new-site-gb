@@ -35,7 +35,7 @@ const Alert: React.FC<Props> = ({Message, Exec, Error, ValueToExec=true}) => {
             marginRight="10px"
             backgroundColor={!Error ? "#2CC11F" : "#CA2D0B"}
           >
-            {!Error ? <BsCheckLg color="#ffffff" fontSize="19px" /> :<BsExclamationLg color="#ffffff" fontSize="19px" />} 
+            {!Error ? <BsCheckLg color="#ffffff" fontSize="19px" /> : <BsExclamationLg color="#ffffff" fontSize="19px" />} 
           </Box>
           <Box
             display="flex"
@@ -62,7 +62,7 @@ const Alert: React.FC<Props> = ({Message, Exec, Error, ValueToExec=true}) => {
             >X</Button>
           </Box>
         </Box>
-    )
+    );
 }
 
 export default Alert;

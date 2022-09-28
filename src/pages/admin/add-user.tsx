@@ -100,7 +100,6 @@ const formSchema = yup.object().shape({
   number: yup.string().required("Um número deve ser informado"),
   cidade: yup.string().required("Uma cidade deve ser informado"),
   uf: yup.string().required("O campo uf é obrigatório"),
-
 });
 
 function AddUser() {

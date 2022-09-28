@@ -6,28 +6,30 @@ import { GetAll } from "services/api/student"
 import { useEffect } from "react";
 import { User } from "types";
 
-const Users: React.FC = () => {
+function Users(){
     const [students, setStudents] = useState<User[]>();
+
 
     useEffect( () => {
       const GetAllStudents = async () => {
         const list = await GetAll();
         setStudents(list.data.data);
-        console.log("QQQQQQQQQQQQ2 ", students);
+        console.log("QQQQQQQQQQQQ2 ", list.data.data);
       };
-
       GetAllStudents();
     }, []);
 
     return ( 
       <>
         <Navbar />
-        <H5>{students.length}</H5>
-
-        {/* {
-            students.map((item) => <H5>{item?.name}</H5>)
-        } */}
-
+        <div>
+          {
+            students?.map((student) => {
+              return(
+                <H5>{student.name}</H5>
+              );
+            })}
+        </div>
       </>
     )
 }
