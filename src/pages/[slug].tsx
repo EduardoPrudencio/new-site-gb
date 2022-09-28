@@ -95,7 +95,7 @@ function IndexPage() {
         </BoxPageSectionWithBackgroundImage>
       </PageSession>
 
-      <PageSession height="600px">
+      <PageSession height="500px">
         <BoxPageSection>
           <BoxTransparent>
             <Titulo>Escola Gracie Barra</Titulo>
@@ -116,7 +116,7 @@ function IndexPage() {
       </PageSession>
 
 
-      <PageSession height="600px" >
+      <PageSession height="750px" >
         <BoxPageSection>
         <img
             src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e4423861-afaf-44cc-82f2-928db4511726/d6gkvqk-11254c7b-3a27-4ed4-8efe-46c42250fe77.jpg/v1/fill/w_1024,h_975,q_75,strp/judo003_by_amartires_d6gkvqk-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTc1IiwicGF0aCI6IlwvZlwvZTQ0MjM4NjEtYWZhZi00NGNjLTgyZjItOTI4ZGI0NTExNzI2XC9kNmdrdnFrLTExMjU0YzdiLTNhMjctNGVkNC04ZWZlLTQ2YzQyMjUwZmU3Ny5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.dMHnUm_mmsezCmYw-0IVGLGhln3Aku7dRjwkjp-y8ys"
@@ -143,7 +143,7 @@ function IndexPage() {
       </PageSession>
 
       
-      <PageSession height="500px">
+      <PageSession height="500px" backgroundColor="#a21912">
         <H5 fontSize="22px">Como chegar</H5>
         <iframe
           title="Endereço da academia"

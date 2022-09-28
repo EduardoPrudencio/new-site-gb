@@ -14,7 +14,7 @@ const Section1: React.FC<SectionProps> = ({ title }) => {
   return (
     <>
       <Box bg="gray.white" mb="3.75rem">
-        <Container pb="2rem">
+        <Container pb="5rem">
           <Carousel
             totalSlides={3}
             visibleSlides={1}
