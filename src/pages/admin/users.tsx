@@ -1,15 +1,14 @@
 import React, {useState} from "react";
-import { H5 } from "@component/Typography";
 import AppLayout from "@component/layout/AppLayout";
 import { GetAll } from "services/api/student"
 import { useEffect } from "react";
 import { User } from "types";
 import { BsFillPencilFill } from "react-icons/bs";
+import Link from "next/link";
 
 import styled from "styled-components";
 import HeaderText from "@component/headerText";
-import { stubTrue } from "lodash";
-
+import moment from "moment";
 const Container = styled.div`
   padding: 50px;
   min-height: 250px;
@@ -65,20 +64,29 @@ function Users(){
       <>
         <Container>
         <Header>
-          Nome
+        <LineContent>
+           <HeaderText maxWidth={200} text="Nome" color="#ffffff" bold={true} />
+           <HeaderText maxWidth={200} text="Sobrenome" color="#ffffff" bold={true} />
+           <HeaderText maxWidth={200} text="Telefone" color="#ffffff" bold={true} />
+           <HeaderText maxWidth={200} text="Nascimento" color="#ffffff" bold={true} />
+           <HeaderText maxWidth={200} text="Estatus" color="#ffffff" bold={true} />
+         </LineContent>
         </Header>
           {
             students?.map((student) => {
               return(
-                <Line>
-                  <LineContent>
-                    <HeaderText maxWidth={200} text={student.name} bold={true} />
-                    <HeaderText maxWidth={100} text={student.lastName} />
-                    <HeaderText text={student.phoneNumber} />
-                    <HeaderText text={student.birthDate} />
-                  </LineContent>
-                  <BsFillPencilFill />
-                </Line>
+                <Link href={student.id}>
+                  <Line>
+                    <LineContent>
+                      <HeaderText maxWidth={200} text={student.name} bold={true} />
+                      <HeaderText maxWidth={200} text={student.lastName} />
+                      <HeaderText maxWidth={200} text={student.phoneNumber} />
+                      <HeaderText maxWidth={200} text={moment(student.birthDate).format("DD/MM/YYYY")} />
+                      <HeaderText maxWidth={200} text="Ativo" />
+                    </LineContent>
+                    <BsFillPencilFill />
+                  </Line>
+                </Link>
               );
             })}
         </Container>

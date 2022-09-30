@@ -7,7 +7,7 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-size: 14px;
     background: ${({ theme }: any) => theme.colors.body.default};
-    color: ${({ theme }: any) => theme.colors.body.text};
+    color: #494949;
     transition: all 0.50s linear;
     font-family: Roboto, Open Sans, -apple-system, BlinkMacSystemFont, Segoe UI,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,

@@ -136,7 +136,7 @@ function Perfil() {
                     birthday
                   </Icon>
                 </IconBox>
-                <SmallLabel>{moment(user?.birthDate).format("LL")}</SmallLabel>
+                <SmallLabel>{moment(user?.birthDate).format("DD/MM/YYYY")}</SmallLabel>
                 <SmallLabel>Graduação:</SmallLabel>
                 <Image
                   src="/assets/images/faixas/preta/preta_ponta_tres.png"

@@ -3,7 +3,6 @@ import Box from "@component/Box";
 import IconButton from "@component/buttons/IconButton";
 import Icon from "@component/icon/Icon";
 import AppLayout from "@component/layout/AppLayout";
-import Navbar from "@component/navbar/Navbar";
 import { StyledSessionCard } from "@component/sessions/SessionStyle";
 import TextField from "@component/text-field/TextField";
 import styled from "styled-components";
@@ -72,7 +71,7 @@ const initialValues = {
   username: "",
   email: "",
   password: "",
-  fonenumber: "",
+  phonenumber: "",
   birthdate: "",
 
   cep: "",
@@ -90,7 +89,7 @@ const formSchema = yup.object().shape({
   username: yup.string().required("O campo username é obrigatório"),
   email: yup.string().email("email inválido").required("o campo email é obrigatório"),
   password: yup.string().required("O campo password é obrigatório"),
-  fonenumber: yup.string().required("O campo phone number é obrigatório"),
+  phonenumber: yup.string().required("O campo phone number é obrigatório"),
   birthdate: yup.string().required("O campo birthdate é obrigatório"),
 
   cep: yup.string().required("Um cep deve ser informado"),
@@ -120,7 +119,7 @@ function AddUser() {
     values.lastname = "";
     values.username = "";
     values.birthdate = "";
-    values.fonenumber = "";
+    values.phonenumber = "";
 
     values.address = "";
     values.bairro = "";
@@ -135,13 +134,16 @@ function AddUser() {
     setLoading(true);
     const response = await Add(values);
     setLoading(false);
+    setHasError(false);
 
     if(response.status === 201) {
       setMessage("Dados salvos com sucesso!");
       ResetForm();
     } else if(response.status === 400 || response.status === 404 ) {
+      setMessage(response.data.data[0]);
+    } else if(response.status === 409) {
+      setMessage("Os dados informados não puderam ser salvos.\n Verifique e tente novamente.");
       setHasError(true);
-      setMessage(response.data.data[0]);  
     }
     setShowModal(true);
   };
@@ -259,15 +261,15 @@ function AddUser() {
                   />
                   <TextField
                     mb="0.5rem"
-                    name="fonenumber"
+                    name="phonenumber"
                     label="phone"
                     placeholder="(xx)xxxxx-xxxx"
                     fullwidth
-                    type="number"
+                    type="tel"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.fonenumber || ""}
-                    errorText={touched.fonenumber && errors.fonenumber}
+                    value={values.phonenumber || ""}
+                    errorText={touched.phonenumber && errors.phonenumber}
                   />
                   <TextField
                     mb="0.5rem"
