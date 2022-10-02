@@ -8,7 +8,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import Button from "@component/buttons/Button";
 import { theme } from "@utils/theme";
-import { Add, GetById } from "services/api/student"
+import { Update, GetById } from "services/api/student"
 import Spinner from "@component/Spinner";
 import Alert from "../../components/alert"
 import Modal from "react-modal";
@@ -66,6 +66,7 @@ const Label = styled.label`
 `;
 
 const initialValues = {
+  id: "",
   name: "",
   lastname: "",
   username: "",
@@ -88,7 +89,6 @@ const formSchema = yup.object().shape({
   lastname: yup.string().required("O campo sobrenome é obrigatório"),
   username: yup.string().required("O campo username é obrigatório"),
   email: yup.string().email("email inválido").required("o campo email é obrigatório"),
-  password: yup.string().required("O campo password é obrigatório"),
   phonenumber: yup.string().required("O campo phone number é obrigatório"),
   birthdate: yup.string().required("O campo birthdate é obrigatório"),
 
@@ -122,6 +122,7 @@ function AddUser({userToEdit}) {
   }, []);
 
   const ResetForm = () => {
+    values.id = "";
     values.name = "";
     values.email = "";
     values.password = "";
@@ -140,13 +141,16 @@ function AddUser({userToEdit}) {
   };
 
   const handleFormSubmit = async (values) => {
+
+    values.id = student.id;
+
     setLoading(true);
-    const response = await Add(values);
+    const response = await Update(values);
     setLoading(false);
     setHasError(false);
 
     if(response.status === 201) {
-      setMessage("Dados salvos com sucesso!");
+      setMessage("Dados alterados com sucesso!");
       ResetForm();
     } else if(response.status === 400 || response.status === 404 ) {
       setMessage(response.data.data[0]);
@@ -363,7 +367,7 @@ function AddUser({userToEdit}) {
                 type="submit"
                 fullwidth
               >
-                {!loading ? "Salvar" : <Spinner />}
+                {!loading ? "Salvar Alterações" : <Spinner />}
               </Button>
             </form>
           </StyledSessionCard>
@@ -378,9 +382,7 @@ AddUser.layout = AppLayout;
 export const getServerSideProps: GetServerSideProps = async ({
   params: { userId },
 }) => {
-  const userToEdit = await GetById(userId);
-  console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$ ",userToEdit);
-  
+  const userToEdit = await GetById(userId); 
   return {
     props: {
       //userToEdit,
