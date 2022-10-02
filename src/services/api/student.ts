@@ -64,3 +64,25 @@ export const GetAll = async () => {
     return error.response;
   }
 };
+
+export const GetById = async (userId) => {
+  const gym = gyns.find(x => x.isDefault);
+
+  try {
+    const url = `/user/${userId}/activity/${gym.activityId}/gym/${gym.id}
+    `;
+    const token = getCookie(authCookieKeys.token);
+
+    const { data } = await api.get(url,{
+      headers: {
+        Authorization: `Bearer ${token}`
+     },
+   });
+
+   return data.data;
+    
+  } catch (error) {
+    // console.log("########### error ############ ",error );
+    return error.response;
+  }
+};

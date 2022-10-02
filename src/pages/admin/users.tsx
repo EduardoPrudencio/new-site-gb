@@ -75,7 +75,7 @@ function Users(){
           {
             students?.map((student) => {
               return(
-                <Link href={student.id}>
+                <Link href={`/admin/${student.id}`}>
                   <Line>
                     <LineContent>
                       <HeaderText maxWidth={200} text={student.name} bold={true} />
