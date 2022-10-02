@@ -15,6 +15,7 @@ import Modal from "react-modal";
 import { useRouter } from "next/router";
 import { User } from "types";
 import { GetServerSideProps } from "next";
+import moment from "moment";
 
 const modalStyles = {
   content: {
@@ -225,7 +226,7 @@ function AddUser({userToEdit}) {
                     type="date"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.birthdate || (values.birthdate = student?.birthDate)}
+                    value={values.birthdate || (values.birthdate = moment(student?.birthDate).format("YYYY-MM-DD"))}
                     errorText={touched.birthdate && errors.birthdate}
                   />
 
@@ -375,7 +376,7 @@ function AddUser({userToEdit}) {
 AddUser.layout = AppLayout;
 
 export const getServerSideProps: GetServerSideProps = async ({
-  params: { userId } ,
+  params: { userId },
 }) => {
   const userToEdit = await GetById(userId);
   console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$ ",userToEdit);
