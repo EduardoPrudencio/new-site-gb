@@ -362,7 +362,7 @@ function AddUser({userToEdit}) {
                 type="submit"
                 fullwidth
               >
-                {!loading ? "Criar Conta" : <Spinner />}
+                {!loading ? "Salvar" : <Spinner />}
               </Button>
             </form>
           </StyledSessionCard>

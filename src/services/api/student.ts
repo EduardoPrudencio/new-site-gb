@@ -6,6 +6,8 @@ import {gyns} from "../GymManager";
 export const Add = async (values) => {
   const gym = gyns.find(x => x.isDefault);
 
+console.log("QQQQQQQQQQQQQQSSSSSSS ", values);
+
   try {
     const url = `/user/Activity/${gym.activityId}/Gym/${gym.id}`
     const token = getCookie(authCookieKeys.token);
@@ -20,8 +22,8 @@ export const Add = async (values) => {
             email: values.email,
             password: values.password,
             address: {
-              endereco:values.endereco,
-              numero:values.numero,  
+              endereco:values.address,
+              numero:values.number,  
               complemento:values.complemento,
               cidade:values.cidade,
               bairro:values.bairro, 
