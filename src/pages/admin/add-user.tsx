@@ -16,6 +16,7 @@ import { Add } from "services/api/student"
 import Spinner from "@component/Spinner";
 import Alert from "../../components/alert"
 import Modal from "react-modal"; 
+import { onlyAuth } from "@utils/onlyAuth";
 
 const modalStyles = {
   content: {
@@ -390,14 +391,12 @@ function AddUser() {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = onlyAdmin(
-  true,
-  async () => {
-    return {
-      props: {},
-    };
-  }
-);
+export const getServerSideProps: GetServerSideProps = onlyAuth(async () => {
+  return {
+    props: {},
+  };
+});
+
 
 AddUser.layout = AppLayout;
 

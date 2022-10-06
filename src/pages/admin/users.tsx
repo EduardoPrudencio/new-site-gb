@@ -9,6 +9,8 @@ import Link from "next/link";
 import styled from "styled-components";
 import HeaderText from "@component/headerText";
 import moment from "moment";
+import { GetServerSideProps } from "next";
+import { onlyAuth } from "@utils/onlyAuth";
 const Container = styled.div`
   padding: 50px;
   min-height: 250px;
@@ -93,6 +95,13 @@ function Users(){
       </>
     )
 }
+
+export const getServerSideProps: GetServerSideProps = onlgit yAuth(async () => {
+  return {
+    props: {},
+  };
+});
+
 
 Users.layout = AppLayout;
 
