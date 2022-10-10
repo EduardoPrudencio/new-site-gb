@@ -15,8 +15,8 @@ const CardTitle: React.FC<CardProps> = ({ title }) => {
       justifyContent="center"
       height="100%"
     >
-      <H5 fontSize="60px">Gracie barra</H5>
-      {title && <H5 fontSize="52px">{title}</H5>}
+      <H5 fontSize="70px">Gracie barra</H5>
+      {title && <H5 fontSize="60px">{title}</H5>}
     </Box>
   );
 };

@@ -1,3 +1,6 @@
+/* eslint no-param-reassign: "error" */
+/* eslint no-return-assign: "error" */
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Box from "@component/Box";
 import AppLayout from "@component/layout/AppLayout";
@@ -8,14 +11,14 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import Button from "@component/buttons/Button";
 import { theme } from "@utils/theme";
-import { Update, GetById } from "services/api/student"
+import { Update, GetById } from "services/api/student";
 import Spinner from "@component/Spinner";
-import Alert from "../../components/alert"
 import Modal from "react-modal";
-import { useRouter } from "next/router";
 import { User } from "types";
 import { GetServerSideProps } from "next";
 import moment from "moment";
+import { onlyAuth } from "@utils/onlyAuth";
+import Alert from "../../components/alert";
 
 const modalStyles = {
   content: {
@@ -27,7 +30,7 @@ const modalStyles = {
     marginRight: "-50px",
     transform: "translate(-50%, -50%)",
   },
-}
+};
 
 const FormContent = styled.div`
   display: flex;
@@ -88,7 +91,10 @@ const formSchema = yup.object().shape({
   name: yup.string().required("O campo nome é obrigatório"),
   lastname: yup.string().required("O campo sobrenome é obrigatório"),
   username: yup.string().required("O campo username é obrigatório"),
-  email: yup.string().email("email inválido").required("o campo email é obrigatório"),
+  email: yup
+    .string()
+    .email("email inválido")
+    .required("o campo email é obrigatório"),
   phonenumber: yup.string().required("O campo phone number é obrigatório"),
   birthdate: yup.string().required("O campo birthdate é obrigatório"),
 
@@ -101,46 +107,42 @@ const formSchema = yup.object().shape({
   uf: yup.string().required("O campo uf é obrigatório"),
 });
 
-function AddUser({userToEdit}) {
+function AddUser() {
   const { query } = useRouter();
   const { userId } = query;
-
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [message, setMessage] = useState();
-  
   const [student, setStudent] = useState<User>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const GetSutentById = async () => {
-    const user = await GetById(userId);
-    setStudent(user);
-    }
+      const user = await GetById(userId);
+      setStudent(user);
+    };
     GetSutentById();
-
   }, []);
 
-  const ResetForm = () => {
-    values.id = "";
-    values.name = "";
-    values.email = "";
-    values.password = "";
-    values.lastname = "";
-    values.username = "";
-    values.birthdate = "";
-    values.phonenumber = "";
-
-    values.address = "";
-    values.bairro = "";
-    values.complemento = "";
-    values.number = "";
-    values.cep = "";
-    values.cidade = "";
-    values.uf = "";
-  };
-
   const handleFormSubmit = async (values) => {
+    // const ResetForm = () => {
+    //   values.id = "";
+    //   values.name = "";
+    //   values.email = "";
+    //   values.password = "";
+    //   values.lastname = "";
+    //   values.username = "";
+    //   values.birthdate = "";
+    //   values.phonenumber = "";
+    //   values.address = "";
+    //   values.bairro = "";
+    //   values.complemento = "";
+    //   values.number = "";
+    //   values.cep = "";
+    //   values.cidade = "";
+    //   values.uf = "";
+    // };
 
     values.id = student.id;
 
@@ -149,13 +151,15 @@ function AddUser({userToEdit}) {
     setLoading(false);
     setHasError(false);
 
-    if(response.status === 201) {
+    if (response.status === 201) {
       setMessage("Dados alterados com sucesso!");
-      ResetForm();
-    } else if(response.status === 400 || response.status === 404 ) {
+      router.reload();
+    } else if (response.status === 400 || response.status === 404) {
       setMessage(response.data.data[0]);
-    } else if(response.status === 409) {
-      setMessage("Os dados informados não puderam ser salvos.\n Verifique e tente novamente.");
+    } else if (response.status === 409) {
+      setMessage(
+        "Os dados informados não puderam ser salvos.\n Verifique e tente novamente."
+      );
       setHasError(true);
     }
     setShowModal(true);
@@ -170,13 +174,14 @@ function AddUser({userToEdit}) {
 
   return (
     <>
-      <Modal
-        isOpen={showModal}
-        style={modalStyles}
-      >
+      <Modal isOpen={showModal} style={modalStyles}>
         {/* <Spinner color="#FF0000"/> */}
-
-        <Alert Exec={setShowModal} ValueToExec={false} Error={hasError} Message={message}/>
+        <Alert
+          Exec={setShowModal}
+          ValueToExec={false}
+          Error={hasError}
+          Message={message}
+        />
       </Modal>
       <Box
         display="flex"
@@ -221,7 +226,7 @@ function AddUser({userToEdit}) {
                     value={values.email || (values.email = student?.email)}
                     errorText={touched.email && errors.email}
                   />
-                   <TextField
+                  <TextField
                     mb="0.5rem"
                     name="birthdate"
                     label="Data de nascimento"
@@ -230,10 +235,14 @@ function AddUser({userToEdit}) {
                     type="date"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.birthdate || (values.birthdate = moment(student?.birthDate).format("YYYY-MM-DD"))}
+                    value={
+                      values.birthdate ||
+                      (values.birthdate = moment(student?.birthDate).format(
+                        "YYYY-MM-DD"
+                      ))
+                    }
                     errorText={touched.birthdate && errors.birthdate}
                   />
-
                 </ColumnContentLefth>
                 <ColumnContentRight>
                   <TextField
@@ -244,7 +253,9 @@ function AddUser({userToEdit}) {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.lastname   || (values.lastName = student?.lastName)}
+                    value={
+                      values.lastname || (values.lastName = student?.lastName)
+                    }
                     errorText={touched.lastname && errors.lastname}
                   />
                   <TextField
@@ -255,7 +266,9 @@ function AddUser({userToEdit}) {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.username || (values.username = student?.userName)}
+                    value={
+                      values.username || (values.username = student?.userName)
+                    }
                     errorText={touched.username && errors.username}
                   />
                   <TextField
@@ -267,7 +280,10 @@ function AddUser({userToEdit}) {
                     type="tel"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.phonenumber || (values.phonenumber = student?.phoneNumber)}
+                    value={
+                      values.phonenumber ||
+                      (values.phonenumber = student?.phoneNumber)
+                    }
                     errorText={touched.phonenumber && errors.phonenumber}
                   />
                 </ColumnContentRight>
@@ -276,7 +292,7 @@ function AddUser({userToEdit}) {
               <Label>Endereço</Label>
               <FormContent>
                 <ColumnContentLefth>
-                <TextField
+                  <TextField
                     mb="0.5rem"
                     name="address"
                     label="Endereço"
@@ -284,7 +300,10 @@ function AddUser({userToEdit}) {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.address || (values.cep = student?.address?.endereco)}
+                    value={
+                      values.address ||
+                      (values.cep = student?.address?.endereco)
+                    }
                     errorText={touched.address && errors.address}
                   />
                   <TextField
@@ -306,7 +325,10 @@ function AddUser({userToEdit}) {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.complemento || (values.cep = student?.address?.complemento)}
+                    value={
+                      values.complemento ||
+                      (values.cep = student?.address?.complemento)
+                    }
                     errorText={touched.complemento && errors.complemento}
                   />
                   <TextField
@@ -317,7 +339,9 @@ function AddUser({userToEdit}) {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.bairro || (values.cep = student?.address?.bairro)}
+                    value={
+                      values.bairro || (values.cep = student?.address?.bairro)
+                    }
                     errorText={touched.bairro && errors.bairro}
                   />
                 </ColumnContentLefth>
@@ -330,7 +354,9 @@ function AddUser({userToEdit}) {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.number || (values.cep = student?.address?.numero)}
+                    value={
+                      values.number || (values.cep = student?.address?.numero)
+                    }
                     errorText={touched.number && errors.number}
                   />
                   <TextField
@@ -341,7 +367,9 @@ function AddUser({userToEdit}) {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.cidade || (values.cep = student?.address?.cidade)}
+                    value={
+                      values.cidade || (values.cep = student?.address?.cidade)
+                    }
                     errorText={touched.cidade && errors.cidade}
                   />
                   <TextField
@@ -379,16 +407,10 @@ function AddUser({userToEdit}) {
 
 AddUser.layout = AppLayout;
 
-export const getServerSideProps: GetServerSideProps = async ({
-  params: { userId },
-}) => {
-  const userToEdit = await GetById(userId); 
+export const getServerSideProps: GetServerSideProps = onlyAuth(async () => {
   return {
-    props: {
-      //userToEdit,
-    },
+    props: {},
   };
-};
-
+});
 
 export default AddUser;

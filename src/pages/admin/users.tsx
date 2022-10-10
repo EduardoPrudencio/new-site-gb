@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import AppLayout from "@component/layout/AppLayout";
-import { GetAll } from "services/api/student"
-import { useEffect } from "react";
+import { GetAll } from "services/api/student";
 import { User } from "types";
 import { BsFillPencilFill } from "react-icons/bs";
 import Link from "next/link";
@@ -11,6 +10,7 @@ import HeaderText from "@component/headerText";
 import moment from "moment";
 import { GetServerSideProps } from "next";
 import { onlyAuth } from "@utils/onlyAuth";
+
 const Container = styled.div`
   padding: 50px;
   min-height: 250px;
@@ -27,81 +27,79 @@ const Header = styled.div`
   border: solid 1px #cecece;
   color: #ffffff;
   font-weight: bold;
-  `;
+`;
 
-  const Line = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 20px 10px;
-    background-color: #ffffff;
-    border-radius: 5px;
-    margin-bottom: 5px;
-    border: solid 1px #cecece;
-    color: #959493;
+const Line = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  border: solid 1px #cecece;
+  color: #959493;
 
-    &:hover {
-      border: solid 1px #E33F06;
-    }
-  `;
+  &:hover {
+    border: solid 1px #e33f06;
+  }
+`;
 
-  const LineContent = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-  `;
+const LineContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+`;
 
-function Users(){
-    const [students, setStudents] = useState<User[]>();
+function Users() {
+  const [students, setStudents] = useState<User[]>();
+  useEffect(() => {
+    const GetAllStudents = async () => {
+      const list = await GetAll();
+      setStudents(list.data.data);
+    };
+    GetAllStudents();
+  }, []);
 
-    useEffect( () => {
-      const GetAllStudents = async () => {
-        const list = await GetAll();
-        setStudents(list.data.data);
-      };
-      GetAllStudents();
-    }, []);
-
-    return ( 
-      <>
-        <Container>
-        <Header>
+  return (
+    <Container>
+      <Header>
         <LineContent>
-           <HeaderText maxWidth={200} text="Nome" color="#ffffff" bold={true} />
-           <HeaderText maxWidth={200} text="Sobrenome" color="#ffffff" bold={true} />
-           <HeaderText maxWidth={200} text="Telefone" color="#ffffff" bold={true} />
-           <HeaderText maxWidth={200} text="Nascimento" color="#ffffff" bold={true} />
-           <HeaderText maxWidth={200} text="Estatus" color="#ffffff" bold={true} />
-         </LineContent>
-        </Header>
-          {
-            students?.map((student) => {
-              return(
-                <Link href={`/admin/${student.id}`}>
-                  <Line>
-                    <LineContent>
-                      <HeaderText maxWidth={200} text={student.name} bold={true} />
-                      <HeaderText maxWidth={200} text={student.lastName} />
-                      <HeaderText maxWidth={200} text={student.phoneNumber} />
-                      <HeaderText maxWidth={200} text={moment(student.birthDate).format("DD/MM/YYYY")} />
-                      <HeaderText maxWidth={200} text="Ativo" />
-                    </LineContent>
-                    <BsFillPencilFill />
-                  </Line>
-                </Link>
-              );
-            })}
-        </Container>
-      </>
-    )
+          <HeaderText maxWidth={200} text="Nome" color="#ffffff" bold />
+          <HeaderText maxWidth={200} text="Sobrenome" color="#ffffff" bold />
+          <HeaderText maxWidth={200} text="Telefone" color="#ffffff" bold />
+          <HeaderText maxWidth={200} text="Nascimento" color="#ffffff" bold />
+          <HeaderText maxWidth={200} text="Estatus" color="#ffffff" bold />
+        </LineContent>
+      </Header>
+      {students?.map((student) => {
+        return (
+          <Link href={`/admin/${student.id}`}>
+            <Line>
+              <LineContent>
+                <HeaderText maxWidth={200} text={student.name} bold />
+                <HeaderText maxWidth={200} text={student.lastName} />
+                <HeaderText maxWidth={200} text={student.phoneNumber} />
+                <HeaderText
+                  maxWidth={200}
+                  text={moment(student.birthDate).format("DD/MM/YYYY")}
+                />
+                <HeaderText maxWidth={200} text="Ativo" />
+              </LineContent>
+              <BsFillPencilFill />
+            </Line>
+          </Link>
+        );
+      })}
+    </Container>
+  );
 }
 
-export const getServerSideProps: GetServerSideProps = onlgit yAuth(async () => {
+export const getServerSideProps: GetServerSideProps = onlyAuth(async () => {
   return {
     props: {},
   };
 });
-
 
 Users.layout = AppLayout;
 

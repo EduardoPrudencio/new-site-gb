@@ -12,26 +12,24 @@ type SectionProps = {
 
 const Section1: React.FC<SectionProps> = ({ title }) => {
   return (
-    <>
-      <Box bg="gray.white" mb="3.75rem">
-        <Container pb="5rem">
-          <Carousel
-            totalSlides={3}
-            visibleSlides={1}
-            infinite
-            autoPlay
-            showDots
-            showArrow={false}
-            spacing="0px"
-            interval={3000}
-          >
-            <CardTitle title={title} />
-            <CarouselCard1 />
-            <CarouselCard2 />
-          </Carousel>
-        </Container>
-      </Box>
-    </>
+    <Box bg="gray.white">
+      <Container pb="5rem">
+        <Carousel
+          totalSlides={3}
+          visibleSlides={1}
+          infinite
+          autoPlay
+          showDots
+          showArrow={false}
+          spacing="0px"
+          interval={3000}
+        >
+          <CardTitle title={title} />
+          <CarouselCard1 />
+          <CarouselCard2 />
+        </Carousel>
+      </Container>
+    </Box>
   );
 };
 export default Section1;

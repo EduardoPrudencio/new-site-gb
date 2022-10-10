@@ -7,13 +7,11 @@ import Banner from "../banner/Banner";
 
 const Hero: React.FC = () => {
   return (
-    <>
-      <Box bg="gray.white" mb="3.75rem">
-        <Container pb="2rem">
-          <Banner />
-        </Container>
-      </Box>
-    </>
+    <Box bg="gray.white" mb="3.75rem">
+      <Container pb="2rem">
+        <Banner />
+      </Container>
+    </Box>
   );
 };
 

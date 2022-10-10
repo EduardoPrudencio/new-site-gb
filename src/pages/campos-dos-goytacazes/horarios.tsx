@@ -1,6 +1,5 @@
 import Box from "@component/Box";
 import AppLayout from "@component/layout/AppLayout";
-import Navbar from "@component/navbar/Navbar";
 import styled from "styled-components";
 
 const ScheduleBox = styled.div`
@@ -57,204 +56,192 @@ const LabelMini = styled.label`
 
 function Horarios() {
   return (
-    <>
-      <Box
-        display="flex"
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="center"
-        width="100%"
-        height="500px"
-      >
-        <ScheduleBox>
-          <ScheduleBoxDay>
-            <ScheduleBoxDayHeader>
-              <Label>Segunda-feira</Label>
-            </ScheduleBoxDayHeader>
-            <ScheduleBoxDayHour>
-              <Label>07:00 - 8:30</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>09:30 - 11:00</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>17:00 - 18:30</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>
-                Infatil, iniciantes, intermediário e avançado
-              </LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>19:00 - 20:00</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>20:00 - 21:30</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-          </ScheduleBoxDay>
-          <ScheduleBoxDay>
-            <ScheduleBoxDayHeader>
-              <Label>Terça-feira</Label>
-            </ScheduleBoxDayHeader>
-            <ScheduleBoxDayHour>
-              <Label>07:00 - 8:30</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>09:30 - 11:00</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>17:00 - 18:30</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>
-                Infatil, iniciantes, intermediário e avançado
-              </LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>19:00 - 20:00</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>20:00 - 21:30</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-          </ScheduleBoxDay>
-          <ScheduleBoxDay>
-            <ScheduleBoxDayHeader>
-              <Label>Quarta-feira</Label>
-            </ScheduleBoxDayHeader>
-            <ScheduleBoxDayHour>
-              <Label>07:00 - 8:30</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>09:30 - 11:00</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>17:00 - 18:30</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>
-                Infatil, iniciantes, intermediário e avançado
-              </LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>19:00 - 20:00</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>20:00 - 21:30</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-          </ScheduleBoxDay>
-          <ScheduleBoxDay>
-            <ScheduleBoxDayHeader>
-              <Label>Quinta-feira</Label>
-            </ScheduleBoxDayHeader>
-            <ScheduleBoxDayHour>
-              <Label>07:00 - 8:30</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>09:30 - 11:00</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>17:00 - 18:30</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>
-                Infatil, iniciantes, intermediário e avançado
-              </LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>19:00 - 20:00</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>20:00 - 21:30</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-          </ScheduleBoxDay>
-          <ScheduleBoxDay>
-            <ScheduleBoxDayHeader>
-              <Label>Sexta-feira</Label>
-            </ScheduleBoxDayHeader>
-            <ScheduleBoxDayHour>
-              <Label>07:00 - 8:30</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>09:30 - 11:00</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>17:00 - 18:30</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>
-                Infatil, iniciantes, intermediário e avançado
-              </LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>19:00 - 20:00</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-            <ScheduleBoxDayHour>
-              <Label>20:00 - 21:30</Label>
-            </ScheduleBoxDayHour>
-            <ScheduleBoxDayBody>
-              <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
-            </ScheduleBoxDayBody>
-          </ScheduleBoxDay>
-        </ScheduleBox>
-      </Box>
-    </>
+    <Box
+      display="flex"
+      flexDirection="row"
+      alignItems="center"
+      justifyContent="center"
+      width="100%"
+      height="500px"
+    >
+      <ScheduleBox>
+        <ScheduleBoxDay>
+          <ScheduleBoxDayHeader>
+            <Label>Segunda-feira</Label>
+          </ScheduleBoxDayHeader>
+          <ScheduleBoxDayHour>
+            <Label>07:00 - 8:30</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>09:30 - 11:00</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>17:00 - 18:30</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Infatil, iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>19:00 - 20:00</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>20:00 - 21:30</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+        </ScheduleBoxDay>
+        <ScheduleBoxDay>
+          <ScheduleBoxDayHeader>
+            <Label>Terça-feira</Label>
+          </ScheduleBoxDayHeader>
+          <ScheduleBoxDayHour>
+            <Label>07:00 - 8:30</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>09:30 - 11:00</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>17:00 - 18:30</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Infatil, iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>19:00 - 20:00</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>20:00 - 21:30</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+        </ScheduleBoxDay>
+        <ScheduleBoxDay>
+          <ScheduleBoxDayHeader>
+            <Label>Quarta-feira</Label>
+          </ScheduleBoxDayHeader>
+          <ScheduleBoxDayHour>
+            <Label>07:00 - 8:30</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>09:30 - 11:00</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>17:00 - 18:30</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Infatil, iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>19:00 - 20:00</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>20:00 - 21:30</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+        </ScheduleBoxDay>
+        <ScheduleBoxDay>
+          <ScheduleBoxDayHeader>
+            <Label>Quinta-feira</Label>
+          </ScheduleBoxDayHeader>
+          <ScheduleBoxDayHour>
+            <Label>07:00 - 8:30</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>09:30 - 11:00</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>17:00 - 18:30</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Infatil, iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>19:00 - 20:00</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>20:00 - 21:30</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+        </ScheduleBoxDay>
+        <ScheduleBoxDay>
+          <ScheduleBoxDayHeader>
+            <Label>Sexta-feira</Label>
+          </ScheduleBoxDayHeader>
+          <ScheduleBoxDayHour>
+            <Label>07:00 - 8:30</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>09:30 - 11:00</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>17:00 - 18:30</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Infatil, iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>19:00 - 20:00</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+          <ScheduleBoxDayHour>
+            <Label>20:00 - 21:30</Label>
+          </ScheduleBoxDayHour>
+          <ScheduleBoxDayBody>
+            <LabelMini>Iniciantes, intermediário e avançado</LabelMini>
+          </ScheduleBoxDayBody>
+        </ScheduleBoxDay>
+      </ScheduleBox>
+    </Box>
   );
 }
 

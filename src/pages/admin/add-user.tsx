@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import Box from "@component/Box";
 import IconButton from "@component/buttons/IconButton";
@@ -11,12 +12,11 @@ import { GetServerSideProps } from "next";
 import * as yup from "yup";
 import Button from "@component/buttons/Button";
 import { theme } from "@utils/theme";
-import { onlyAdmin } from "@utils/onlyAdmin";
-import { Add } from "services/api/student"
+import { Add } from "services/api/student";
 import Spinner from "@component/Spinner";
-import Alert from "../../components/alert"
-import Modal from "react-modal"; 
+import Modal from "react-modal";
 import { onlyAuth } from "@utils/onlyAuth";
+import Alert from "../../components/alert";
 
 const modalStyles = {
   content: {
@@ -28,7 +28,7 @@ const modalStyles = {
     marginRight: "-50px",
     transform: "translate(-50%, -50%)",
   },
-}
+};
 
 const FormContent = styled.div`
   display: flex;
@@ -88,7 +88,10 @@ const formSchema = yup.object().shape({
   name: yup.string().required("O campo nome é obrigatório"),
   lastname: yup.string().required("O campo sobrenome é obrigatório"),
   username: yup.string().required("O campo username é obrigatório"),
-  email: yup.string().email("email inválido").required("o campo email é obrigatório"),
+  email: yup
+    .string()
+    .email("email inválido")
+    .required("o campo email é obrigatório"),
   password: yup.string().required("O campo password é obrigatório"),
   phonenumber: yup.string().required("O campo phone number é obrigatório"),
   birthdate: yup.string().required("O campo birthdate é obrigatório"),
@@ -108,27 +111,10 @@ function AddUser() {
   const [showModal, setShowModal] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [message, setMessage] = useState("");
+  const router = useRouter();
 
   const togglePasswordVisibility = () => {
     setPasswordVisibility((visible) => !visible);
-  };
-
-  const ResetForm = () => {
-    values.name = "";
-    values.email = "";
-    values.password = "";
-    values.lastname = "";
-    values.username = "";
-    values.birthdate = "";
-    values.phonenumber = "";
-
-    values.address = "";
-    values.bairro = "";
-    values.complemento = "";
-    values.number = "";
-    values.cep = "";
-    values.cidade = "";
-    values.uf = "";
   };
 
   const handleFormSubmit = async (values) => {
@@ -137,13 +123,33 @@ function AddUser() {
     setLoading(false);
     setHasError(false);
 
-    if(response.status === 201) {
+    // const ResetForm = () => {
+    //   values.name = "";
+    //   values.email = "";
+    //   values.password = "";
+    //   values.lastname = "";
+    //   values.username = "";
+    //   values.birthdate = "";
+    //   values.phonenumber = "";
+    //   values.address = "";
+    //   values.bairro = "";
+    //   values.complemento = "";
+    //   values.number = "";
+    //   values.cep = "";
+    //   values.cidade = "";
+    //   values.uf = "";
+    // };
+
+    if (response.status === 201) {
       setMessage("Dados salvos com sucesso!");
-      ResetForm();
-    } else if(response.status === 400 || response.status === 404 ) {
+      // ResetForm();
+      router.reload();
+    } else if (response.status === 400 || response.status === 404) {
       setMessage(response.data.data[0]);
-    } else if(response.status === 409) {
-      setMessage("Os dados informados não puderam ser salvos.\n Verifique e tente novamente.");
+    } else if (response.status === 409) {
+      setMessage(
+        "Os dados informados não puderam ser salvos.\n Verifique e tente novamente."
+      );
       setHasError(true);
     }
     setShowModal(true);
@@ -158,13 +164,14 @@ function AddUser() {
 
   return (
     <>
-      <Modal
-        isOpen={showModal}
-        style={modalStyles}
-      >
+      <Modal isOpen={showModal} style={modalStyles}>
         {/* <Spinner color="#FF0000"/> */}
-
-        <Alert Exec={setShowModal} ValueToExec={false} Error={hasError} Message={message}/>
+        <Alert
+          Exec={setShowModal}
+          ValueToExec={false}
+          Error={hasError}
+          Message={message}
+        />
       </Modal>
       <Box
         display="flex"
@@ -246,7 +253,7 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.lastname   || ""}
+                    value={values.lastname || ""}
                     errorText={touched.lastname && errors.lastname}
                   />
                   <TextField
@@ -397,7 +404,5 @@ export const getServerSideProps: GetServerSideProps = onlyAuth(async () => {
   };
 });
 
-
 AddUser.layout = AppLayout;
-
 export default AddUser;

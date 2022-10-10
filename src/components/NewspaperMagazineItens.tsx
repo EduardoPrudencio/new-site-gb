@@ -6,7 +6,6 @@ import Container from "./Container";
 import FlexBox from "./FlexBox";
 import Grid from "./grid/Grid";
 import MagazineCard, { IMagazineEdtion } from "./magazine-card/MagazineCard";
-import Navbar from "./navbar/Navbar";
 import Newspapercard, { INewspapersData } from "./newspaper-card/newspaperCard";
 import Typography from "./Typography";
 

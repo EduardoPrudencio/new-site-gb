@@ -79,85 +79,85 @@ const SmallLabel = styled.label`
 function Perfil() {
   const { user } = useContext(AuthCotext);
   return (
-    <>
+    <Box
+      display="flex"
+      flexDirection="row"
+      alignItems="center"
+      justifyContent="center"
+      marginTop="20px"
+    >
       <Box
         display="flex"
         flexDirection="row"
         alignItems="center"
-        justifyContent="center"
-        marginTop="20px"
+        justifyContent="space-between"
+        bg="#FFFFFF"
+        width="1000px"
       >
+        {/* SIDEBAR */}
         <Box
           display="flex"
-          flexDirection="row"
+          flexDirection="column"
           alignItems="center"
-          justifyContent="space-between"
-          bg="#FFFFFF"
-          width="1000px"
+          justifyContent="start"
+          width="350px"
+          height="600px"
         >
-          {/* SIDEBAR */}
-          <Box
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="start"
-            width="350px"
-            height="600px"
-          >
-            <ImageUserBox>
-              <Icon size="100px">user</Icon>
-            </ImageUserBox>
-          </Box>
-          {/* SIDEBAR */}
-          {/* CONTENT */}
-          <Box
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-            width="100%"
-            height="600px"
-          >
-            <ContentTop>
-              <Line>
-                <Name>
-                  <Label>{`${user?.name} ${user?.lastName}`}</Label>
-                </Name>
-                <IconBox>
-                  <Icon size="17px" color="#868b8f">
-                    gps
-                  </Icon>
-                </IconBox>
-                <SmallLabel>Campos dos Goytacazes - RJ</SmallLabel>
-              </Line>
-              <Line>
-                <IconBox>
-                  <Icon size="17px" color="#868b8f">
-                    birthday
-                  </Icon>
-                </IconBox>
-                <SmallLabel>{moment(user?.birthDate).format("DD/MM/YYYY")}</SmallLabel>
-                <SmallLabel>Graduação:</SmallLabel>
-                <Image
-                  src="/assets/images/faixas/preta/preta_ponta_tres.png"
-                  height="20px"
-                />
-              </Line>
-              <Line>
-                <IconBox>
-                  <Icon size="17px" color="#868b8f">
-                    email
-                  </Icon>
-                </IconBox>
-                <SmallLabel>{user?.email}</SmallLabel>
-              </Line>
-            </ContentTop>
-            <ContentBottom />
-          </Box>
-          {/* CONTENT */}
+          <ImageUserBox>
+            <Icon size="100px">user</Icon>
+          </ImageUserBox>
         </Box>
+        {/* SIDEBAR */}
+        {/* CONTENT */}
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          width="100%"
+          height="600px"
+        >
+          <ContentTop>
+            <Line>
+              <Name>
+                <Label>{`${user?.name} ${user?.lastName}`}</Label>
+              </Name>
+              <IconBox>
+                <Icon size="17px" color="#868b8f">
+                  gps
+                </Icon>
+              </IconBox>
+              <SmallLabel>Campos dos Goytacazes - RJ</SmallLabel>
+            </Line>
+            <Line>
+              <IconBox>
+                <Icon size="17px" color="#868b8f">
+                  birthday
+                </Icon>
+              </IconBox>
+              <SmallLabel>
+                {moment(user?.birthDate).format("DD/MM/YYYY")}
+              </SmallLabel>
+              <SmallLabel>Graduação:</SmallLabel>
+              <Image
+                src="/assets/images/faixas/preta/preta_ponta_tres.png"
+                height="20px"
+              />
+            </Line>
+            <Line>
+              <IconBox>
+                <Icon size="17px" color="#868b8f">
+                  email
+                </Icon>
+              </IconBox>
+              <SmallLabel>{user?.email}</SmallLabel>
+            </Line>
+          </ContentTop>
+          <ContentBottom />
+        </Box>
+        {/* CONTENT */}
       </Box>
-    </>
+    </Box>
   );
 }
 

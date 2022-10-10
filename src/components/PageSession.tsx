@@ -9,19 +9,17 @@ type PageSessionProps = {
 export const PageSession: React.FC<PageSessionProps> = ({
   children,
   height,
-  backgroundColor = "#FFFF",
+  backgroundColor,
 }) => {
   return (
     <Box
       display="flex"
       bg={backgroundColor}
       height={height}
-      mt="-60px"
       flexDirection="row"
       alignItems="center"
       justifyContent="center"
       width="100%"
-      paddingBottom="2rem"
     >
       <Box
         display="flex"
