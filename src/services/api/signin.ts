@@ -6,7 +6,9 @@ export const SigninCall = async (values) => {
       login: values.login,
       password: values.password,
     });
-    //console.log("*************** ", response)
+
+    // console.log("*************** ", response);
+
     return response;  
   } catch (error) {
     //console.log("########### error ############ ",error );

@@ -8,6 +8,7 @@ export type User = {
   email: string;
   userRoles: string;
   birthDate: string;
+  registrationDate: string;
   image: string;
   phoneNumber: string;
   active: boolean;
@@ -30,6 +31,7 @@ export type Student = {
   userName: string,
   phoneNumber: string,
   birthDate: string,
+  registrationDate: string,
   email: string,
   password: string,
   address: Address;
