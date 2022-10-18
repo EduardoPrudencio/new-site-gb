@@ -1,12 +1,14 @@
-import AppLayout from "@component/layout/AppLayout";
-import { H5 } from "@component/Typography";
-
-import Section1 from "@component/Section1";
 import { useRouter } from "next/router";
-import { setCookies } from "cookies-next";
-import { gyns } from "@services/GymManager";
+
+import AppLayout from "@component/layout/AppLayout";
 import { PageSession } from "@component/PageSession";
+import PageSessionGradientBackground from "@component/PageSessionGradientBackground";
+import Section1 from "@component/Section1";
+import { H5 } from "@component/Typography";
+import { setCookies } from "cookies-next";
 import styled from "styled-components";
+
+import { gyns } from "@services/GymManager";
 
 const BoxTransparent = styled.div`
   background: rgba(255, 255, 255, 0.15);
@@ -78,7 +80,35 @@ function IndexPage() {
         <Section1 />
       )}
 
-      <PageSession height="400px" backgroundColor="#213A5B">
+      <PageSessionGradientBackground
+        height={400}
+        backgroundColor="rgb(80,122,176)"
+        backgroundRadial="radial-gradient(circle, rgba(80,122,176,1) 0%, rgba(33,58,91,1) 68%)"
+      >
+         <BoxPageSectionWithBackgroundImage>
+          <img
+            src="/assets/images/carlos-gracie.png"
+            alt="apple-watch-1"
+            width="350"
+          />
+          <BoxTransparent>
+            <Titulo>Carlos Gracie Jr.</Titulo>
+            <TextContent>
+              “Minha vida é dedicada ao Jiu-Jitsu.
+              <br />
+              Meu objetivo sempre foi construir uma irmandade para
+              <br />
+              liderar a expansão do Jiu-Jitsu, respeitando sempre
+              <br />
+              a essência da nossa arte. Meus alunos são uma extensão da
+              <br />
+              minha família.”
+            </TextContent>
+          </BoxTransparent>
+        </BoxPageSectionWithBackgroundImage>
+        </PageSessionGradientBackground>
+
+      {/* <PageSession height="400px" backgroundColor="rgb(80,122,176)">
         <BoxPageSectionWithBackgroundImage>
           <img
             src="/assets/images/carlos-gracie.png"
@@ -100,7 +130,7 @@ function IndexPage() {
             </TextContent>
           </BoxTransparent>
         </BoxPageSectionWithBackgroundImage>
-      </PageSession>
+      </PageSession> */}
 
       <PageSession height="500px">
         <BoxPageSection>

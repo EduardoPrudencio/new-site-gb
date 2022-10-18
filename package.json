@@ -2,7 +2,7 @@
   "name": "bonik",
   "version": "1.0.0",
   "scripts": {
-    "dev": "HTTPS=false next",
+    "dev": "next",
     "build": "next build",
     "build-static-page": "next build && next export",
     "start": "HTTPS=false next start -p $PORT",
