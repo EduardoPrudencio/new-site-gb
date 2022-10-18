@@ -142,7 +142,9 @@ function Perfil() {
                   gps
                 </Icon>
               </IconBox>
-              <SmallLabel>{student?.address?.cidade} - {student?.address?.uf}</SmallLabel>
+              <SmallLabel>
+                {student?.address?.cidade} - {student?.address?.uf}
+              </SmallLabel>
             </Line>
             <Line>
               <IconBox>

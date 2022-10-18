@@ -16,27 +16,26 @@ export type User = {
 };
 
 export type Address = {
-  endereco: string,
-  numero: string,  
-  complemento: string,
-  cidade: string,
-  bairro: string, 
-  uf: string,    
-  cep: string 
-}
+  endereco: string;
+  numero: string;
+  complemento: string;
+  cidade: string;
+  bairro: string;
+  uf: string;
+  cep: string;
+};
 
 export type Student = {
-  name: string,
-  lastName: string,
-  userName: string,
-  phoneNumber: string,
-  birthDate: string,
-  registrationDate: string,
-  email: string,
-  password: string,
+  name: string;
+  lastName: string;
+  userName: string;
+  phoneNumber: string;
+  birthDate: string;
+  registrationDate: string;
+  email: string;
+  password: string;
   address: Address;
-  
-}
+};
 
 export type AuthContextType = {
   isAuthenticated: boolean;

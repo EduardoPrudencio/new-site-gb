@@ -85,7 +85,7 @@ function IndexPage() {
         backgroundColor="rgb(80,122,176)"
         backgroundRadial="radial-gradient(circle, rgba(80,122,176,1) 0%, rgba(33,58,91,1) 68%)"
       >
-         <BoxPageSectionWithBackgroundImage>
+        <BoxPageSectionWithBackgroundImage>
           <img
             src="/assets/images/carlos-gracie.png"
             alt="apple-watch-1"
@@ -106,7 +106,7 @@ function IndexPage() {
             </TextContent>
           </BoxTransparent>
         </BoxPageSectionWithBackgroundImage>
-        </PageSessionGradientBackground>
+      </PageSessionGradientBackground>
 
       {/* <PageSession height="400px" backgroundColor="rgb(80,122,176)">
         <BoxPageSectionWithBackgroundImage>
