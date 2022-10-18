@@ -191,7 +191,11 @@ function IndexPage() {
         </BoxPageSection>
       </PageSession>
 
-      <PageSession height="500px" backgroundColor="#7f0b0d">
+      <PageSessionGradientBackground
+        height={400}
+        backgroundColor="rgb(166,18,24)"
+        backgroundRadial="radial-gradient(circle, rgba(166,18,24,1) 0%, rgba(127,11,13,1) 89%)"
+      >
         <H5 color="#fff" fontSize="22px">
           Como chegar
         </H5>
@@ -202,7 +206,20 @@ function IndexPage() {
           height="300"
           loading="lazy"
         />
-      </PageSession>
+      </PageSessionGradientBackground>
+
+      {/* <PageSession height="500px" backgroundColor="#7f0b0d">
+        <H5 color="#fff" fontSize="22px">
+          Como chegar
+        </H5>
+        <iframe
+          title="Endereço da academia"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4219.53868200185!2d-41.32479536376152!3d-21.7691521184006!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfb1f51e72dc0c5db!2sGracie%20Barra%20Campos%20dos%20Goytacazes!5e0!3m2!1sen!2sbr!4v1654004093875!5m2!1sen!2sbr"
+          width="350"
+          height="300"
+          loading="lazy"
+        />
+      </PageSession> */}
     </main>
   );
 }
