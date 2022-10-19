@@ -1,7 +1,20 @@
 import * as React from "react";
 
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
+import styled from "styled-components";
+
+import Box from "./Box";
+
+const ImageBox = styled.div`
+  transition: transform 0.2s;
+  width: 164px;
+  margin: 0 auto;
+
+  &:hover {
+    transform: scale(
+      3.5
+    ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+`;
 
 type ImageProps = {
   img: string;
@@ -14,18 +27,21 @@ type ImageListProps = {
 
 const StandardImageList: React.FC<ImageListProps> = ({ list }) => {
   return (
-    <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+    <Box
+      display="flex"
+      flexDirection="row"
+      flexWrap="wrap"
+      alignItems="center"
+      justifyContent="center"
+      width="500px"
+      height="400px"
+    >
       {list.map((item) => (
-        <ImageListItem key={item.img}>
-          <img
-            src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-            srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-            alt={item.title}
-            loading="lazy"
-          />
-        </ImageListItem>
+        <ImageBox key={item.img}>
+          <img src={item.img} alt={item.title} width="200px" />
+        </ImageBox>
       ))}
-    </ImageList>
+    </Box>
   );
 };
 

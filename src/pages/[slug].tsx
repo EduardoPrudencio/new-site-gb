@@ -110,30 +110,6 @@ function IndexPage() {
         </BoxPageSectionWithBackgroundImage>
       </PageSessionGradientBackground>
 
-      {/* <PageSession height="400px" backgroundColor="rgb(80,122,176)">
-        <BoxPageSectionWithBackgroundImage>
-          <img
-            src="/assets/images/carlos-gracie.png"
-            alt="apple-watch-1"
-            width="350"
-          />
-          <BoxTransparent>
-            <Titulo>Carlos Gracie Jr.</Titulo>
-            <TextContent>
-              “Minha vida é dedicada ao Jiu-Jitsu.
-              <br />
-              Meu objetivo sempre foi construir uma irmandade para
-              <br />
-              liderar a expansão do Jiu-Jitsu, respeitando sempre
-              <br />
-              a essência da nossa arte. Meus alunos são uma extensão da
-              <br />
-              minha família.”
-            </TextContent>
-          </BoxTransparent>
-        </BoxPageSectionWithBackgroundImage>
-      </PageSession> */}
-
       <PageSession height="500px">
         <BoxPageSection>
           <BoxTransparent>
