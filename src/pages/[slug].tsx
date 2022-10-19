@@ -196,7 +196,7 @@ function IndexPage() {
       <PageSessionGradientBackground
         height={650}
         backgroundColor="rgb(166,18,24)"
-        backgroundRadial="radial-gradient(circle, rgba(166,18,24,1) 0%, rgba(127,11,13,1) 89%)"
+        backgroundRadial="radial-gradient(circle, rgba(210,51,58,1) 0%, rgba(149,15,18,1) 68%)"
       >
         <Box
           display="flex"
