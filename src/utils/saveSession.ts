@@ -9,12 +9,8 @@ const ondeDay = 60 * 60 * 24;
 const oneHour = 60 * 60;
 const oneMinute = 60;
 
-
-export function saveSession({
-  token,
-  refreshToken,
-}) {
-  const ttl = 5 * oneMinute;
+export function saveSession({ token, refreshToken }) {
+  const ttl = 5 * oneHour;
 
   setCookies(authCookieKeys.token, token, {
     maxAge: ttl,
