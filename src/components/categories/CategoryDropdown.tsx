@@ -31,6 +31,7 @@ const CategoryDropdown: React.FC<CategoryDropdownProps> = ({
     <StyledCategoryDropdown open={open} position={position}>
       {Navigations().map((item) => {
         const MegaMenu = megaMenu[item.menuComponent];
+        if ( !item.show ) return
 
         return (
           <CategoryMenuItem

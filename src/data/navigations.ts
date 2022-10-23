@@ -13,18 +13,21 @@ const Navigations = () => {
       title: "Home",
       href: typeof gym !== "undefined" ? `\\${gym}` : "\\",
       menuComponent: "MegaMenu1",
+      show: true,
     },
     {
       icon: "",
       title: "Perfil",
       href: "/account/perfil",
       menuComponent: "MegaMenu1",
+      show: true,
     },
     {
       icon: "",
       title: "Novo Aluno",
       href: "/admin/add-user",
       menuComponent: "MegaMenu1",
+      show: user.isAdministrator,
     },
     ,
     {
@@ -32,11 +35,10 @@ const Navigations = () => {
       title: "Alunos",
       href: "/admin/users",
       menuComponent: "MegaMenu1",
+      show: user.isAdministrator,
     },
   ];
   
-  if(!isAuthenticated || !user.isAdministrator) { delete nav[2]; delete nav[3]; return nav}
-
   return nav
 }
 

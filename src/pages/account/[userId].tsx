@@ -190,16 +190,16 @@ function Perfil() {
               <ContentBottom>
                 <Line>
                   <LabelTitle>Endereço:</LabelTitle>
-                  <SmallLabel>{student?.address.endereco}</SmallLabel>
+                  <SmallLabel>{student?.address?.endereco}</SmallLabel>
                   <LabelTitle>Número:</LabelTitle>
-                  <SmallLabel>{student?.address.numero}</SmallLabel>
+                  <SmallLabel>{student?.address?.numero}</SmallLabel>
                 </Line>
 
                 <Line>
                   <LabelTitle>Cep:</LabelTitle>
-                  <SmallLabel>{student?.address.cep}</SmallLabel>
+                  <SmallLabel>{student?.address?.cep}</SmallLabel>
                   <LabelTitle>Bairro:</LabelTitle>
-                  <SmallLabel>{student?.address.bairro}</SmallLabel>
+                  <SmallLabel>{student?.address?.bairro}</SmallLabel>
                 </Line>
                 <Line>
                   <LabelTitle>Telefone:</LabelTitle>

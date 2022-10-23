@@ -11,6 +11,8 @@ import styled from "styled-components";
 
 import { AuthCotext } from "@context/AuthContext";
 
+import NivelService from "../../services/NivelService";
+
 const ContentTop = styled.div`
   display: flex;
   flex-direction: column;
@@ -140,10 +142,7 @@ function Perfil() {
                 {moment(user?.birthDate).format("DD/MM/YYYY")}
               </SmallLabel>
               <SmallLabel>Graduação:</SmallLabel>
-              <Image
-                src="/assets/images/faixas/preta/preta_ponta_tres.png"
-                height="20px"
-              />
+              <Image src={NivelService("1")} height="20px" />
             </Line>
             <Line>
               <IconBox>

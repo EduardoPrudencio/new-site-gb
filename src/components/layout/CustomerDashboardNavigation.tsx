@@ -17,8 +17,38 @@ import {
 } from "./DashboardStyle";
 
 const CustomerDashboardNavigation = () => {
+  const {user, logOut } = useContext(AuthCotext);
+
+  const linkList = [
+    {
+      title: "",
+      list: [
+        {
+          href: "/account/profile",
+          title: "Perfil",
+          iconName: "user",
+          count: 0,
+          show: user.isAdministrator,
+        },
+        {
+          href: "/account/newuser",
+          title: "Cadastrar Aluno",
+          iconName: "add-user",
+          count: 0,
+          show: user.isAdministrator,
+        },
+        {
+          href: "/account/payments",
+          title: "Pagamentos",
+          iconName: "credit-card",
+          count: 0,
+          show: user.isAdministrator,
+        },
+      ],
+    },
+  ];
+
   const { pathname } = useRouter();
-  const { logOut } = useContext(AuthCotext);
   const router = useRouter();
 
   return (
@@ -41,6 +71,7 @@ const CustomerDashboardNavigation = () => {
                 {item.title}
               </Typography>
               {item.list.map((item) => (
+                item.show && (
                 <StyledDashboardNav
                   isCurrentPath={pathname.includes(item.href)}
                   href={item.href}
@@ -62,6 +93,7 @@ const CustomerDashboardNavigation = () => {
                   </FlexBox>
                   {item.count > 0 && <span>{item.count}</span>}
                 </StyledDashboardNav>
+                )
               ))}
             </Fragment>
           ))}
@@ -89,31 +121,5 @@ const CustomerDashboardNavigation = () => {
     </DashboardNavigationWrapper>
   );
 };
-
-const linkList = [
-  {
-    title: "",
-    list: [
-      {
-        href: "/account/profile",
-        title: "Perfil",
-        iconName: "user",
-        count: 0,
-      },
-      {
-        href: "/account/newuser",
-        title: "Cadastrar Aluno",
-        iconName: "add-user",
-        count: 0,
-      },
-      {
-        href: "/account/payments",
-        title: "Pagamentos",
-        iconName: "credit-card",
-        count: 0,
-      },
-    ],
-  },
-];
 
 export default CustomerDashboardNavigation;
