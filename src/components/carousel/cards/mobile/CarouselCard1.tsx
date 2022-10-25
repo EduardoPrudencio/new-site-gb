@@ -25,11 +25,11 @@ const SubTitle = styled.label`
 const CarouselCard1: React.FC = () => {
   return (
     <Container>
-      <Title>Venha fazer parte desse time</Title>
+      <Title>Venha fazer parte</Title>
+      <Title>desse time</Title>
       <br />
-      <SubTitle>
-        Sabemos que nossas diferenças é o que nos torna iguais.
-      </SubTitle>
+      <SubTitle>Sabemos que nossas diferenças</SubTitle>
+      <SubTitle>é o que nos torna iguais.</SubTitle>
 
       {/* <div className="image-holder">
         <img src="/assets/images/gb-kids.png" alt="apple-watch-1" />

@@ -25,7 +25,8 @@ const SubTitle = styled.label`
 const CarouselCard1: React.FC = () => {
   return (
     <Container>
-      <Title>Conquiste vitórias além do tatame</Title>
+      <Title>Conquiste vitórias</Title>
+      <Title>além do tatame</Title>
       <SubTitle>
         Nossos ensinamentos não são limitados ao tatame, se aplicam na vida.
       </SubTitle>
