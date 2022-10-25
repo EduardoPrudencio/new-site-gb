@@ -1,3 +1,4 @@
+import NextImage from "next/image";
 import { useRouter } from "next/router";
 
 import Box from "@component/Box";
@@ -7,6 +8,7 @@ import PageSessionGradientBackground from "@component/PageSessionGradientBackgro
 import Section1 from "@component/Section1";
 import BasicTabs from "@component/Tabs";
 import { H5 } from "@component/Typography";
+import useWindowSize from "@hook/useWindowSize";
 import { setCookies } from "cookies-next";
 import styled from "styled-components";
 
@@ -67,6 +69,7 @@ function IndexPage() {
   const { query } = useRouter();
   const { slug } = query;
   const gym = gyns.find((g) => g.slug === slug);
+  const [width] = useWindowSize();
 
   if (typeof gym !== "undefined") {
     setCookies("gym.name", `${slug}`, {
@@ -82,111 +85,121 @@ function IndexPage() {
         <Section1 />
       )}
 
-      <PageSessionGradientBackground
-        height={400}
-        backgroundColor="rgb(80,122,176)"
-        backgroundRadial="radial-gradient(circle, rgba(80,122,176,1) 0%, rgba(33,58,91,1) 68%)"
-      >
-        <BoxPageSectionWithBackgroundImage>
-          <img
-            src="/assets/images/carlos-gracie.png"
-            alt="apple-watch-1"
-            width="350"
-          />
-          <BoxTransparent>
-            <Titulo>Carlos Gracie Jr.</Titulo>
-            <TextContent>
-              “Minha vida é dedicada ao Jiu-Jitsu.
-              <br />
-              Meu objetivo sempre foi construir uma irmandade para
-              <br />
-              liderar a expansão do Jiu-Jitsu, respeitando sempre
-              <br />
-              a essência da nossa arte. Meus alunos são uma extensão da
-              <br />
-              minha família.”
-            </TextContent>
-          </BoxTransparent>
-        </BoxPageSectionWithBackgroundImage>
-      </PageSessionGradientBackground>
+      {width > 570 && (
+        <>
+          <PageSessionGradientBackground
+            height={400}
+            backgroundColor="rgb(80,122,176)"
+            backgroundRadial="radial-gradient(circle, rgba(80,122,176,1) 0%, rgba(33,58,91,1) 68%)"
+          >
+            <BoxPageSectionWithBackgroundImage>
+              <NextImage
+                src="/assets/images/carlos-gracie.png"
+                alt="Carlos Gracie"
+                height="355px"
+                width="370px"
+                objectFit="cover"
+              />
+              <BoxTransparent>
+                <Titulo>Carlos Gracie Jr.</Titulo>
+                <TextContent>
+                  “Minha vida é dedicada ao Jiu-Jitsu.
+                  <br />
+                  Meu objetivo sempre foi construir uma irmandade para
+                  <br />
+                  liderar a expansão do Jiu-Jitsu, respeitando sempre
+                  <br />
+                  a essência da nossa arte. Meus alunos são uma extensão da
+                  <br />
+                  minha família.”
+                </TextContent>
+              </BoxTransparent>
+            </BoxPageSectionWithBackgroundImage>
+          </PageSessionGradientBackground>
 
-      <PageSession height="500px">
-        <BoxPageSection>
-          <BoxTransparent>
-            <TituloAzul>Escola Gracie Barra</TituloAzul>
-            <TextContentGray>
-              Gracie Barra é uma comunidade mundial de instrutores,
-              <br />
-              estudantes e atletas do Jiu-Jitsu. Nossa organização
-              <br />
-              é constituída por mais de 700 escolas em
-              <br />
-              seis continentes.
-            </TextContentGray>
-          </BoxTransparent>
+          <PageSession height="500px">
+            <BoxPageSection>
+              <BoxTransparent>
+                <TituloAzul>Escola Gracie Barra</TituloAzul>
+                <TextContentGray>
+                  Gracie Barra é uma comunidade mundial de instrutores,
+                  <br />
+                  estudantes e atletas do Jiu-Jitsu. Nossa organização
+                  <br />
+                  é constituída por mais de 700 escolas em
+                  <br />
+                  seis continentes.
+                </TextContentGray>
+              </BoxTransparent>
 
-          <img
-            src="assets/images/jiu-jitsu-img-01.png"
-            alt="apple-watch-1"
-            width="450"
-          />
-        </BoxPageSection>
-      </PageSession>
+              <NextImage
+                src="/assets/images/jiu-jitsu-img-01.png"
+                alt="Carlos Gracie"
+                height="400px"
+                width="450px"
+                objectFit="cover"
+              />
+            </BoxPageSection>
+          </PageSession>
 
-      <PageSession height="550px">
-        <BoxPageSection>
-          <img
-            src="assets/images/jiu-jitsu-img-02.png"
-            alt="apple-watch-1"
-            width="500"
-          />
-          <BoxTransparent>
-            <TituloAzul>Nosso Programa</TituloAzul>
-            <TextContentGray>
-              A estrutura das aulas é a marca registrada
-              <br />
-              de todas as escolas Gracie Barra.
-              <br />
-              As aulas começam na hora marcada e seguem uma
-              <br />
-              estrutura curricular padronizada. Como aluno,
-              <br />
-              você terá uma clara concepção do que é
-              <br />
-              esperado para você, e saberá o que esperar
-              <br />
-              dos professores e parceiros de treino.
-              <br />
-              A consistência dessa estrutura combinada
-              <br />
-              com a criatividade e inovação de nossos
-              <br />
-              dedicados professores misturam-se perfeitamente
-              <br />
-              para facilitar o seu progresso.
-            </TextContentGray>
-          </BoxTransparent>
-        </BoxPageSection>
-      </PageSession>
+          <PageSession height="550px">
+            <BoxPageSection>
+              <NextImage
+                src="/assets/images/jiu-jitsu-img-02.png"
+                alt="Carlos Gracie"
+                height="400px"
+                width="450px"
+                objectFit="cover"
+              />
+              <BoxTransparent>
+                <TituloAzul>Nosso Programa</TituloAzul>
+                <TextContentGray>
+                  A estrutura das aulas é a marca registrada
+                  <br />
+                  de todas as escolas Gracie Barra.
+                  <br />
+                  As aulas começam na hora marcada e seguem uma
+                  <br />
+                  estrutura curricular padronizada. Como aluno,
+                  <br />
+                  você terá uma clara concepção do que é
+                  <br />
+                  esperado para você, e saberá o que esperar
+                  <br />
+                  dos professores e parceiros de treino.
+                  <br />
+                  A consistência dessa estrutura combinada
+                  <br />
+                  com a criatividade e inovação de nossos
+                  <br />
+                  dedicados professores misturam-se perfeitamente
+                  <br />
+                  para facilitar o seu progresso.
+                </TextContentGray>
+              </BoxTransparent>
+            </BoxPageSection>
+          </PageSession>
 
-      <PageSessionGradientBackground
-        height={650}
-        backgroundColor="rgb(166,18,24)"
-        backgroundRadial="radial-gradient(circle, rgba(210,51,58,1) 0%, rgba(149,15,18,1) 68%)"
-      >
-        <Box
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <H5 color="#fff" fontSize="22px">
-            Nossas unidades
-          </H5>
+          <PageSessionGradientBackground
+            height={650}
+            backgroundColor="rgb(166,18,24)"
+            backgroundRadial="radial-gradient(circle, rgba(210,51,58,1) 0%, rgba(149,15,18,1) 68%)"
+          >
+            <Box
+              display="flex"
+              flexDirection="column"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <H5 color="#fff" fontSize="22px">
+                Nossas unidades
+              </H5>
 
-          <BasicTabs />
-        </Box>
-      </PageSessionGradientBackground>
+              <BasicTabs />
+            </Box>
+          </PageSessionGradientBackground>
+        </>
+      )}
     </main>
   );
 }
