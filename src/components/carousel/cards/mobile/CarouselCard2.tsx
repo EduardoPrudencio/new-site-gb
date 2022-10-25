@@ -27,9 +27,9 @@ const CarouselCard1: React.FC = () => {
     <Container>
       <Title>Conquiste vitórias</Title>
       <Title>além do tatame</Title>
-      <SubTitle>
-        Nossos ensinamentos não são limitados ao tatame, se aplicam na vida.
-      </SubTitle>
+      <SubTitle>Nossos ensinamentos não são</SubTitle>
+      <SubTitle>limitados ao tatame,</SubTitle>
+      <SubTitle>se aplicam na vida.</SubTitle>
       {/* <div className="image-holder">
         <img
           src="/assets/images/gb-vencedor.png"
