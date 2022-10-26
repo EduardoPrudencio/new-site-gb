@@ -34,6 +34,13 @@ const TituloAzul = styled(Titulo)`
   color: #213a5b;
 `;
 
+const TituloAzulMobile = styled(Titulo)`
+  color: #213a5b;
+  font-weight: bold;
+  font-size: 21px;
+  margin-bottom: 10px;
+`;
+
 const TextContent = styled.p`
   color: #cecece;
   font-size: 19px;
@@ -204,44 +211,130 @@ function IndexPage() {
           </PageSessionGradientBackground>
         </>
       ) : (
-        <PageSessionGradientBackground
-          height={500}
-          backgroundColor="rgb(80,122,176)"
-          backgroundRadial="radial-gradient(circle, rgba(80,122,176,1) 0%, rgba(33,58,91,1) 68%)"
-        >
-          <Box
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
+        <>
+          <PageSessionGradientBackground
+            height={500}
+            backgroundColor="rgb(80,122,176)"
+            backgroundRadial="radial-gradient(circle, rgba(80,122,176,1) 0%, rgba(33,58,91,1) 68%)"
           >
-            <Titulo>Carlos Gracie Jr.</Titulo>
-            <TextContentResponsive>
-              “Minha vida é dedicada ao Jiu-Jitsu.
-            </TextContentResponsive>
-            <TextContentResponsive>
-              Meu objetivo sempre foi construir uma irmandade para
-            </TextContentResponsive>
-            <TextContentResponsive>
-              liderar a expansão do Jiu-Jitsu, respeitando sempre
-            </TextContentResponsive>
-            <TextContentResponsive>
-              a essência da nossa arte.
-            </TextContentResponsive>
-            <TextContentResponsive>
-              Meus alunos são uma extensão da
-            </TextContentResponsive>
-            <TextContentResponsive>minha família.”</TextContentResponsive>
-            <br />
-            <NextImage
-              src="/assets/images/carlos-gracie.png"
-              alt="Carlos Gracie"
-              height="270px"
-              width="280px"
-              objectFit="cover"
-            />
-          </Box>
-        </PageSessionGradientBackground>
+            <Box
+              display="flex"
+              flexDirection="column"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Titulo>Carlos Gracie Jr.</Titulo>
+              <TextContentResponsive>
+                “Minha vida é dedicada ao Jiu-Jitsu.
+              </TextContentResponsive>
+              <TextContentResponsive>
+                Meu objetivo sempre foi construir uma irmandade para
+              </TextContentResponsive>
+              <TextContentResponsive>
+                liderar a expansão do Jiu-Jitsu, respeitando sempre
+              </TextContentResponsive>
+              <TextContentResponsive>
+                a essência da nossa arte.
+              </TextContentResponsive>
+              <TextContentResponsive>
+                Meus alunos são uma extensão da
+              </TextContentResponsive>
+              <TextContentResponsive>minha família.”</TextContentResponsive>
+              <br />
+              <NextImage
+                src="/assets/images/carlos-gracie.png"
+                alt="Carlos Gracie"
+                height="270px"
+                width="280px"
+                objectFit="cover"
+              />
+            </Box>
+          </PageSessionGradientBackground>
+
+          <PageSessionGradientBackground height={500} backgroundColor="#ffffff">
+            <Box
+              display="flex"
+              flexDirection="column"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <TituloAzulMobile>Escola Gracie Barra</TituloAzulMobile>
+              <TextContentResponsive>
+                Gracie Barra é uma comunidade mundial de instrutores,
+              </TextContentResponsive>
+              <TextContentResponsive>
+                estudantes e atletas do Jiu-Jitsu. Nossa organização
+              </TextContentResponsive>
+              <TextContentResponsive>
+                é constituída por mais de 700 escolas em
+              </TextContentResponsive>
+              <TextContentResponsive>seis continentes.</TextContentResponsive>
+
+              <br />
+              <NextImage
+                src="/assets/images/jiu-jitsu-img-01.png"
+                alt="Carlos Gracie"
+                height="270px"
+                width="280px"
+                objectFit="cover"
+              />
+            </Box>
+          </PageSessionGradientBackground>
+
+          <PageSessionGradientBackground height={500} backgroundColor="#ffffff">
+            <Box
+              display="flex"
+              flexDirection="column"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <TituloAzulMobile>Nosso Programa</TituloAzulMobile>
+              <TextContentResponsive>
+                A estrutura das aulas é a marca registrada
+              </TextContentResponsive>
+              <TextContentResponsive>
+                de todas as escolas Gracie Barra.
+              </TextContentResponsive>
+              <TextContentResponsive>
+                As aulas começam na hora marcada e seguem uma
+              </TextContentResponsive>
+              <TextContentResponsive>
+                estrutura curricular padronizada. Como aluno,
+              </TextContentResponsive>
+
+              <TextContentResponsive>
+                você terá uma clara concepção do que é
+              </TextContentResponsive>
+              <TextContentResponsive>
+                esperado para você, e saberá o que esperar
+              </TextContentResponsive>
+              <TextContentResponsive>
+                dos professores e parceiros de treino.
+              </TextContentResponsive>
+              <TextContentResponsive>
+                A consistência dessa estrutura combinada
+              </TextContentResponsive>
+              <TextContentResponsive>
+                com a criatividade e inovação de nossos
+              </TextContentResponsive>
+              <TextContentResponsive>
+                dedicados professores misturam-se perfeitamente
+              </TextContentResponsive>
+              <TextContentResponsive>
+                para facilitar o seu progresso.
+              </TextContentResponsive>
+
+              <br />
+              <NextImage
+                src="/assets/images/jiu-jitsu-img-02.png"
+                alt="Carlos Gracie"
+                height="270px"
+                width="280px"
+                objectFit="cover"
+              />
+            </Box>
+          </PageSessionGradientBackground>
+        </>
       )}
     </main>
   );
