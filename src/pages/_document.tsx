@@ -67,18 +67,18 @@ export default class extends Document {
           />
           <meta
             name="description"
-            content="Acesse os maiores jornais do Brasil e notícias em tempo real. Conheça o Bebanca."
+            content="Conheça o maior grupo de Jiu-jitsu do mundo."
           />
 
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="http://www.bebanca.app/" />
+          <meta property="og:url" content="https://www.graciebarrasystem.com.br/campos-dos-goytacazes" />
           <meta
             property="og:title"
             content="Gracie Barra"
           />
           <meta
             property="og:description"
-            content="Acesse os maiores jornais do Brasil e notícias em tempo real. Conheça o Bebanca."
+            content="Conheça o maior grupo de Jiu-jitsu do mundo."
           />
           <meta property="og:image" content="" />
 
@@ -86,14 +86,14 @@ export default class extends Document {
             property="twitter:card"
             content="/assets/images/social-banner.png"
           />
-          <meta property="twitter:url" content="http://www.bebanca.app/" />
+          <meta property="twitter:url" content="https://www.graciebarrasystem.com.br/campos-dos-goytacazes" />
           <meta
             property="twitter:title"
             content="Gracie Barra"
           />
           <meta
             property="twitter:description"
-            content="Acesse os maiores jornais do Brasil e notícias em tempo real. Conheça o Bebanca."
+            content="Conheça o maior grupo de Jiu-jitsu do mundo."
           />
           <meta
             property="twitter:image"
