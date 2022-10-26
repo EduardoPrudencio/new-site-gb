@@ -29,14 +29,32 @@ const Footer: React.FC = () => {
           justifyContent="space-between"
           width="1200px"
         >
-        
-        <NextImage
-          src="/assets/images/gb-logo-pb.png"
-          alt="logo gracie barra"
-          height={isMobile ? "80px" : "110px"}
-          width={isMobile ? "80px" : "110px"}
-          objectFit="cover"
-        />
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="start"
+            justifyContent="start"
+            pt={!isMobile ? "20px" : "0"}
+          >
+            <NextImage
+              src="/assets/images/gb-logo-pb.png"
+              alt="logo gracie barra"
+              height={isMobile ? "80px" : "110px"}
+              width={isMobile ? "80px" : "110px"}
+              objectFit="cover"
+            />
+            {!isMobile && 
+            <>
+              <Typography color="#ffffff" mt="20px">Contatos</Typography>
+              <Typography color="#ffffff" fontSize="12px">
+                tel: (22)99763-5120
+              </Typography>
+              <Typography color="#ffffff" fontSize="12px">
+                e-mail: gbricardorocha@gmail.com
+              </Typography>
+            </>
+            }
+          </Box>
 
         <Typography py="0.3rem" color="gray.500">
           Copyright © 2022.

@@ -7,7 +7,7 @@ import { PageSession } from "@component/PageSession";
 import PageSessionGradientBackground from "@component/PageSessionGradientBackground";
 import Section1 from "@component/Section1";
 import BasicTabs from "@component/Tabs";
-import { H5 } from "@component/Typography";
+import Typography, { H5 } from "@component/Typography";
 import useWindowSize from "@hook/useWindowSize";
 import { setCookies } from "cookies-next";
 import styled from "styled-components";
@@ -338,6 +338,27 @@ function IndexPage() {
                 width="280px"
                 objectFit="cover"
               />
+            </Box>
+          </PageSessionGradientBackground>
+
+          <PageSessionGradientBackground
+            backgroundColor="rgb(166,18,24)"
+            backgroundRadial="radial-gradient(circle, rgba(210,51,58,1) 0%, rgba(149,15,18,1) 68%)"
+            height={70}
+          >
+            <Box
+              display="flex"
+              flexDirection="column"
+              alignItems="start"
+              justifyContent="start"
+            >
+              <Typography color="#ffffff">Contatos</Typography>
+              <Typography color="#ffffff" fontSize="12px">
+                tel: (22)99763-5120
+              </Typography>
+              <Typography color="#ffffff" fontSize="12px">
+                e-mail: gbricardorocha@gmail.com
+              </Typography>
             </Box>
           </PageSessionGradientBackground>
         </>
