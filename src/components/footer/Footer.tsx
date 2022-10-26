@@ -1,11 +1,16 @@
 import React from "react";
-import Image from "@component/Image";
+import NextImage from "next/image";
 import Box from "../Box";
 import Typography from "../Typography";
 import FlexBox from "@component/FlexBox";
 import Icon from "@component/icon/Icon";
+import useWindowSize from "@hook/useWindowSize";
 
 const Footer: React.FC = () => {
+
+  const [width] = useWindowSize();
+  const isMobile = width < 570;
+
   return (
     <footer>
       <Box
@@ -14,7 +19,8 @@ const Footer: React.FC = () => {
         alignItems="center"
         justifyContent="center"
         bg="#333333"
-        paddingTop="20px"
+        paddingTop="5px"
+        paddingBottom="70px"
       >
         <Box
           display="flex"
@@ -23,18 +29,20 @@ const Footer: React.FC = () => {
           justifyContent="space-between"
           width="1200px"
         >
-        <Image
-          mb="1.25rem"
+        
+        <NextImage
           src="/assets/images/gb-logo-pb.png"
-          height="130px"
-          alt="logo"
+          alt="logo gracie barra"
+          height={isMobile ? "80px" : "110px"}
+          width={isMobile ? "80px" : "110px"}
+          objectFit="cover"
         />
 
         <Typography py="0.3rem" color="gray.500">
           Copyright © 2022.
         </Typography>
 
-        <FlexBox className="flex" mx="-10px">
+        <FlexBox className="flex">
           {iconList.map((item) => (
             <a
               href={item.url}
@@ -56,48 +64,7 @@ const Footer: React.FC = () => {
             </a>
           ))}
         </FlexBox>
-
         </Box>
-        {/* <Container color="white">
-          
-          <Box py="5rem" overflow="hidden">
-            <Grid container spacing={0}>
-              <Grid item lg={4} md={6} sm={6} xs={12}>
-                  <Image
-                    mb="1.25rem"
-                    src="/assets/images/gb-logo-pb.png"
-                    height="130px"
-                    alt="logo"
-                  />
-              </Grid>
-
-              <Grid item lg={2.5} md={6} sm={6} xs={12}>
-                <Typography
-                  fontSize="25px"
-                  fontWeight="600"
-                  mb="1.25rem"
-                  lineHeight="1"
-                >
-                  Gracie Barra
-                </Typography>
-                <Typography py="0.3rem" color="gray.500">
-                  INOVAIDEIA CONSULTORIA EM TECNOLOGIA LTDA.
-                </Typography>
-
-                <Typography py="0.3rem" color="gray.500">
-                  Copyright © 2022.
-                </Typography>
-
-                <Typography py="0.3rem" mb="1rem" color="gray.500">
-                  Todos os direitos reservados.
-                </Typography>
-
-
-
-              </Grid>
-            </Grid>
-          </Box>
-        </Container> */}
       </Box>
     </footer>
   );

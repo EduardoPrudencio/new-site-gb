@@ -48,14 +48,14 @@ const MobileNavigationBar: React.FC = () => {
 const gym = getCookie("gym.name");
 const list = [
   {
-    title: "Home",
+    title: "Início",
     icon: "home",
     href: typeof gym !== "undefined" ? `\${gym.name}` : "\\",
   },
   {
     title: "Horários",
     icon: "schedule",
-    href: "/horarios",
+    href: "/campos-dos-goytacazes/horarios",
   },
   {
     title: "Conta",
