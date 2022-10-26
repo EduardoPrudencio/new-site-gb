@@ -38,6 +38,10 @@ const TextContent = styled.p`
   color: #cecece;
   font-size: 19px;
 `;
+const TextContentResponsive = styled.label`
+  color: #cecece;
+  font-size: 14px;
+`;
 
 const TextContentGray = styled(TextContent)`
   color: #494949;
@@ -85,7 +89,7 @@ function IndexPage() {
         <Section1 />
       )}
 
-      {width > 570 && (
+      {width > 570 ? (
         <>
           <PageSessionGradientBackground
             height={400}
@@ -199,6 +203,45 @@ function IndexPage() {
             </Box>
           </PageSessionGradientBackground>
         </>
+      ) : (
+        <PageSessionGradientBackground
+          height={500}
+          backgroundColor="rgb(80,122,176)"
+          backgroundRadial="radial-gradient(circle, rgba(80,122,176,1) 0%, rgba(33,58,91,1) 68%)"
+        >
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Titulo>Carlos Gracie Jr.</Titulo>
+            <TextContentResponsive>
+              “Minha vida é dedicada ao Jiu-Jitsu.
+            </TextContentResponsive>
+            <TextContentResponsive>
+              Meu objetivo sempre foi construir uma irmandade para
+            </TextContentResponsive>
+            <TextContentResponsive>
+              liderar a expansão do Jiu-Jitsu, respeitando sempre
+            </TextContentResponsive>
+            <TextContentResponsive>
+              a essência da nossa arte.
+            </TextContentResponsive>
+            <TextContentResponsive>
+              Meus alunos são uma extensão da
+            </TextContentResponsive>
+            <TextContentResponsive>minha família.”</TextContentResponsive>
+            <br />
+            <NextImage
+              src="/assets/images/carlos-gracie.png"
+              alt="Carlos Gracie"
+              height="270px"
+              width="280px"
+              objectFit="cover"
+            />
+          </Box>
+        </PageSessionGradientBackground>
       )}
     </main>
   );
