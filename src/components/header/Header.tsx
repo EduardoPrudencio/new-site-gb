@@ -13,6 +13,7 @@ import Typography from "../Typography";
 import StyledHeader from "./HeaderStyle";
 import Navbar from "@component/navbar/Navbar";
 import Box from "@component/Box";
+import useWindowSize from "@hook/useWindowSize";
 
 type HeaderProps = {
   isFixed?: boolean;
@@ -22,6 +23,8 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = ({ className, navListOpen }) => {
 const { user, isAuthenticated } = useContext(AuthCotext);
+const [width] = useWindowSize();
+const isMobile = width < 570;
 
   return (
     <StyledHeader className={className}>
@@ -32,17 +35,16 @@ const { user, isAuthenticated } = useContext(AuthCotext);
         height="100%"
         maxWidth="1222px"
       >
-          
           <Box
             display="flex"
             flexDirection="row"
             alignItems="center"
             justifyContent="space-between"
-            mt="20px"
+            mt="30px"
             width="230px"
           >
             <Image src="/assets/images/gb-logo.svg" alt="logo" height="100px" />
-            <Navbar />      
+            {!isMobile && <Navbar /> }
           </Box>
           {isAuthenticated ? (
             <Categories open={navListOpen}>
@@ -67,11 +69,14 @@ const { user, isAuthenticated } = useContext(AuthCotext);
           </Categories>
 
           ) : (
-            <Link href="/signin">
-              <a>
-                Login
-              </a>
-            </Link>
+
+            <Box mt="25px">
+              <Link href="/signin">
+                <a>
+                  Login
+                </a>
+              </Link>
+            </Box>
           )}
       </Container>
     </StyledHeader>

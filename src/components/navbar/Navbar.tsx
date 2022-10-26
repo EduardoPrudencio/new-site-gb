@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import Badge from "@component/badge/Badge";
 import Box from "@component/Box";
@@ -10,7 +10,6 @@ import FlexBox from "../FlexBox";
 import Icon from "../icon/Icon";
 import NavLink from "../nav-link/NavLink";
 import { Span } from "../Typography";
-import { AuthCotext } from "@context/AuthContext";
 
 interface INav {
   title: string;
@@ -21,7 +20,6 @@ interface INav {
 }
 
 const Navbar: React.FC = () => {
-  const {isAuhenticated } = useContext(AuthCotext);
   const renderNestedNav = (list: any[], isRoot = false) => {
     return list?.map((nav: INav) => {
       if (isRoot) {
