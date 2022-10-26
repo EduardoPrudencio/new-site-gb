@@ -50,6 +50,10 @@ const TextContentResponsive = styled.label`
   font-size: 14px;
 `;
 
+const TextContentResponsiveDistacColor = styled(TextContentResponsive)`
+  color: #494949;
+`;
+
 const TextContentGray = styled(TextContent)`
   color: #494949;
 `;
@@ -259,16 +263,18 @@ function IndexPage() {
               justifyContent="center"
             >
               <TituloAzulMobile>Escola Gracie Barra</TituloAzulMobile>
-              <TextContentResponsive>
+              <TextContentResponsiveDistacColor>
                 Gracie Barra é uma comunidade mundial de instrutores,
-              </TextContentResponsive>
-              <TextContentResponsive>
+              </TextContentResponsiveDistacColor>
+              <TextContentResponsiveDistacColor>
                 estudantes e atletas do Jiu-Jitsu. Nossa organização
-              </TextContentResponsive>
-              <TextContentResponsive>
+              </TextContentResponsiveDistacColor>
+              <TextContentResponsiveDistacColor>
                 é constituída por mais de 700 escolas em
-              </TextContentResponsive>
-              <TextContentResponsive>seis continentes.</TextContentResponsive>
+              </TextContentResponsiveDistacColor>
+              <TextContentResponsiveDistacColor>
+                seis continentes.
+              </TextContentResponsiveDistacColor>
 
               <br />
               <NextImage
@@ -289,40 +295,40 @@ function IndexPage() {
               justifyContent="center"
             >
               <TituloAzulMobile>Nosso Programa</TituloAzulMobile>
-              <TextContentResponsive>
+              <TextContentResponsiveDistacColor>
                 A estrutura das aulas é a marca registrada
-              </TextContentResponsive>
-              <TextContentResponsive>
+              </TextContentResponsiveDistacColor>
+              <TextContentResponsiveDistacColor>
                 de todas as escolas Gracie Barra.
-              </TextContentResponsive>
-              <TextContentResponsive>
+              </TextContentResponsiveDistacColor>
+              <TextContentResponsiveDistacColor>
                 As aulas começam na hora marcada e seguem uma
-              </TextContentResponsive>
-              <TextContentResponsive>
+              </TextContentResponsiveDistacColor>
+              <TextContentResponsiveDistacColor>
                 estrutura curricular padronizada. Como aluno,
-              </TextContentResponsive>
+              </TextContentResponsiveDistacColor>
 
-              <TextContentResponsive>
+              <TextContentResponsiveDistacColor>
                 você terá uma clara concepção do que é
-              </TextContentResponsive>
-              <TextContentResponsive>
+              </TextContentResponsiveDistacColor>
+              <TextContentResponsiveDistacColor>
                 esperado para você, e saberá o que esperar
-              </TextContentResponsive>
-              <TextContentResponsive>
+              </TextContentResponsiveDistacColor>
+              <TextContentResponsiveDistacColor>
                 dos professores e parceiros de treino.
-              </TextContentResponsive>
-              <TextContentResponsive>
+              </TextContentResponsiveDistacColor>
+              <TextContentResponsiveDistacColor>
                 A consistência dessa estrutura combinada
-              </TextContentResponsive>
-              <TextContentResponsive>
+              </TextContentResponsiveDistacColor>
+              <TextContentResponsiveDistacColor>
                 com a criatividade e inovação de nossos
-              </TextContentResponsive>
-              <TextContentResponsive>
+              </TextContentResponsiveDistacColor>
+              <TextContentResponsiveDistacColor>
                 dedicados professores misturam-se perfeitamente
-              </TextContentResponsive>
-              <TextContentResponsive>
+              </TextContentResponsiveDistacColor>
+              <TextContentResponsiveDistacColor>
                 para facilitar o seu progresso.
-              </TextContentResponsive>
+              </TextContentResponsiveDistacColor>
 
               <br />
               <NextImage
