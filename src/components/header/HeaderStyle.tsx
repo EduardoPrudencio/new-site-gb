@@ -6,7 +6,7 @@ import { getTheme } from "../../utils/utils";
 const StyledHeader = styled.header`
   position: relative;
   z-index: 1;
-  height: ${layoutConstant.headerHeight};
+  height: 80px;
   background: ${getTheme("colors.body.paper")};
   padding-bottom: 20px;
 
@@ -37,7 +37,7 @@ const StyledHeader = styled.header`
   }
 
   @media only screen and (max-width: 900px) {
-    height: ${layoutConstant.mobileHeaderHeight};
+    height: 80px;
 
     .logo,
     .icon-holder,

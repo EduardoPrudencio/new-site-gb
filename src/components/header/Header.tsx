@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import Button from "@component/buttons/Button";
 import Image from "@component/Image";
 
@@ -46,38 +46,39 @@ const isMobile = width < 570;
             <Image src="/assets/images/gb-logo.svg" alt="logo" height="100px" />
             {!isMobile && <Navbar /> }
           </Box>
-          {isAuthenticated ? (
-            <Categories open={navListOpen}>
-            <Button
-              width="278px"
-              height="40px"
-              variant="text"
-            >
-              <Typography
-                fontWeight="600"
-                textAlign="left"
-                flex="1 1 0"
-                ml="10px"
-                color="text.muted"
+          {!isMobile && (
+            isAuthenticated ? (
+              <Categories open={navListOpen}>
+              <Button
+                width="278px"
+                height="40px"
+                variant="text"
               >
-                {`${user.name} ${user.lastName}`}
-              </Typography>
-              <Icon className="dropdown-icon" variant="small">
-                chevron-right
-              </Icon>
-            </Button>
-          </Categories>
+                <Typography
+                  fontWeight="600"
+                  textAlign="left"
+                  flex="1 1 0"
+                  ml="10px"
+                  color="text.muted"
+                >
+                  {`${user.name} ${user.lastName}`}
+                </Typography>
+                <Icon className="dropdown-icon" variant="small">
+                  chevron-right
+                </Icon>
+              </Button>
+            </Categories>
 
-          ) : (
+            ) : (
 
-            <Box mt="25px">
-              <Link href="/signin">
-                <a>
-                  Login
-                </a>
-              </Link>
-            </Box>
-          )}
+              <Box mt="25px">
+                <Link href="/signin">
+                  <a>
+                    Login
+                  </a>
+                </Link>
+              </Box>
+          ))}
       </Container>
     </StyledHeader>
   );
