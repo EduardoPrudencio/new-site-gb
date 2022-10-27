@@ -6,12 +6,16 @@ const ScheduleBox = styled.div`
   display: flex;
   direction: row;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   background-color: #ffffff;
+  margin: 20px 0;
 `;
 
 const ScheduleBoxDay = styled.div`
   width: 150px;
   height: 350px;
+  margin-right: 1px;
   border: solid 1px #b0b0b;
 `;
 
@@ -41,6 +45,7 @@ const ScheduleBoxDayBody = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin-bottom: 3px;
 `;
 
 const Label = styled.label`
@@ -62,7 +67,6 @@ function Horarios() {
       alignItems="center"
       justifyContent="center"
       width="100%"
-      height="500px"
     >
       <ScheduleBox>
         <ScheduleBoxDay>
