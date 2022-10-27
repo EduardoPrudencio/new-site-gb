@@ -4,7 +4,7 @@ const NavbarNavigations = () => {
   const gym = getCookie("gym.name");
   const navbar = [
     {
-      title: "Home",
+      title: "Início",
       url: typeof gym !== "undefined" ? `\\${gym}` : "\\",
     },
     {

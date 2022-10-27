@@ -50,7 +50,7 @@ const list = [
   {
     title: "Início",
     icon: "home",
-    href: typeof gym !== "undefined" ? `\${gym.name}` : "\\",
+    href: typeof gym !== "undefined" ? `\\${gym}` : "\\",
   },
   {
     title: "Horários",
