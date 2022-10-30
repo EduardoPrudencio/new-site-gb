@@ -1,23 +1,26 @@
 /* eslint no-param-reassign: "error" */
 /* eslint no-return-assign: "error" */
 import { useRouter } from "next/router";
+
 import React, { useEffect, useState } from "react";
+import Modal from "react-modal";
+
 import Box from "@component/Box";
+import Button from "@component/buttons/Button";
 import AppLayout from "@component/layout/AppLayout";
 import { StyledSessionCard } from "@component/sessions/SessionStyle";
-import TextField from "@component/text-field/TextField";
-import styled from "styled-components";
-import { useFormik } from "formik";
-import * as yup from "yup";
-import Button from "@component/buttons/Button";
-import { theme } from "@utils/theme";
-import { Update, GetById } from "services/api/student";
 import Spinner from "@component/Spinner";
-import Modal from "react-modal";
-import { User } from "types";
-import { GetServerSideProps } from "next";
-import moment from "moment";
+import TextField from "@component/text-field/TextField";
 import { onlyAuth } from "@utils/onlyAuth";
+import { theme } from "@utils/theme";
+import { useFormik } from "formik";
+import moment from "moment";
+import { GetServerSideProps } from "next";
+import { Update, GetById } from "services/api/student";
+import styled from "styled-components";
+import { User } from "types";
+import * as yup from "yup";
+
 import Alert from "../../components/alert";
 
 const modalStyles = {

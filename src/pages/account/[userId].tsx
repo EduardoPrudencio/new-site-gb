@@ -7,13 +7,17 @@ import Icon from "@component/icon/Icon";
 import Image from "@component/Image";
 import AppLayout from "@component/layout/AppLayout";
 import Spinner from "@component/Spinner";
+import Typography from "@component/Typography";
 import { onlyAuth } from "@utils/onlyAuth";
+import { theme } from "@utils/theme";
 import moment from "moment";
 import { GetServerSideProps } from "next";
 import styled from "styled-components";
 import { User } from "types";
 
 import { GetById } from "@services/api/student";
+
+import Button from "../../components/buttons/Button";
 
 const ContentTop = styled.div`
   display: flex;
@@ -130,8 +134,47 @@ function Perfil() {
           height="600px"
         >
           <ImageUserBox>
-            <Icon size="100px">user</Icon>
+            <Icon size="70px">user</Icon>
           </ImageUserBox>
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            width="100%"
+          >
+            <Box
+              mt="20px"
+              display="flex"
+              flexDirection="column"
+              alignItems="start"
+              justifyContent="start"
+              width="80%"
+              height="50px"
+              borderBottom="solid 1px #cecece"
+            >
+              <Typography color="#cecece">Frequência</Typography>
+              <Typography fontWeight="bold" fontSize="21px">
+                67%
+              </Typography>
+            </Box>
+
+            <Box
+              mt="20px"
+              display="flex"
+              flexDirection="column"
+              alignItems="start"
+              justifyContent="start"
+              width="80%"
+              height="50px"
+              borderBottom="solid 1px #cecece"
+            >
+              <Typography color="#cecece">Progresso na faixa atual</Typography>
+              <Typography fontWeight="bold" fontSize="21px">
+                81%
+              </Typography>
+            </Box>
+          </Box>
         </Box>
         {/* SIDEBAR */}
         {/* CONTENT */}
@@ -204,6 +247,33 @@ function Perfil() {
                 <Line>
                   <LabelTitle>Telefone:</LabelTitle>
                   <SmallLabel>{student?.phoneNumber}</SmallLabel>
+                </Line>
+                <Line>
+                  <Button
+                    height="10px"
+                    variant="contained"
+                    bg={theme.colors.primary.main}
+                    color="primary"
+                    maxHeight="25px"
+                  >
+                    <Icon mr="10px" size="30px">
+                      edit
+                    </Icon>
+                    Editar
+                  </Button>
+                  <Button
+                    height="10px"
+                    variant="contained"
+                    bg={theme.colors.primary.main}
+                    color="primary"
+                    maxHeight="25px"
+                    ml="20px"
+                  >
+                    <Icon mr="10px" size="30px">
+                      plus
+                    </Icon>
+                    Solicitar Presença
+                  </Button>
                 </Line>
               </ContentBottom>
             </>
