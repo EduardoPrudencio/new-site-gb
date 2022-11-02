@@ -98,7 +98,12 @@ const LabelTitle = styled.label`
 function Perfil() {
   const { query } = useRouter();
   const { userId } = query;
+  const router = useRouter();
   const [student, setStudent] = useState<User>(null);
+
+  const GoToEdit = (id: string) => {
+    router.push(`/admin/${id}`);
+  };
 
   useEffect(() => {
     const GetSutentById = async () => {
@@ -236,8 +241,9 @@ function Perfil() {
                   <SmallLabel>{student?.address?.endereco}</SmallLabel>
                   <LabelTitle>Número:</LabelTitle>
                   <SmallLabel>{student?.address?.numero}</SmallLabel>
+                  <LabelTitle>Complemento:</LabelTitle>
+                  <SmallLabel>{student?.address?.complemento}</SmallLabel>
                 </Line>
-
                 <Line>
                   <LabelTitle>Cep:</LabelTitle>
                   <SmallLabel>{student?.address?.cep}</SmallLabel>
@@ -255,6 +261,7 @@ function Perfil() {
                     bg={theme.colors.primary.main}
                     color="primary"
                     maxHeight="25px"
+                    onClick={() => GoToEdit(student?.id)}
                   >
                     <Icon mr="10px" size="30px">
                       edit

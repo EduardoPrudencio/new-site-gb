@@ -31,7 +31,7 @@ type ISectionProps = {
 };
 
 const StatesBox: React.FC<ISectionProps> = ({ states }) => {
-  const router = useRouter();
+  const router = useRouter(); 
   const handleClickState = (e, item) => {
     e.preventDefault();
     router.push(`jornais/${item.uf}`);
