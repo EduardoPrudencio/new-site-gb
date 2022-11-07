@@ -157,7 +157,7 @@ function IndexPage() {
             </BoxPageSection>
           </PageSession>
 
-          <PageSession height="550px">
+          <PageSession height="550px" backgroundColor="#eeeeee">
             <BoxPageSection>
               <NextImage
                 src="/assets/images/jiu-jitsu-img-02.png"
