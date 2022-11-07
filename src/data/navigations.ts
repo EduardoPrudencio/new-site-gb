@@ -18,7 +18,7 @@ const Navigations = () => {
     {
       icon: "",
       title: "Perfil",
-      href: "/account/perfil",
+      href: `/account/${user.id}`,
       menuComponent: "MegaMenu1",
       show: true,
     },

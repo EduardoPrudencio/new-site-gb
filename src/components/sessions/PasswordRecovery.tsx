@@ -4,12 +4,12 @@ import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 
 import { theme } from "@utils/theme";
+import { getCookie } from "cookies-next";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
 import { startPasswordRecovery } from "@services/api/users/password";
 
-import { getCookie } from "cookies-next";
 import Button from "../buttons/Button";
 import FlexBox from "../FlexBox";
 import TextField from "../text-field/TextField";
