@@ -10,13 +10,6 @@ const Navigations = () => {
   const nav = [
     {
       icon: "",
-      title: "Home",
-      href: typeof gym !== "undefined" ? `\\${gym}` : "\\",
-      menuComponent: "MegaMenu1",
-      show: true,
-    },
-    {
-      icon: "",
       title: "Perfil",
       href: `/account/${user.id}`,
       menuComponent: "MegaMenu1",

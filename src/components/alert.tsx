@@ -27,7 +27,7 @@ const Alert: React.FC<IProps> = ({
       flexDirection="row"
       alignItems="center"
       justifyContent="start"
-      width="300px"
+      width="380px"
       height="20px"
     >
       <Box

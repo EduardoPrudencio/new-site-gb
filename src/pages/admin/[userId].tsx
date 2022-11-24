@@ -2,7 +2,7 @@
 /* eslint no-return-assign: "error" */
 import { useRouter } from "next/router";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Modal from "react-modal";
 
 import Box from "@component/Box";
@@ -20,6 +20,8 @@ import { Update, GetById } from "services/api/student";
 import styled from "styled-components";
 import { User } from "types";
 import * as yup from "yup";
+
+import { AuthCotext } from "@context/AuthContext";
 
 import Alert from "../../components/alert";
 
@@ -111,6 +113,8 @@ const formSchema = yup.object().shape({
 });
 
 function AddUser() {
+  const { user } = useContext(AuthCotext);
+
   const { query } = useRouter();
   const { userId } = query;
   const [loading, setLoading] = useState(false);
@@ -122,8 +126,8 @@ function AddUser() {
 
   useEffect(() => {
     const GetSutentById = async () => {
-      const user = await GetById(userId);
-      setStudent(user);
+      const userLoaded = await GetById(user?.id || userId);
+      setStudent(userLoaded);
     };
     GetSutentById();
   }, []);
@@ -154,12 +158,17 @@ function AddUser() {
     setLoading(false);
     setHasError(false);
 
-    if (response.status === 201) {
+    if (
+      response.status === 0 ||
+      response.status === 200 ||
+      response.status === 201 ||
+      response.status === 204
+    ) {
       setMessage("Dados alterados com sucesso!");
       router.reload();
     } else if (response.status === 400 || response.status === 404) {
       setMessage(response.data.data[0]);
-    } else if (response.status === 409) {
+    } else if (response.status === 401 || response.status === 409) {
       setMessage(
         "Os dados informados não puderam ser salvos.\n Verifique e tente novamente."
       );
@@ -257,7 +266,7 @@ function AddUser() {
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={
-                      values.lastname || (values.lastName = student?.lastName)
+                      values.lastname || (values.lastname = student?.lastName)
                     }
                     errorText={touched.lastname && errors.lastname}
                   />
@@ -305,7 +314,7 @@ function AddUser() {
                     onChange={handleChange}
                     value={
                       values.address ||
-                      (values.cep = student?.address?.endereco)
+                      (values.address = student?.address?.endereco)
                     }
                     errorText={touched.address && errors.address}
                   />
@@ -330,7 +339,7 @@ function AddUser() {
                     onChange={handleChange}
                     value={
                       values.complemento ||
-                      (values.cep = student?.address?.complemento)
+                      (values.complemento = student?.address?.complemento)
                     }
                     errorText={touched.complemento && errors.complemento}
                   />
@@ -343,7 +352,8 @@ function AddUser() {
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={
-                      values.bairro || (values.cep = student?.address?.bairro)
+                      values.bairro ||
+                      (values.bairro = student?.address?.bairro)
                     }
                     errorText={touched.bairro && errors.bairro}
                   />
@@ -358,7 +368,8 @@ function AddUser() {
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={
-                      values.number || (values.cep = student?.address?.numero)
+                      values.number ||
+                      (values.number = student?.address?.numero)
                     }
                     errorText={touched.number && errors.number}
                   />
@@ -371,7 +382,8 @@ function AddUser() {
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={
-                      values.cidade || (values.cep = student?.address?.cidade)
+                      values.cidade ||
+                      (values.cidade = student?.address?.cidade)
                     }
                     errorText={touched.cidade && errors.cidade}
                   />
@@ -383,7 +395,7 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.uf || (values.cep = student?.address?.uf)}
+                    value={values.uf || (values.uf = student?.address?.uf)}
                     errorText={touched.uf && errors.uf}
                   />
                 </ColumnContentRight>

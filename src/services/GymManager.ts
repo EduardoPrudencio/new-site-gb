@@ -2,8 +2,8 @@ import { Gym } from "../model/models";
 
 export const gyns: Gym[] = [
   { 
-    id: "1f93f463-5c6b-46d0-0f99-08da9f1a105b", 
-    activityId: "1a6648c2-9cac-4411-e3b5-08da9f2b60b8",
+    id: "2D98C8E5-BE41-4304-B30D-3F925BB92175", 
+    activityId: "7B8AE12B-C7F1-45C8-BEF6-17EE3E1C4FCC",
     name: "Campos dos Goytacazes", 
     slug: "campos-dos-goytacazes", 
     isDefault: true,
