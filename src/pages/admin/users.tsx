@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import React, { useState, useEffect } from "react";
-import { BsFillPencilFill } from "react-icons/bs";
 
 import HeaderText from "@component/headerText";
 import AppLayout from "@component/layout/AppLayout";
@@ -13,9 +12,20 @@ import { GetAll } from "services/api/student";
 import styled from "styled-components";
 import { User } from "types";
 
+const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`;
+
 const Container = styled.div`
   padding: 50px;
+  height: 600px;
+  overflow-y: auto;
   min-height: 250px;
+  margin-bottom: 100px;
 `;
 
 const Header = styled.div`
@@ -44,6 +54,7 @@ const Line = styled.div`
 
   &:hover {
     border: solid 1px #e33f06;
+    background-color: #f2e9e9;
   }
 `;
 
@@ -72,53 +83,54 @@ function Users() {
   }, []);
 
   return (
-    <Container>
-      <Header>
-        <LineContent>
-          <HeaderText maxWidth={200} text="Nome" color="#ffffff" bold />
-          <HeaderText maxWidth={200} text="Sobrenome" color="#ffffff" bold />
-          <HeaderText maxWidth={200} text="Telefone" color="#ffffff" bold />
-          <HeaderText maxWidth={200} text="Nascimento" color="#ffffff" bold />
-          <HeaderText maxWidth={200} text="Estatus" color="#ffffff" bold />
-          <HeaderText
-            maxWidth={200}
-            text="Data de cadastro"
-            color="#ffffff"
-            bold
-          />
-        </LineContent>
-      </Header>
+    <Body>
+      <Container>
+        <Header>
+          <LineContent>
+            <HeaderText maxWidth={150} text="Nome" color="#ffffff" bold />
+            <HeaderText maxWidth={150} text="Sobrenome" color="#ffffff" bold />
+            <HeaderText maxWidth={150} text="Telefone" color="#ffffff" bold />
+            <HeaderText maxWidth={150} text="Nascimento" color="#ffffff" bold />
+            <HeaderText maxWidth={150} text="Estatus" color="#ffffff" bold />
+            <HeaderText
+              maxWidth={200}
+              text="Data de cadastro"
+              color="#ffffff"
+              bold
+            />
+          </LineContent>
+        </Header>
 
-      {typeof students === "undefined" && (
-        <LineLoading>
-          <Spinner />
-        </LineLoading>
-      )}
+        {typeof students === "undefined" && (
+          <LineLoading>
+            <Spinner />
+          </LineLoading>
+        )}
 
-      {students?.map((student) => {
-        return (
-          <Link href={`/account/${student.id}`}>
-            <Line>
-              <LineContent>
-                <HeaderText maxWidth={200} text={student.name} bold />
-                <HeaderText maxWidth={200} text={student.lastName} />
-                <HeaderText maxWidth={200} text={student.phoneNumber} />
-                <HeaderText
-                  maxWidth={200}
-                  text={moment(student.birthDate).format("DD/MM/YYYY")}
-                />
-                <HeaderText maxWidth={200} text="Ativo" />
-                <HeaderText
-                  maxWidth={200}
-                  text={moment(student.registrationDate).format("DD/MM/YYYY")}
-                />
-              </LineContent>
-              <BsFillPencilFill />
-            </Line>
-          </Link>
-        );
-      })}
-    </Container>
+        {students?.map((student) => {
+          return (
+            <Link href={`/account/${student.id}`}>
+              <Line>
+                <LineContent>
+                  <HeaderText maxWidth={150} text={student.name} bold />
+                  <HeaderText maxWidth={150} text={student.lastName} />
+                  <HeaderText maxWidth={150} text={student.phoneNumber} />
+                  <HeaderText
+                    maxWidth={150}
+                    text={moment(student.birthDate).format("DD/MM/YYYY")}
+                  />
+                  <HeaderText maxWidth={150} text="Ativo" />
+                  <HeaderText
+                    maxWidth={200}
+                    text={moment(student.registrationDate).format("DD/MM/YYYY")}
+                  />
+                </LineContent>
+              </Line>
+            </Link>
+          );
+        })}
+      </Container>
+    </Body>
   );
 }
 
