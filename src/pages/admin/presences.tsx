@@ -21,7 +21,19 @@ function Presences() {
   return (
     <>
       <h1>Presences</h1>
-      <h1>{presences && presences[0].presences[0].studentName}</h1>
+
+      {presences &&
+        presences.map((p) => (
+          <>
+            <h1>{p.date}</h1>
+            {p.presences?.map((pr) => (
+              <>
+                <h3>{pr.id}</h3>
+                <h3>{pr.studentName}</h3>
+              </>
+            ))}
+          </>
+        ))}
     </>
   );
 }
