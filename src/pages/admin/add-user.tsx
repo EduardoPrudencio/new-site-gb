@@ -1,21 +1,24 @@
 import { useRouter } from "next/router";
+
 import React, { useState } from "react";
+import Modal from "react-modal";
+
 import Box from "@component/Box";
+import Button from "@component/buttons/Button";
 import IconButton from "@component/buttons/IconButton";
 import Icon from "@component/icon/Icon";
 import AppLayout from "@component/layout/AppLayout";
 import { StyledSessionCard } from "@component/sessions/SessionStyle";
+import Spinner from "@component/Spinner";
 import TextField from "@component/text-field/TextField";
-import styled from "styled-components";
+import { onlyAuth } from "@utils/onlyAuth";
+import { theme } from "@utils/theme";
 import { useFormik } from "formik";
 import { GetServerSideProps } from "next";
-import * as yup from "yup";
-import Button from "@component/buttons/Button";
-import { theme } from "@utils/theme";
 import { Add } from "services/api/student";
-import Spinner from "@component/Spinner";
-import Modal from "react-modal";
-import { onlyAuth } from "@utils/onlyAuth";
+import styled from "styled-components";
+import * as yup from "yup";
+
 import Alert from "../../components/alert";
 
 const modalStyles = {

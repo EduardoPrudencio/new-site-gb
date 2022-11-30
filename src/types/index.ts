@@ -37,6 +37,21 @@ export type Student = {
   address: Address;
 };
 
+export type Presence = {
+  id: string;
+  studentId: string;
+  studentName: string;
+  date: string;
+  active: boolean;
+  answered: boolean;
+  activity: boolean;
+};
+
+export type Presences = {
+  date: string;
+  presences: Presence[];
+};
+
 export type AuthContextType = {
   isAuthenticated: boolean;
   user: User;
