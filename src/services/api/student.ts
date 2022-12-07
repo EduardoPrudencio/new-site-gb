@@ -166,3 +166,42 @@ export const GetAllPresences = async () => {
     return error.response;
   }
 };
+
+export const ConfirmPresence = async (userId, presenceId) => {
+  const gym = gyns.find((x) => x.isDefault);
+
+  try {
+    const url = `/user/${userId}/activity/${gym.activityId}/gym/${gym.id}/confirm-presence/${presenceId}`;
+    const token = getCookie(authCookieKeys.token);
+
+    const request = await api.put(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return { data: request.data, statusCode: request.status };
+  } catch (error) {
+    // console.log("########### error ############ ", error);
+    return error.response;
+  }
+};
+
+
+export const RefusePresence = async (userId, presenceId) => {
+  const gym = gyns.find((x) => x.isDefault);
+
+  try {
+    const url = `/user/${userId}/activity/${gym.activityId}/gym/${gym.id}/refuse-presence/${presenceId}`;
+    const token = getCookie(authCookieKeys.token);
+
+    const request = await api.put(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return { data: request.data, statusCode: request.status };
+  } catch (error) {
+    // console.log("########### error ############ ", error);
+    return error.response;
+  }
+};
