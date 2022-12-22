@@ -109,7 +109,7 @@ const Footer: React.FC = () => {
          Desenvolvido por:
        </Typography>
        <a
-           href="#"
+           href="https://eduardoprudencio.github.io/"
            target="_blank"
            rel="noreferrer"
            key="#"
