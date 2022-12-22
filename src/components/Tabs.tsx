@@ -60,23 +60,23 @@ export default function BasicTabs() {
   const images = [
     {
       img: "https://d1a3v8txm37nbo.cloudfront.net/image/filename/2110258/x_lg_jB1HxZIVMVEKHVwNgub0gBTu9RSV7iPB.jpg",
-      title: "Breakfast",
+      title: "Equipe Gracie Barra",
     },
     {
       img: "https://graciebarracampos.files.wordpress.com/2018/08/gb.jpg",
-      title: "Burger",
+      title: "Equipe Gracie Barra",
     },
     {
       img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ45L02W8H9X4PzF1JQv9gwFrYJITpDuZvWBbd-Caxq7qiuztVaj0-BOpArzo3ZMG5ZBrs&usqp=CAU",
-      title: "Camera",
+      title: "Equipe Gracie Barra",
     },
     {
       img: "https://dtda4cv2md3ne.cloudfront.net/image/filename/2110259/x_lg_OSexyukI3hlehfTUaasjtGChjrWCe9it.jpg",
-      title: "Coffee",
+      title: "Equipe Gracie Barra treinando",
     },
     {
       img: "https://dtda4cv2md3ne.cloudfront.net/image/filename/2110260/x_lg_1-F0yg0hEZyG0ArwDDRSege3LmDPx0-R.jpg",
-      title: "Hats",
+      title: "Equipe Gracie Barra treinando",
     },
   ];
 

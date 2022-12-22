@@ -42,6 +42,7 @@ const isMobile = width < 570;
             justifyContent="space-between"
             mt="30px"
             width="230px"
+            paddingBottom="12px"
           >
             <Image src="/assets/images/gb-logo.svg" alt="logo" height="100px" />
             {!isMobile && <Navbar /> }
