@@ -57,25 +57,48 @@ export default function BasicTabs() {
     },
   });
 
-  const images = [
+  const imagesCt = [
     {
-      img: "https://d1a3v8txm37nbo.cloudfront.net/image/filename/2110258/x_lg_jB1HxZIVMVEKHVwNgub0gBTu9RSV7iPB.jpg",
+      img: "ct/sede-03.jpg",
       title: "Equipe Gracie Barra",
     },
     {
-      img: "https://graciebarracampos.files.wordpress.com/2018/08/gb.jpg",
+      img: "ct/sede-02.jpg",
       title: "Equipe Gracie Barra",
     },
     {
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ45L02W8H9X4PzF1JQv9gwFrYJITpDuZvWBbd-Caxq7qiuztVaj0-BOpArzo3ZMG5ZBrs&usqp=CAU",
+      img: "ct/sede-01.jpg",
       title: "Equipe Gracie Barra",
     },
     {
-      img: "https://dtda4cv2md3ne.cloudfront.net/image/filename/2110259/x_lg_OSexyukI3hlehfTUaasjtGChjrWCe9it.jpg",
+      img: "ct/sede-04.webp",
+      title: "Equipe Gracie Barra",
+    },
+    {
+      img: "ct/sede-05.jpg",
+      title: "Equipe Gracie Barra",
+    },
+  ];
+
+  const imagesDonana = [
+    {
+      img: "donana/donana-01.jpg",
+      title: "Equipe Gracie Barra",
+    },
+    {
+      img: "donana/donana-02.jpg",
+      title: "Equipe Gracie Barra",
+    },
+    {
+      img: "donana/donana-03.jpg",
+      title: "Equipe Gracie Barra",
+    },
+    {
+      img: "donana/donana-04.jpg",
       title: "Equipe Gracie Barra treinando",
     },
     {
-      img: "https://dtda4cv2md3ne.cloudfront.net/image/filename/2110260/x_lg_1-F0yg0hEZyG0ArwDDRSege3LmDPx0-R.jpg",
+      img: "donana/donana-05.jpg",
       title: "Equipe Gracie Barra treinando",
     },
   ];
@@ -102,7 +125,7 @@ export default function BasicTabs() {
             alignItems="center"
             justifyContent="space-between"
           >
-            <StandardImageList list={images} />
+            <StandardImageList list={imagesCt} />
 
             <iframe
               title="Endereço da academia"
@@ -120,7 +143,7 @@ export default function BasicTabs() {
             alignItems="center"
             justifyContent="space-between"
           >
-            <StandardImageList list={images} />
+            <StandardImageList list={imagesDonana} />
             <iframe
               title="Endereço da academia"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3703.8279156934314!2d-41.29190304895807!3d-21.82557880560066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbdd62e3f4b1f79%3A0x56036a1d6c94c87c!2sAv.%20Dep.%20Alair%20Ferreira%2C%20307%20-%20Campos%20dos%20Goytacazes%2C%20RJ%2C%2028024-600!5e0!3m2!1sen!2sbr!4v1666116879461!5m2!1sen!2sbr"

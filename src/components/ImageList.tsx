@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import * as React from "react";
 
 import styled from "styled-components";
@@ -38,7 +39,11 @@ const StandardImageList: React.FC<ImageListProps> = ({ list }) => {
     >
       {list.map((item) => (
         <ImageBox key={item.img}>
-          <img src={item.img} alt={item.title} width="200px" />
+          <img
+            src={`/assets/images/${item.img}`}
+            alt={item.title}
+            width="200px"
+          />
         </ImageBox>
       ))}
     </Box>
