@@ -4,6 +4,8 @@ import Image from "@component/Image";
 import moment from "moment";
 import styled from "styled-components";
 
+import NivelService from "@services/NivelService";
+
 const ContentTop = styled.div`
   display: flex;
   flex-direction: column;
@@ -64,6 +66,9 @@ const IconBox = styled.div`
 `;
 
 function StudentData({ student }) {
+  const nivelImage = NivelService(student?.niveis[0].value);
+  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA ", nivelImage);
+
   return (
     <>
       <ContentTop>
@@ -90,10 +95,7 @@ function StudentData({ student }) {
             {moment(student?.birthDate).format("DD/MM/YYYY")}
           </SmallLabel>
           <LabelTitle>Graduação:</LabelTitle>
-          <Image
-            src="/assets/images/faixas/preta/preta_ponta_tres.png"
-            height="20px"
-          />
+          <Image src={nivelImage} height="20px" />
         </Line>
         <Line>
           <IconBox>

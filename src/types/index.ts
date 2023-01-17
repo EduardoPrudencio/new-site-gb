@@ -12,6 +12,7 @@ export type User = {
   image: string;
   phoneNumber: string;
   active: boolean;
+  nivel: number;
   isAdministrator: boolean;
 };
 

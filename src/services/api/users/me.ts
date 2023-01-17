@@ -24,6 +24,7 @@ export async function me(): Promise<User> {
     image: client.image,
     phoneNumber: client.phoneNumber,
     active: client.active,
+    nivel: client.nivel,
     isAdministrator: client.userRoles.includes("administrator"),
     // isAdministrator: true,
   };
