@@ -1,7 +1,13 @@
 /* eslint-disable no-undef */
+import { useState } from "react";
+
 import Icon from "@component/icon/Icon";
 import Image from "@component/Image";
+import AppLayout from "@component/layout/AppLayout";
+import { Button } from "@mui/material";
+import { onlyAuth } from "@utils/onlyAuth";
 import moment from "moment";
+import { GetServerSideProps } from "next";
 import styled from "styled-components";
 
 import NivelService from "@services/NivelService";
@@ -66,8 +72,22 @@ const IconBox = styled.div`
 `;
 
 function StudentData({ student }) {
-  const nivelImage = NivelService(student?.niveis[0].value);
-  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA ", nivelImage);
+  const allLevels = student?.niveis.map((l) => l.value);
+  const bigestLevel = Math.max(allLevels);
+
+  const [maxLevel, setMaxLevel] = useState(bigestLevel - 1);
+
+  function addLevel() {
+    if (maxLevel < 39) {
+      setMaxLevel(maxLevel + 1);
+    }
+  }
+
+  function subLevel() {
+    if (maxLevel > 0) {
+      setMaxLevel(maxLevel - 1);
+    }
+  }
 
   return (
     <>
@@ -95,7 +115,9 @@ function StudentData({ student }) {
             {moment(student?.birthDate).format("DD/MM/YYYY")}
           </SmallLabel>
           <LabelTitle>Graduação:</LabelTitle>
-          <Image src={nivelImage} height="20px" />
+          <Image src={NivelService(maxLevel)} height="20px" />
+          <Button onClick={() => addLevel()}>+</Button>
+          <Button onClick={() => subLevel()}>-</Button>
         </Line>
         <Line>
           <IconBox>
@@ -125,38 +147,17 @@ function StudentData({ student }) {
           <LabelTitle>Telefone:</LabelTitle>
           <SmallLabel>{student?.phoneNumber}</SmallLabel>
         </Line>
-        {/* <Line>
-          <Button
-            height="10px"
-            variant="contained"
-            bg={theme.colors.primary.main}
-            color="primary"
-            maxHeight="25px"
-            onClick={() => GoToEdit(student?.id)}
-          >
-            <Icon mr="10px" size="30px">
-              edit
-            </Icon>
-            Editar
-          </Button>
-          <Button
-            height="10px"
-            variant="contained"
-            bg={theme.colors.primary.main}
-            color="primary"
-            maxHeight="25px"
-            ml="20px"
-            onClick={() => RequestMyPresence(student?.id)}
-          >
-            <Icon mr="10px" size="30px">
-              plus
-            </Icon>
-            Solicitar Presença
-          </Button>
-        </Line> */}
       </ContentBottom>
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = onlyAuth(async () => {
+  return {
+    props: {},
+  };
+});
+
+StudentData.layout = AppLayout;
 
 export default StudentData;

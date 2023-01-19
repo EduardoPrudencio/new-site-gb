@@ -48,7 +48,6 @@ const LineLoading = styled(Line)`
 function Perfil() {
   const { query } = useRouter();
   const { userId } = query;
-  const router = useRouter();
   const [student, setStudent] = useState<User>(null);
   const [hasError, setHasError] = useState(false);
 
