@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import { useState } from "react";
+import Modal from "react-modal";
 
 import Icon from "@component/icon/Icon";
 import Image from "@component/Image";
@@ -10,7 +11,22 @@ import moment from "moment";
 import { GetServerSideProps } from "next";
 import styled from "styled-components";
 
+import { AddLevel } from "@services/api/student";
 import NivelService from "@services/NivelService";
+
+import Alert from "./alert";
+
+const modalStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    borderRadius: "8px",
+    marginRight: "-50px",
+    transform: "translate(-50%, -50%)",
+  },
+};
 
 const ContentTop = styled.div`
   display: flex;
@@ -71,11 +87,19 @@ const IconBox = styled.div`
   margin-right: 10px;
 `;
 
-function StudentData({ student }) {
-  const allLevels = student?.niveis.map((l) => l.value);
-  const bigestLevel = Math.max(allLevels);
+interface IProps {
+  student: any;
+}
 
+const StudentData: React.FC<IProps> = ({ student }) => {
+  const allLevels =
+    student?.niveis.length > 0 ? student?.niveis.map((l) => l.value) : [1];
+  const bigestLevel = Math.max(...allLevels);
+
+  const [showModal, setShowModal] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const [maxLevel, setMaxLevel] = useState(bigestLevel - 1);
+  const [message, setMessage] = useState("");
 
   function addLevel() {
     if (maxLevel < 39) {
@@ -89,8 +113,31 @@ function StudentData({ student }) {
     }
   }
 
+  const ChangeLevel = async () => {
+    const response = await AddLevel(student?.id, maxLevel + 1);
+
+    if (response.statusCode === 200) {
+      setHasError(false);
+      setMessage("Graduação alterada com sucesso!");
+    } else {
+      setMessage("Ocorreu um erro e essa mudança não pôde ser executada.");
+      setHasError(true);
+    }
+
+    setShowModal(true);
+  };
+
   return (
     <>
+      <Modal isOpen={showModal} style={modalStyles}>
+        {/* <Spinner color="#FF0000"/> */}
+        <Alert
+          Exec={setShowModal}
+          ValueToExec={false}
+          Error={hasError}
+          Message={message}
+        />
+      </Modal>
       <ContentTop>
         <Line>
           <Name>
@@ -147,10 +194,14 @@ function StudentData({ student }) {
           <LabelTitle>Telefone:</LabelTitle>
           <SmallLabel>{student?.phoneNumber}</SmallLabel>
         </Line>
+
+        <Line>
+          <Button onClick={() => ChangeLevel()}>Salvar</Button>
+        </Line>
       </ContentBottom>
     </>
   );
-}
+};
 
 export const getServerSideProps: GetServerSideProps = onlyAuth(async () => {
   return {

@@ -186,12 +186,31 @@ export const ConfirmPresence = async (userId, presenceId) => {
   }
 };
 
-
 export const RefusePresence = async (userId, presenceId) => {
   const gym = gyns.find((x) => x.isDefault);
 
   try {
     const url = `/user/${userId}/activity/${gym.activityId}/gym/${gym.id}/refuse-presence/${presenceId}`;
+    const token = getCookie(authCookieKeys.token);
+
+    const request = await api.put(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return { data: request.data, statusCode: request.status };
+  } catch (error) {
+    // console.log("########### error ############ ", error);
+    return error.response;
+  }
+};
+
+
+export const AddLevel = async (userId, level) => {
+  const gym = gyns.find((x) => x.isDefault);
+
+  try {
+    const url = `/user/${userId}/activity/${gym.activityId}/gym/${gym.id}/setlevel/${level}`;
     const token = getCookie(authCookieKeys.token);
 
     const request = await api.put(url, {
