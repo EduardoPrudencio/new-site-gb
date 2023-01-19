@@ -1,3 +1,4 @@
+/* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable no-undef */
 import { useState } from "react";
 import Modal from "react-modal";
@@ -92,13 +93,21 @@ interface IProps {
 }
 
 const StudentData: React.FC<IProps> = ({ student }) => {
-  const allLevels =
-    student?.niveis.length > 0 ? student?.niveis.map((l) => l.value) : [1];
-  const bigestLevel = Math.max(...allLevels);
+  // const allLevels =
+  //   student?.niveis.length > 0 ? student?.niveis.map((l) => l.value) : [1];
+  // const bigestLevel = Math.max(...allLevels);
+
+  const dates = student?.niveis.map((d) => d.date).sort();
+
+  const lastLevelReceived =
+    student.niveis.length > 0
+      ? student.niveis.find((l) => l.date === dates[student?.niveis.length - 1])
+          .value
+      : 1;
 
   const [showModal, setShowModal] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [maxLevel, setMaxLevel] = useState(bigestLevel - 1);
+  const [maxLevel, setMaxLevel] = useState(lastLevelReceived - 1);
   const [message, setMessage] = useState("");
 
   function addLevel() {
