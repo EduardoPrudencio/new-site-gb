@@ -138,7 +138,7 @@ function Perfil() {
               >
                 <Typography color="#cecece">Frequência</Typography>
                 <Typography fontWeight="bold" fontSize="21px">
-                  67%
+                  {student?.frequencyPercentage}%
                 </Typography>
               </Box>
 
