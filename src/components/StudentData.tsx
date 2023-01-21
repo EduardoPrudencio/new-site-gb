@@ -90,9 +90,10 @@ const IconBox = styled.div`
 
 interface IProps {
   student: any;
+  readonly?: boolean;
 }
 
-const StudentData: React.FC<IProps> = ({ student }) => {
+const StudentData: React.FC<IProps> = ({ student, readonly = true }) => {
   // const allLevels =
   //   student?.niveis.length > 0 ? student?.niveis.map((l) => l.value) : [1];
   // const bigestLevel = Math.max(...allLevels);
@@ -173,8 +174,12 @@ const StudentData: React.FC<IProps> = ({ student }) => {
           </SmallLabel>
           <LabelTitle>Graduação:</LabelTitle>
           <Image src={NivelService(maxLevel)} height="20px" />
-          <Button onClick={() => addLevel()}>+</Button>
-          <Button onClick={() => subLevel()}>-</Button>
+          {!readonly && (
+            <>
+              <Button onClick={() => addLevel()}>+</Button>
+              <Button onClick={() => subLevel()}>-</Button>
+            </>
+          )}
         </Line>
         <Line>
           <IconBox>
@@ -205,9 +210,11 @@ const StudentData: React.FC<IProps> = ({ student }) => {
           <SmallLabel>{student?.phoneNumber}</SmallLabel>
         </Line>
 
-        <Line>
-          <Button onClick={() => ChangeLevel()}>Salvar</Button>
-        </Line>
+        {!readonly && (
+          <Line>
+            <Button onClick={() => ChangeLevel()}>Salvar</Button>
+          </Line>
+        )}
       </ContentBottom>
     </>
   );

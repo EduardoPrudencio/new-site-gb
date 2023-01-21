@@ -123,7 +123,7 @@ function Perfil() {
             </LineLoading>
           ) : (
             <>
-              <StudentData student={student} />
+              <StudentData student={student} readonly={false} />
               {/* <Line>
                   <Button
                     height="10px"
