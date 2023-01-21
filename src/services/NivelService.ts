@@ -38,7 +38,6 @@ const brown2 = "/assets/images/faixas/marrom/marrom_ponta_dois.png";
 const brown3 = "/assets/images/faixas/marrom/marrom_ponta_tres.png";
 const brown4 = "/assets/images/faixas/marrom/marrom_ponta_quatro.png";
 
-
 const black0 = "/assets/images/faixas/preta/preta_sem_ponta.png";
 const black1 = "/assets/images/faixas/preta/preta_ponta_um.png";
 const black2 = "/assets/images/faixas/preta/preta_ponta_dois.png";

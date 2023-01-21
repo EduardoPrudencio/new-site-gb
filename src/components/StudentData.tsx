@@ -101,8 +101,9 @@ const StudentData: React.FC<IProps> = ({ student }) => {
 
   const lastLevelReceived =
     student.niveis.length > 0
-      ? student.niveis.find((l) => l.date === dates[student?.niveis.length - 1])
-          .value
+      ? student?.niveis.find(
+          (l) => l.date === dates[student?.niveis.length - 1]
+        ).value
       : 1;
 
   const [showModal, setShowModal] = useState(false);
