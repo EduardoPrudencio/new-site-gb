@@ -36,7 +36,7 @@ const ContentTop = styled.div`
   justify-content: start;
   padding-top: 20px;
   width: 95%;
-  height: 210px;
+  height: 235px;
   border-bottom: solid 1px #cecece;
 `;
 
@@ -75,6 +75,15 @@ const SmallLabel = styled.label`
   color: #cecece;
   margin-right: 10px;
 `;
+const ActiveStatus = styled.label`
+  font-size: 14px;
+  color: #52be80;
+  margin-right: 10px;
+`;
+
+const InactiveStatus = styled(ActiveStatus)`
+  color: #ff0000;
+`;
 
 const Name = styled.div`
   display: flex;
@@ -111,6 +120,8 @@ const StudentData: React.FC<IProps> = ({ student, readonly = true }) => {
   const [hasError, setHasError] = useState(false);
   const [maxLevel, setMaxLevel] = useState(lastLevelReceived - 1);
   const [message, setMessage] = useState("");
+
+  // const [width] = useWindowSize();
 
   function addLevel() {
     if (maxLevel < 39) {
@@ -188,6 +199,18 @@ const StudentData: React.FC<IProps> = ({ student, readonly = true }) => {
             </Icon>
           </IconBox>
           <SmallLabel>{student?.email}</SmallLabel>
+          <LabelTitle>Data de cadastro:</LabelTitle>
+          <SmallLabel>
+            {moment(student?.registrationDate).format("DD/MM/YYYY")}
+          </SmallLabel>
+        </Line>
+        <Line>
+          <LabelTitle>Status:</LabelTitle>
+          {student?.paymentStatus === 0 ? (
+            <ActiveStatus>Ativo</ActiveStatus>
+          ) : (
+            <InactiveStatus>Inativo</InactiveStatus>
+          )}
         </Line>
       </ContentTop>
       <ContentBottom>

@@ -248,7 +248,7 @@ function AddUser() {
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={
-                      values.birthdate ||
+                      values.birthDate ||
                       (values.birthdate = moment(student?.birthDate).format(
                         "YYYY-MM-DD"
                       ))

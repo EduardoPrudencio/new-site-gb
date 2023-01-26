@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Chip } from "@component/Chip";
 
@@ -9,11 +9,32 @@ import Icon from "../icon/Icon";
 import NavLink from "../nav-link/NavLink";
 import StyledMobileNavigationBar from "./MobileNavigationBar.style";
 import { getCookie } from "cookies-next";
+import { AuthCotext } from "@context/AuthContext";
 
 const MobileNavigationBar: React.FC = () => {
+  const {user } = useContext(AuthCotext);
   const [width] = useWindowSize();
   const { state } = useAppContext();
   const { cartList } = state.cart;
+
+  const gym = getCookie("gym.name");
+  const list = [
+    {
+      title: "Início",
+      icon: "home",
+      href: typeof gym !== "undefined" ? `\\${gym}` : "\\",
+    },
+    {
+      title: "Horários",
+      icon: "schedule",
+      href: "/campos-dos-goytacazes/horarios",
+    },
+    {
+      title: "Conta",
+      icon: "user-2",
+      href: `/account/${user?.id}`,
+    },
+  ];
 
   return (
     width <= 2000 && (
@@ -45,23 +66,6 @@ const MobileNavigationBar: React.FC = () => {
   );
 };
 
-const gym = getCookie("gym.name");
-const list = [
-  {
-    title: "Início",
-    icon: "home",
-    href: typeof gym !== "undefined" ? `\\${gym}` : "\\",
-  },
-  {
-    title: "Horários",
-    icon: "schedule",
-    href: "/campos-dos-goytacazes/horarios",
-  },
-  {
-    title: "Conta",
-    icon: "user-2",
-    href: "/account/profile",
-  },
-];
+
 
 export default MobileNavigationBar;

@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 import Modal from "react-modal";
 
 import Box from "@component/Box";
-import Icon from "@component/icon/Icon";
 import AppLayout from "@component/layout/AppLayout";
 import Spinner from "@component/Spinner";
 import StudentData from "@component/StudentData";
+import StudentDataMobile from "@component/StudentDataMobile";
 import Typography from "@component/Typography";
+import useWindowSize from "@hook/useWindowSize";
 import { onlyAuth } from "@utils/onlyAuth";
 import { theme } from "@utils/theme";
 import { GetServerSideProps } from "next";
@@ -55,6 +56,8 @@ function Perfil() {
   const [showModal, setShowModal] = useState(false);
   const [message, setMessage] = useState("");
 
+  const [width] = useWindowSize();
+
   const GoToEdit = (id: string) => {
     router.push(`/admin/${id}`);
   };
@@ -91,6 +94,7 @@ function Perfil() {
           ValueToExec={false}
           Error={hasError}
           Message={message}
+          smallDevice={width < 570}
         />
       </Modal>
       <Box
@@ -110,57 +114,59 @@ function Perfil() {
           width="1000px"
         >
           {/* SIDEBAR */}
-          <Box
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="start"
-            width="350px"
-            height="600px"
-          >
+          {width > 570 && (
             <Box
               display="flex"
               flexDirection="column"
               alignItems="center"
-              justifyContent="center"
-              width="100%"
-              marginTop="40px"
+              justifyContent="start"
+              width="350px"
+              height="600px"
             >
               <Box
-                mt="20px"
                 display="flex"
                 flexDirection="column"
-                alignItems="start"
-                justifyContent="start"
-                width="65%"
-                height="50px"
-                borderBottom="solid 1px #cecece"
+                alignItems="center"
+                justifyContent="center"
+                width="100%"
+                marginTop="40px"
               >
-                <Typography color="#cecece">Frequência</Typography>
-                <Typography fontWeight="bold" fontSize="21px">
-                  {student?.frequencyPercentage}%
-                </Typography>
-              </Box>
+                <Box
+                  mt="20px"
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="start"
+                  justifyContent="start"
+                  width="65%"
+                  height="50px"
+                  borderBottom="solid 1px #cecece"
+                >
+                  <Typography color="#cecece">Frequência</Typography>
+                  <Typography fontWeight="bold" fontSize="21px">
+                    {student?.frequencyPercentage}%
+                  </Typography>
+                </Box>
 
-              <Box
-                mt="20px"
-                display="flex"
-                flexDirection="column"
-                alignItems="start"
-                justifyContent="start"
-                width="65%"
-                height="50px"
-                borderBottom="solid 1px #cecece"
-              >
-                <Typography color="#cecece">
-                  Progresso na faixa atual
-                </Typography>
-                <Typography fontWeight="bold" fontSize="21px">
-                  81%
-                </Typography>
+                <Box
+                  mt="20px"
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="start"
+                  justifyContent="start"
+                  width="65%"
+                  height="50px"
+                  borderBottom="solid 1px #cecece"
+                >
+                  <Typography color="#cecece">
+                    Progresso na faixa atual
+                  </Typography>
+                  <Typography fontWeight="bold" fontSize="21px">
+                    81%
+                  </Typography>
+                </Box>
               </Box>
             </Box>
-          </Box>
+          )}
           {/* SIDEBAR */}
           {/* CONTENT */}
           <Box
@@ -177,19 +183,22 @@ function Perfil() {
               </LineLoading>
             ) : (
               <>
-                <StudentData student={student} />
+                {width > 570 ? (
+                  <StudentData student={student} />
+                ) : (
+                  <StudentDataMobile student={student} />
+                )}
+
                 <Line>
                   <Button
-                    height="10px"
+                    height="0px"
                     variant="contained"
+                    marginLeft="10px"
                     bg={theme.colors.primary.main}
                     color="primary"
                     maxHeight="25px"
                     onClick={() => GoToEdit(student?.id)}
                   >
-                    <Icon mr="10px" size="30px">
-                      edit
-                    </Icon>
                     Editar
                   </Button>
                   <Button
@@ -201,9 +210,6 @@ function Perfil() {
                     ml="20px"
                     onClick={() => RequestMyPresence(student?.id)}
                   >
-                    <Icon mr="10px" size="30px">
-                      plus
-                    </Icon>
                     Solicitar Presença
                   </Button>
                 </Line>

@@ -1,6 +1,8 @@
 import React from "react";
-import styled from "styled-components";
 import { BsCheckLg, BsExclamationLg } from "react-icons/bs";
+
+import styled from "styled-components";
+
 import Box from "./Box";
 import Button from "./buttons/Button";
 
@@ -13,6 +15,7 @@ export interface IProps {
   Exec: (value: boolean) => void;
   ValueToExec: boolean;
   Error?: boolean;
+  smallDevice?: boolean;
 }
 
 const Alert: React.FC<IProps> = ({
@@ -20,6 +23,7 @@ const Alert: React.FC<IProps> = ({
   Exec,
   Error,
   ValueToExec = true,
+  smallDevice = false,
 }) => {
   return (
     <Box
@@ -27,7 +31,8 @@ const Alert: React.FC<IProps> = ({
       flexDirection="row"
       alignItems="center"
       justifyContent="start"
-      width="380px"
+      maxWidth="380px"
+      width={smallDevice ? "320px" : "380px"}
       height="20px"
     >
       <Box
@@ -44,7 +49,7 @@ const Alert: React.FC<IProps> = ({
         {!Error ? (
           <BsCheckLg color="#ffffff" fontSize="19px" />
         ) : (
-          <BsExclamationLg color="#ffffff" fontSize="19px" />
+          <BsExclamationLg color="#ffffff" fontSize="15px" />
         )}
       </Box>
       <Box
