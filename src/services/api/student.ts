@@ -224,3 +224,22 @@ export const AddLevel = async (userId, level) => {
     return error.response;
   }
 };
+
+export const ResetPassword = async (userId) => {
+  const gym = gyns.find((x) => x.isDefault);
+
+  try {
+    const url = `/user/${userId}/gym/${gym.id}/changepassword`;
+    const token = getCookie(authCookieKeys.token);
+
+    const request = await api.put(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return { data: request.data, statusCode: request.status };
+  } catch (error) {
+    // console.log("########### error ############ ", error);
+    return error.response;
+  }
+};
