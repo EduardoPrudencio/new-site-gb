@@ -205,7 +205,6 @@ export const RefusePresence = async (userId, presenceId) => {
   }
 };
 
-
 export const AddLevel = async (userId, level) => {
   const gym = gyns.find((x) => x.isDefault);
 
@@ -225,18 +224,22 @@ export const AddLevel = async (userId, level) => {
   }
 };
 
-export const ResetPassword = async (userId) => {
+export const ResetPassword = async (userId, newPassword) => {
   const gym = gyns.find((x) => x.isDefault);
 
   try {
     const url = `/user/${userId}/gym/${gym.id}/changepassword`;
     const token = getCookie(authCookieKeys.token);
 
-    const request = await api.put(url, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const request = await api.put(
+      url,
+      { email: "", password: newPassword },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     return { data: request.data, statusCode: request.status };
   } catch (error) {
     // console.log("########### error ############ ", error);
