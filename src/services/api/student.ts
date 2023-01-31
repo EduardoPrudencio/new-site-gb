@@ -224,7 +224,7 @@ export const AddLevel = async (userId, level) => {
   }
 };
 
-export const ResetPassword = async (userId, newPassword) => {
+export const ChangePassword = async (userId, newPassword) => {
   const gym = gyns.find((x) => x.isDefault);
 
   try {
@@ -242,7 +242,7 @@ export const ResetPassword = async (userId, newPassword) => {
     );
     return { data: request.data, statusCode: request.status };
   } catch (error) {
-    // console.log("########### error ############ ", error);
+    console.log("########### error ############ ", error);
     return error.response;
   }
 };

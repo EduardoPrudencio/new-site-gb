@@ -4,12 +4,12 @@ import React, { useCallback, useState } from "react";
 import { toast } from "react-toastify";
 
 import { theme } from "@utils/theme";
+import { getCookie } from "cookies-next";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-import { changePassword } from "@services/api/users/password";
+import { ChangePassword } from "@services/api/student";
 
-import { getCookie } from "cookies-next";
 import Button from "../buttons/Button";
 import IconButton from "../buttons/IconButton";
 import Icon from "../icon/Icon";
@@ -17,7 +17,7 @@ import TextField from "../text-field/TextField";
 import { H3, H5 } from "../Typography";
 import { StyledSessionCard } from "./SessionStyle";
 
-function PasswordEdit({ token }: { token: string }) {
+function PasswordEdit({ UserId }: { UserId: string | string[] }) {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
   const [passwordConfirmationVisibility, setPasswordConfirmationVisibility] =
     useState(false);
@@ -32,20 +32,17 @@ function PasswordEdit({ token }: { token: string }) {
     setPasswordConfirmationVisibility((visible) => !visible);
   }, []);
 
-  const handleFormSubmit = async ({ passwordConfirmation, password }) => {
+  const handleFormSubmit = async ({ password }) => {
     try {
-      const response = await changePassword({
-        passwordConfirmation,
-        password,
-        token,
-      });
-      if (response === 200) {
+      const response = await ChangePassword(UserId, password);
+
+      if (response.statusCode === 204) {
         toast.success("Sua senha foi alterada com sucesso");
         const gymSlug = getCookie("gym.name");
         router.push(`/${gymSlug}`);
       }
     } catch (error) {
-      toast.error("Houve um erro. Tente novamente");
+      // toast.error("Houve um erro. Tente novamente");
     }
   };
 
@@ -82,7 +79,7 @@ function PasswordEdit({ token }: { token: string }) {
           textAlign="center"
           mb="2.25rem"
         >
-          Preencha duas vezes sua nova senha para continuar
+          Informe e confirme sua nova senha para continuar
         </H5>
 
         <TextField

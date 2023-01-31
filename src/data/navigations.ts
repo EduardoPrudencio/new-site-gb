@@ -17,6 +17,13 @@ const Navigations = () => {
     },
     {
       icon: "",
+      title: "Trocar Senha",
+      href: `/account/changepassword/${user.id}`,
+      menuComponent: "MegaMenu1",
+      show: true,
+    },
+    {
+      icon: "",
       title: "Novo Aluno",
       href: "/admin/add-user",
       menuComponent: "MegaMenu1",

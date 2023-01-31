@@ -107,10 +107,10 @@ const StudentData: React.FC<IProps> = ({ student, readonly = true }) => {
   //   student?.niveis.length > 0 ? student?.niveis.map((l) => l.value) : [1];
   // const bigestLevel = Math.max(...allLevels);
 
-  const dates = student?.niveis.map((d) => d.date).sort();
+  const dates = student?.niveis?.map((d) => d.date).sort();
 
   const lastLevelReceived =
-    student.niveis.length > 0
+    student?.niveis?.length > 0
       ? student?.niveis.find(
           (l) => l.date === dates[student?.niveis.length - 1]
         ).value
