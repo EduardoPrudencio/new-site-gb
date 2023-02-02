@@ -31,6 +31,13 @@ const Navigations = () => {
     },
     {
       icon: "",
+      title: "Financeiro",
+      href: "/payments",
+      menuComponent: "MegaMenu1",
+      show: user.isAdministrator,
+    },
+    {
+      icon: "",
       title: "Alunos",
       href: "/admin/users",
       menuComponent: "MegaMenu1",
