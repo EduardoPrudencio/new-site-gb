@@ -10,7 +10,6 @@ export async function me(): Promise<User> {
   const {
     data: { client },
   } = await api.post("/Session/ByRefreshToken", { refreshToken: refresToken });
-  
 
   return {
     id: client.id,
