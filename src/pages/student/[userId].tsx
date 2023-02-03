@@ -112,7 +112,7 @@ function Perfil() {
                 </Typography>
               </Box>
 
-              <Box
+              {/* <Box
                 mt="20px"
                 display="flex"
                 flexDirection="column"
@@ -128,7 +128,7 @@ function Perfil() {
                 <Typography fontWeight="bold" fontSize="21px">
                   81%
                 </Typography>
-              </Box>
+              </Box> */}
               <Button onClick={() => setShowModal(true)} mt="20px">
                 Registrar pagamento
               </Button>

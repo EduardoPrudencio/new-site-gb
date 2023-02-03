@@ -1,10 +1,18 @@
-import React from "react";
+/* eslint-disable no-new-wrappers */
+import Link from "next/link";
+
+import React, { useEffect, useState } from "react";
 
 import HeaderText from "@component/headerText";
 import AppLayout from "@component/layout/AppLayout";
+import Spinner from "@component/Spinner";
 import { onlyGuest } from "@utils/onlyGuest";
+import moment from "moment";
 import { GetServerSideProps } from "next";
 import styled from "styled-components";
+import { Payment } from "types";
+
+import { GetAll } from "@services/api/payment";
 
 const Body = styled.div`
   display: flex;
@@ -34,22 +42,14 @@ const Header = styled.div`
   color: #ffffff;
   font-weight: bold;
 `;
-// const Line = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-//   padding: 20px 10px;
-//   background-color: #ffffff;
-//   border-radius: 5px;
-//   margin-bottom: 5px;
-//   border: solid 1px #cecece;
-//   color: #959493;
-
-//   &:hover {
-//     border: solid 1px #e33f06;
-//     background-color: #f2e9e9;
-//   }
-// `;
+const Line = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 0 5px 10px;
+  color: #959493;
+  font-size: 15px;
+`;
 
 const LineContent = styled.div`
   display: flex;
@@ -57,61 +57,84 @@ const LineContent = styled.div`
   justify-content: start;
 `;
 
-// const LineLoading = styled.div`
-//   margin-top: 30px;
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   justify-content: center;
-// `;
+const LineLoading = styled.div`
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
 
 const Payments: React.FC = () => {
+  const [payments, setPayments] = useState<Payment[]>();
+  const [costs, setCost] = useState<number[]>();
+
+  useEffect(() => {
+    const GetAllPayments = async () => {
+      const list = await GetAll();
+      const allCost = list.data.data.map((p) => p.activity.cost);
+      const sum = allCost.reduce((a, b) => a + b, 0);
+      setCost(sum);
+      setPayments(list.data.data);
+    };
+    GetAllPayments();
+  }, []);
+
   return (
     <Body>
       <Container>
+        <h3>Total: {`R$ ${new Number(costs).toFixed(2)}`}</h3>
         <Header>
           <LineContent>
-            <HeaderText maxWidth={150} text="Data" color="#ffffff" bold />
+            <HeaderText maxWidth={130} text="Data" color="#ffffff" bold />
             <HeaderText
-              maxWidth={150}
+              maxWidth={190}
               text="Data de referência"
               color="#ffffff"
               bold
             />
-            <HeaderText maxWidth={150} text="Aluno" color="#ffffff" bold />
+            <HeaderText maxWidth={170} text="Aluno" color="#ffffff" bold />
             <HeaderText maxWidth={150} text="Atividade" color="#ffffff" bold />
-            <HeaderText maxWidth={150} text="Valor" color="#ffffff" bold />
+            <HeaderText maxWidth={140} text="Valor" color="#ffffff" bold />
           </LineContent>
         </Header>
 
-        {/* {typeof students === "undefined" && (
+        {typeof payments === "undefined" && (
           <LineLoading>
             <Spinner />
           </LineLoading>
         )}
 
-        {students?.map((student) => {
+        {payments?.map((payment) => {
           return (
-            <Link href={`/student/${student.id}`}>
-              <Line>
-                <LineContent>
-                  <HeaderText maxWidth={150} text={student.name} bold />
-                  <HeaderText maxWidth={150} text={student.lastName} />
-                  <HeaderText maxWidth={150} text={student.phoneNumber} />
-                  <HeaderText
-                    maxWidth={150}
-                    text={moment(student.birthDate).format("DD/MM/YYYY")}
-                  />
-                  <HeaderText maxWidth={150} text="Ativo" />
-                  <HeaderText
-                    maxWidth={200}
-                    text={moment(student.registrationDate).format("DD/MM/YYYY")}
-                  />
-                </LineContent>
-              </Line>
-            </Link>
+            <Line>
+              <LineContent>
+                <HeaderText
+                  maxWidth={150}
+                  text={moment(payment.date).format("DD/MM/YYYY")}
+                />
+                <HeaderText
+                  maxWidth={150}
+                  text={moment(payment.referenceDate).format("DD/MM/YYYY")}
+                />
+
+                <HeaderText maxWidth={200}>
+                  <Link href={`/student/${payment.studentId}`}>
+                    {payment.studentName}
+                  </Link>
+                </HeaderText>
+
+                <HeaderText maxWidth={130} text={payment.activity.name} />
+                <HeaderText
+                  maxWidth={150}
+                  color="#52be80"
+                  text={`R$ ${new Number(payment.activity.cost).toFixed(2)}`}
+                />
+              </LineContent>
+            </Line>
+            // </Link>
           );
-        })} */}
+        })}
       </Container>
     </Body>
   );

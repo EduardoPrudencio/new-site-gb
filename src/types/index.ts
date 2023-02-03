@@ -16,6 +16,11 @@ export type User = {
   isAdministrator: boolean;
 };
 
+export type Activity = {
+  name: string;
+  cost: number;
+};
+
 export type Address = {
   endereco: string;
   numero: string;
@@ -24,6 +29,18 @@ export type Address = {
   bairro: string;
   uf: string;
   cep: string;
+};
+
+export type Payment = {
+  id: string;
+  studentId: string;
+  studentName: string;
+  date: string;
+  referenceDate: string;
+  value: number;
+  reversed: boolean;
+  student: User;
+  activity: Activity;
 };
 
 export type Student = {
