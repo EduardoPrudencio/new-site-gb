@@ -24,10 +24,10 @@ export const AddPayment = async (userId, value, date) => {
         },
       }
     );
-    
+
     return request;
   } catch (error) {
-    console.log("########### error ############ ", error);
+    // console.log("########### error ############ ", error);
     return error.response;
   }
 };
