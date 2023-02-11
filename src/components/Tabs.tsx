@@ -114,7 +114,7 @@ export default function BasicTabs() {
             textColor="primary"
             indicatorColor="primary"
           >
-            <Tab label="Parque São Caetano" {...a11yProps(0)} />
+            <Tab label="Parque Rosário" {...a11yProps(0)} />
             <Tab label="Donana" {...a11yProps(1)} />
           </Tabs>
         </Box>
