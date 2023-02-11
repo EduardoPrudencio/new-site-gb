@@ -3,11 +3,12 @@
 import { useState } from "react";
 import Modal from "react-modal";
 
+import Button from "@component/buttons/Button";
 import Icon from "@component/icon/Icon";
 import Image from "@component/Image";
 import AppLayout from "@component/layout/AppLayout";
-import { Button } from "@mui/material";
 import { onlyAuth } from "@utils/onlyAuth";
+import { theme } from "@utils/theme";
 import moment from "moment";
 import { GetServerSideProps } from "next";
 import styled from "styled-components";
@@ -187,8 +188,18 @@ const StudentData: React.FC<IProps> = ({ student, readonly = true }) => {
           <Image src={NivelService(maxLevel)} height="20px" />
           {!readonly && (
             <>
-              <Button onClick={() => addLevel()}>+</Button>
-              <Button onClick={() => subLevel()}>-</Button>
+              <Button
+                color={theme.colors.primary.main}
+                onClick={() => addLevel()}
+              >
+                +
+              </Button>
+              <Button
+                color={theme.colors.primary.main}
+                onClick={() => subLevel()}
+              >
+                -
+              </Button>
             </>
           )}
         </Line>
@@ -235,7 +246,13 @@ const StudentData: React.FC<IProps> = ({ student, readonly = true }) => {
 
         {!readonly && (
           <Line>
-            <Button onClick={() => ChangeLevel()}>Salvar</Button>
+            <Button
+              color="#ffffff"
+              backgroundColor={theme.colors.primary.main}
+              onClick={() => ChangeLevel()}
+            >
+              Salvar
+            </Button>
           </Line>
         )}
       </ContentBottom>
