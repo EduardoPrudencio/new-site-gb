@@ -5,6 +5,7 @@ import Modal from "react-modal";
 
 import Box from "@component/Box";
 import Button from "@component/buttons/Button";
+import Icon from "@component/icon/Icon";
 import AppLayout from "@component/layout/AppLayout";
 import PaymentForm from "@component/PaymentForm";
 import Spinner from "@component/Spinner";
@@ -60,6 +61,16 @@ function Perfil() {
     <>
       <Modal isOpen={showModal} style={modalStyles}>
         {/* <Spinner color="#FF0000"/> */}
+        <Box
+          width="100%"
+          display="flex"
+          flexDirection="row"
+          justifyContent="end"
+          marginTop="-10px"
+          marginBottom="-35px"
+        >
+          <Button onClick={() => setShowModal(false)}>X</Button>
+        </Box>
         <PaymentForm UserId={student?.id} StillProcess={setShowModal} />
       </Modal>
 
@@ -85,8 +96,9 @@ function Perfil() {
             flexDirection="column"
             alignItems="center"
             justifyContent="start"
-            width="350px"
+            width="300px"
             height="600px"
+            bg="#f5f5f5"
           >
             <Box
               display="flex"
@@ -130,6 +142,9 @@ function Perfil() {
                 </Typography>
               </Box> */}
               <Button onClick={() => setShowModal(true)} mt="20px">
+                <Icon size="17px" color="#868b8f">
+                  dollar
+                </Icon>
                 Registrar pagamento
               </Button>
             </Box>
