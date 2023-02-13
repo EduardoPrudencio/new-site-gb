@@ -224,7 +224,7 @@ export const AddLevel = async (userId, level) => {
   }
 };
 
-export const ChangePassword = async (userId, newPassword) => {
+export const ChangePassword = async (userId, newEmail, newPassword) => {
   const gym = gyns.find((x) => x.isDefault);
 
   try {
@@ -233,7 +233,7 @@ export const ChangePassword = async (userId, newPassword) => {
 
     const request = await api.put(
       url,
-      { email: "", password: newPassword },
+      { email: newEmail, password: newPassword },
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -242,7 +242,7 @@ export const ChangePassword = async (userId, newPassword) => {
     );
     return { data: request.data, statusCode: request.status };
   } catch (error) {
-    console.log("########### error ############ ", error);
+    // console.log("########### error ############ ", error);
     return error.response;
   }
 };

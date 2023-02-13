@@ -17,7 +17,13 @@ import TextField from "../text-field/TextField";
 import { H3, H5 } from "../Typography";
 import { StyledSessionCard } from "./SessionStyle";
 
-function PasswordEdit({ UserId }: { UserId: string | string[] }) {
+function PasswordEdit({
+  UserId,
+  Email,
+}: {
+  UserId: string | string[];
+  Email: string;
+}) {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
   const [passwordConfirmationVisibility, setPasswordConfirmationVisibility] =
     useState(false);
@@ -34,7 +40,7 @@ function PasswordEdit({ UserId }: { UserId: string | string[] }) {
 
   const handleFormSubmit = async ({ password }) => {
     try {
-      const response = await ChangePassword(UserId, password);
+      const response = await ChangePassword(UserId, Email, password);
 
       if (response.statusCode === 204) {
         toast.success("Sua senha foi alterada com sucesso");

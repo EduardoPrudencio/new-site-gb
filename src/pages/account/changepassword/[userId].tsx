@@ -1,12 +1,14 @@
 import { useRouter } from "next/router";
 
-import React from "react";
+import React, { useContext } from "react";
 
 import AppLayout from "@component/layout/AppLayout";
 import PasswordEdit from "@component/sessions/PasswordEdit";
 import { onlyAuth } from "@utils/onlyAuth";
 import { GetServerSideProps } from "next";
 import styled from "styled-components";
+
+import { AuthCotext } from "@context/AuthContext";
 
 const Body = styled.div`
   display: flex;
@@ -20,10 +22,11 @@ const Body = styled.div`
 function ChangePassword() {
   const { query } = useRouter();
   const { userId } = query;
+  const { user } = useContext(AuthCotext);
 
   return (
     <Body>
-      <PasswordEdit UserId={userId} />
+      <PasswordEdit UserId={userId} Email={user.email} />
     </Body>
   );
 }
