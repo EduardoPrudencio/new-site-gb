@@ -124,11 +124,13 @@ function AddUser() {
   const router = useRouter();
   const [showMessage, setShowMessage] = useState(false);
   const [cepValue, setCepValue] = useState("");
+  const [phoneValue, setPhoneValue] = useState("");
   const [addressValue, setAddressValue] = useState("");
   const [cityValue, setCityValue] = useState("");
   const [districtValue, setDistrictValue] = useState("");
   const [statetValue, setStateValue] = useState("");
   const [lastCont, setLastCont] = useState(0);
+  const [lastPhoneCont, setLastPhoneCont] = useState(0);
   const [cepMessageSearch, setCepMessageSearch] = useState(
     "Verificando endereço com o cep informado"
   );
@@ -194,6 +196,42 @@ function AddUser() {
     } else setCepValue(cep);
 
     setLastCont(cep.length);
+  };
+
+  const PhoneFormat = (phone: string) => {
+    if (phone.length === 15 && lastPhoneCont < phone.length) return;
+
+    if (phone.length === 1 && phone[0] !== "(" && lastPhoneCont < phone.length)
+      setPhoneValue(`(${phone}`);
+    else if (
+      phone.length === 3 &&
+      phone[3] !== ")" &&
+      lastPhoneCont < phone.length
+    )
+      setPhoneValue(`${phone})`);
+    else if (
+      phone.length === 4 &&
+      phone[3] !== ")" &&
+      lastPhoneCont < phone.length
+    )
+      setPhoneValue(`(${phone[1]}${phone[2]})${phone[phone.length - 1]}`);
+    else if (
+      phone.length === 9 &&
+      phone[8] !== "-" &&
+      lastPhoneCont < phone.length
+    )
+      setPhoneValue(`${phone}-`);
+    else if (
+      phone.length === 10 &&
+      phone[8] !== "-" &&
+      lastPhoneCont < phone.length
+    )
+      setPhoneValue(
+        `${phone.substring(0, phone.length - 1)}-${phone[phone.length - 1]}`
+      );
+    else setPhoneValue(phone);
+
+    setLastPhoneCont(phone.length);
   };
 
   return (
@@ -309,8 +347,11 @@ function AddUser() {
                     fullwidth
                     type="tel"
                     onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.phonenumber || ""}
+                    onChange={(e) => {
+                      handleChange(e);
+                      PhoneFormat(e.target.value);
+                    }}
+                    value={phoneValue}
                     errorText={touched.phonenumber && errors.phonenumber}
                   />
                   <TextField
