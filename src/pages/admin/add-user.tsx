@@ -19,6 +19,8 @@ import { Add } from "services/api/student";
 import styled from "styled-components";
 import * as yup from "yup";
 
+import { GetAddressByCpf } from "@services/api/Address";
+
 import Alert from "../../components/alert";
 
 const modalStyles = {
@@ -69,6 +71,11 @@ const Label = styled.label`
   font-weight: bold;
 `;
 
+const SmallLabel = styled.label`
+  font-size: 13px;
+  color: #c3c3c3;
+`;
+
 const initialValues = {
   name: "",
   lastname: "",
@@ -115,37 +122,29 @@ function AddUser() {
   const [hasError, setHasError] = useState(false);
   const [message, setMessage] = useState("");
   const router = useRouter();
+  const [showMessage, setShowMessage] = useState(false);
+  const [cepValue, setCepValue] = useState("");
+  const [addressValue, setAddressValue] = useState("");
+  const [cityValue, setCityValue] = useState("");
+  const [districtValue, setDistrictValue] = useState("");
+  const [statetValue, setStateValue] = useState("");
+  const [lastCont, setLastCont] = useState(0);
+  const [cepMessageSearch, setCepMessageSearch] = useState(
+    "Verificando endereço com o cep informado"
+  );
 
   const togglePasswordVisibility = () => {
     setPasswordVisibility((visible) => !visible);
   };
 
-  const handleFormSubmit = async (values) => {
+  const handleFormSubmit = async (value) => {
     setLoading(true);
-    const response = await Add(values);
+    const response = await Add(value);
     setLoading(false);
     setHasError(false);
 
-    // const ResetForm = () => {
-    //   values.name = "";
-    //   values.email = "";
-    //   values.password = "";
-    //   values.lastname = "";
-    //   values.username = "";
-    //   values.birthdate = "";
-    //   values.phonenumber = "";
-    //   values.address = "";
-    //   values.bairro = "";
-    //   values.complemento = "";
-    //   values.number = "";
-    //   values.cep = "";
-    //   values.cidade = "";
-    //   values.uf = "";
-    // };
-
     if (response.status === 201) {
       setMessage("Dados salvos com sucesso!");
-      // ResetForm();
       router.reload();
     } else if (response.status === 400 || response.status === 404) {
       setMessage(response.data.data[0]);
@@ -164,6 +163,38 @@ function AddUser() {
       initialValues,
       validationSchema: formSchema,
     });
+
+  const GetAddressByCep = async (cep: string) => {
+    if (cep.length === 9) {
+      setShowMessage(true);
+      document.getElementById("cep").disabled = true;
+
+      const response = await GetAddressByCpf(cep);
+      setAddressValue(response.data.address);
+      setCityValue(response.data.city);
+      setDistrictValue(response.data.district);
+      setStateValue(response.data.state);
+
+      if (response.status === 200) {
+        setCepMessageSearch("Endereço encontrado.");
+        document.getElementById("cep").disabled = false;
+      } else {
+        setCepMessageSearch(
+          "Nenhum endereço foi encontrado com o cep informado."
+        );
+        document.getElementById("cep").disabled = false;
+      }
+    } else setShowMessage(false);
+
+    if (cep.length === 10 && lastCont < cep.length) return;
+
+    if (cep.length === 5 && lastCont < cep.length && !cep.includes("-")) {
+      const cepFomated = `${cep}-`;
+      setCepValue(cepFomated);
+    } else setCepValue(cep);
+
+    setLastCont(cep.length);
+  };
 
   return (
     <>
@@ -298,17 +329,22 @@ function AddUser() {
               </FormContent>
               <HorizontalLine />
               <Label>Endereço</Label>
+              {showMessage && <SmallLabel> {cepMessageSearch}</SmallLabel>}
               <FormContent>
                 <ColumnContentLefth>
                   <TextField
                     mb="0.5rem"
                     name="cep"
+                    id="cep"
                     label="Cep"
                     placeholder="xxxxx-xxx"
                     fullwidth
                     onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.cep || ""}
+                    onChange={(e) => {
+                      handleChange(e);
+                      GetAddressByCep(e.target.value);
+                    }}
+                    value={cepValue}
                     errorText={touched.cep && errors.cep}
                   />
                   <TextField
@@ -319,7 +355,7 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.address || ""}
+                    value={values.address || addressValue || ""}
                     errorText={touched.address && errors.address}
                   />
                   <TextField
@@ -341,7 +377,7 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.bairro || ""}
+                    value={values.bairro || districtValue || ""}
                     errorText={touched.bairro && errors.bairro}
                   />
                 </ColumnContentLefth>
@@ -360,12 +396,13 @@ function AddUser() {
                   <TextField
                     mb="0.5rem"
                     name="cidade"
+                    id="cidade"
                     label="Cidade"
                     placeholder="Cidade"
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.cidade || ""}
+                    value={values.cidade || cityValue || ""}
                     errorText={touched.cidade && errors.cidade}
                   />
                   <TextField
@@ -376,7 +413,7 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.uf || ""}
+                    value={values.uf || statetValue || ""}
                     errorText={touched.uf && errors.uf}
                   />
                 </ColumnContentRight>
