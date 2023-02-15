@@ -1,3 +1,5 @@
+/* eslint-disable no-return-assign */
+/* eslint-disable no-param-reassign */
 import { useRouter } from "next/router";
 
 import React, { useState } from "react";
@@ -167,6 +169,8 @@ function AddUser() {
     });
 
   const GetAddressByCep = async (cep: string) => {
+    cep = cep.replace(/[a-zA-Z]/, "");
+
     if (cep.length === 9) {
       setShowMessage(true);
       document.getElementById("cep").disabled = true;
@@ -193,12 +197,23 @@ function AddUser() {
     if (cep.length === 5 && lastCont < cep.length && !cep.includes("-")) {
       const cepFomated = `${cep}-`;
       setCepValue(cepFomated);
+    } else if (
+      cep.length === 6 &&
+      lastCont < cep.length &&
+      !cep.includes("-")
+    ) {
+      const cepFomated = `${cep.substring(0, cep.length - 1)}-${
+        cep[cep.length - 1]
+      }`;
+      setCepValue(cepFomated);
     } else setCepValue(cep);
 
     setLastCont(cep.length);
   };
 
   const PhoneFormat = (phone: string) => {
+    phone = phone.replace(/[a-zA-Z]/, "");
+
     if (phone.length === 15 && lastPhoneCont < phone.length) return;
 
     if (phone.length === 1 && phone[0] !== "(" && lastPhoneCont < phone.length)
@@ -396,7 +411,7 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.address || addressValue || ""}
+                    value={values.address || (values.address = addressValue)}
                     errorText={touched.address && errors.address}
                   />
                   <TextField
@@ -418,7 +433,7 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.bairro || districtValue || ""}
+                    value={values.bairro || (values.bairro = districtValue)}
                     errorText={touched.bairro && errors.bairro}
                   />
                 </ColumnContentLefth>
@@ -443,7 +458,7 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.cidade || cityValue || ""}
+                    value={values.cidade || (values.cidade = cityValue)}
                     errorText={touched.cidade && errors.cidade}
                   />
                   <TextField
@@ -454,7 +469,7 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.uf || statetValue || ""}
+                    value={values.uf || (values.uf = statetValue)}
                     errorText={touched.uf && errors.uf}
                   />
                 </ColumnContentRight>
