@@ -342,7 +342,7 @@ function AddUser() {
                   <TextField
                     mb="0.5rem"
                     name="phonenumber"
-                    label="phone"
+                    label="Celular"
                     placeholder="(xx)xxxxx-xxxx"
                     fullwidth
                     type="tel"
