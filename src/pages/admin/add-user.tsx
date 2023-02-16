@@ -176,10 +176,16 @@ function AddUser() {
       document.getElementById("cep").disabled = true;
 
       const response = await GetAddressByCpf(cep);
+
       setAddressValue(response.data.address);
       setCityValue(response.data.city);
       setDistrictValue(response.data.district);
       setStateValue(response.data.state);
+
+      setAddressValue("");
+      setCityValue("");
+      setDistrictValue("");
+      setStateValue("");
 
       if (response.status === 200) {
         setCepMessageSearch("Endereço encontrado.");
@@ -190,7 +196,10 @@ function AddUser() {
         );
         document.getElementById("cep").disabled = false;
       }
-    } else setShowMessage(false);
+    } else {
+      setShowMessage(false);
+      setAddressValue("");
+    }
 
     if (cep.length === 10 && lastCont < cep.length) return;
 
@@ -411,7 +420,11 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.address || (values.address = addressValue)}
+                    value={
+                      addressValue !== ""
+                        ? (values.address = addressValue)
+                        : values.address
+                    }
                     errorText={touched.address && errors.address}
                   />
                   <TextField
@@ -433,7 +446,11 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.bairro || (values.bairro = districtValue)}
+                    value={
+                      districtValue !== ""
+                        ? (values.bairro = districtValue)
+                        : values.bairro
+                    }
                     errorText={touched.bairro && errors.bairro}
                   />
                 </ColumnContentLefth>
@@ -458,7 +475,11 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.cidade || (values.cidade = cityValue)}
+                    value={
+                      cityValue !== ""
+                        ? (values.cidade = cityValue)
+                        : values.cidade
+                    }
                     errorText={touched.cidade && errors.cidade}
                   />
                   <TextField
@@ -469,7 +490,9 @@ function AddUser() {
                     fullwidth
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.uf || (values.uf = statetValue)}
+                    value={
+                      statetValue !== "" ? (values.uf = statetValue) : values.uf
+                    }
                     errorText={touched.uf && errors.uf}
                   />
                 </ColumnContentRight>

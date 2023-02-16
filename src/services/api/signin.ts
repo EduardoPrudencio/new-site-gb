@@ -7,11 +7,11 @@ export const SigninCall = async (values) => {
       password: values.password,
     });
 
-    // console.log("*************** ", response);
+    console.log("*************** ", response);
 
     return response;  
   } catch (error) {
-    //console.log("########### error ############ ",error );
+    console.log("########### error ############ ",error );
   }
 };
 
