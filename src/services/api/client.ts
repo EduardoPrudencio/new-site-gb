@@ -5,7 +5,7 @@ import { getCookie } from "cookies-next";
 const token = getCookie(authCookieKeys.token);
 
 const api = axios.create({
-  baseURL: "http://localhost:62871/api",
+  baseURL: "https://api.inovaideia.net.br/api",
 });
 
 function addAuthToken(config: AxiosRequestConfig) {
