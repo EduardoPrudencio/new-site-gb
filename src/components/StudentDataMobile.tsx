@@ -1,5 +1,7 @@
 /* eslint-disable no-unsafe-optional-chaining */
-import React from "react";
+import { useRouter } from "next/router";
+
+import React, { useContext } from "react";
 
 import Icon from "@component/icon/Icon";
 import Image from "@component/Image";
@@ -8,7 +10,10 @@ import styled from "styled-components";
 
 import NivelService from "@services/NivelService";
 
+import { AuthCotext } from "@context/AuthContext";
+
 import Box from "./Box";
+import Button from "./buttons/Button";
 import Typography from "./Typography";
 
 const Line = styled.div`
@@ -54,6 +59,9 @@ interface IProps {
 const StudentDataMobile: React.FC<IProps> = ({ student }) => {
   const dates = student?.niveis.map((d) => d.date).sort();
 
+  const { logOut } = useContext(AuthCotext);
+  const router = useRouter();
+
   const lastLevelReceived =
     student?.niveis !== null && student.niveis.length > 0
       ? student?.niveis.find(
@@ -62,6 +70,11 @@ const StudentDataMobile: React.FC<IProps> = ({ student }) => {
       : 1;
 
   const maxLevel = lastLevelReceived - 1;
+
+  const LogOut = () => {
+    logOut();
+    router.reload();
+  };
 
   return (
     <Box
@@ -88,6 +101,7 @@ const StudentDataMobile: React.FC<IProps> = ({ student }) => {
         <Typography fontWeight="bold" fontSize="18px" marginLeft="5px">
           {student?.frequencyPercentage}%
         </Typography>
+        <Button onClick={LogOut}>Sair</Button>
       </Line>
       <Line>
         <LabelTitle>Graduação:</LabelTitle>
