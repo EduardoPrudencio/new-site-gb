@@ -1,7 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { useRouter } from "next/router";
+
 import React, { useCallback, useContext, useState } from "react";
 
 import { theme } from "@utils/theme";
+import { getCookie } from "cookies-next";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
@@ -27,6 +30,7 @@ const formSchema = yup.object().shape({
 const Signin = function BuildSignIn() {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
+  const router = useRouter();
 
   const { signIn } = useContext(AuthCotext);
 
@@ -37,6 +41,11 @@ const Signin = function BuildSignIn() {
   const handleFormSubmit = async (values) => {
     const error = await signIn(values);
     setShowMessage(error);
+
+    if (!error) {
+      const gymSlug = getCookie("gym.name");
+      router.push(`/${gymSlug}`);
+    }
   };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
